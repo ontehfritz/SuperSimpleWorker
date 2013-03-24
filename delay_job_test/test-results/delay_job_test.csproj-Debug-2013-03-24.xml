@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <UnitTestResult>
+      <TestDate>2013-03-24T14:19:11</TestDate>
+      <Passed>0</Passed>
+      <Errors>0</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>Test successful
+
+Execution time: 0.01ms</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T14:29:19</TestDate>
+      <Passed>0</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T14:31:13</TestDate>
+      <Passed>0</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T14:33:31</TestDate>
+      <Passed>1</Passed>
+      <Errors>0</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>Test successful
+
+Execution time: 0.06ms</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T14:45:08</TestDate>
+      <Passed>0</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T16:45:39</TestDate>
+      <Passed>1</Passed>
+      <Errors>0</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>Test successful
+
+Execution time: 0.11ms</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T17:57:38</TestDate>
+      <Passed>0</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T18:00:38</TestDate>
+      <Passed>1</Passed>
+      <Errors>0</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>Test successful
+
+Execution time: 0.07ms</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T18:09:08</TestDate>
+      <Passed>1</Passed>
+      <Errors>0</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>Test successful
+
+Execution time: 0.06ms</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:25:08</TestDate>
+      <Passed>0</Passed>
+      <Errors>2</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:26:34</TestDate>
+      <Passed>0</Passed>
+      <Errors>2</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:27:18</TestDate>
+      <Passed>0</Passed>
+      <Errors>2</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:28:56</TestDate>
+      <Passed>1</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:33:57</TestDate>
+      <Passed>1</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:41:42</TestDate>
+      <Passed>0</Passed>
+      <Errors>2</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:50:49</TestDate>
+      <Passed>1</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:54:30</TestDate>
+      <Passed>0</Passed>
+      <Errors>2</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2013-03-24T20:56:19</TestDate>
+      <Passed>1</Passed>
+      <Errors>1</Errors>
+      <Failures>0</Failures>
+      <Inconclusive>0</Inconclusive>
+      <NotRunnable>0</NotRunnable>
+      <Skipped>0</Skipped>
+      <Ignored>0</Ignored>
+      <Time />
+      <Message>One or more child tests had errors</Message>
+    </UnitTestResult>
+  </Results>
+  <Tests>
+    <TestRecord Name="delay_job">
+      <Results>
+        <UnitTestResult>
+          <TestDate>2013-03-24T14:29:19</TestDate>
+          <Passed>0</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T14:31:13</TestDate>
+          <Passed>0</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T14:33:31</TestDate>
+          <Passed>1</Passed>
+          <Errors>0</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>Test successful
+
+Execution time: 0.06ms</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T14:45:08</TestDate>
+          <Passed>0</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T16:45:39</TestDate>
+          <Passed>1</Passed>
+          <Errors>0</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>Test successful
+
+Execution time: 0.11ms</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T17:57:38</TestDate>
+          <Passed>0</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T18:00:38</TestDate>
+          <Passed>1</Passed>
+          <Errors>0</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>Test successful
+
+Execution time: 0.06ms</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T18:09:08</TestDate>
+          <Passed>1</Passed>
+          <Errors>0</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>Test successful
+
+Execution time: 0.05ms</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:25:08</TestDate>
+          <Passed>0</Passed>
+          <Errors>2</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:26:34</TestDate>
+          <Passed>0</Passed>
+          <Errors>2</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:27:18</TestDate>
+          <Passed>0</Passed>
+          <Errors>2</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:28:56</TestDate>
+          <Passed>1</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:33:57</TestDate>
+          <Passed>1</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:41:42</TestDate>
+          <Passed>0</Passed>
+          <Errors>2</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:50:49</TestDate>
+          <Passed>1</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:54:30</TestDate>
+          <Passed>0</Passed>
+          <Errors>2</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+        <UnitTestResult>
+          <TestDate>2013-03-24T20:56:19</TestDate>
+          <Passed>1</Passed>
+          <Errors>1</Errors>
+          <Failures>0</Failures>
+          <Inconclusive>0</Inconclusive>
+          <NotRunnable>0</NotRunnable>
+          <Skipped>0</Skipped>
+          <Ignored>0</Ignored>
+          <Time />
+          <Message>One or more child tests had errors</Message>
+        </UnitTestResult>
+      </Results>
+      <Tests>
+        <TestRecord Name="RepositorySQLiteTest">
+          <Results>
+            <UnitTestResult>
+              <TestDate>2013-03-24T14:29:19</TestDate>
+              <Passed>0</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T14:31:13</TestDate>
+              <Passed>0</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T14:33:31</TestDate>
+              <Passed>1</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 0.05ms</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T14:45:08</TestDate>
+              <Passed>0</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T16:45:39</TestDate>
+              <Passed>1</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 0.11ms</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T17:57:38</TestDate>
+              <Passed>0</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T18:00:38</TestDate>
+              <Passed>1</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 0.06ms</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T18:09:08</TestDate>
+              <Passed>1</Passed>
+              <Errors>0</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>Test successful
+
+Execution time: 0.05ms</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:25:08</TestDate>
+              <Passed>0</Passed>
+              <Errors>2</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:26:34</TestDate>
+              <Passed>0</Passed>
+              <Errors>2</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:27:18</TestDate>
+              <Passed>0</Passed>
+              <Errors>2</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:28:56</TestDate>
+              <Passed>1</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:33:57</TestDate>
+              <Passed>1</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:41:42</TestDate>
+              <Passed>0</Passed>
+              <Errors>2</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:50:49</TestDate>
+              <Passed>1</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:54:30</TestDate>
+              <Passed>0</Passed>
+              <Errors>2</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+            <UnitTestResult>
+              <TestDate>2013-03-24T20:56:19</TestDate>
+              <Passed>1</Passed>
+              <Errors>1</Errors>
+              <Failures>0</Failures>
+              <Inconclusive>0</Inconclusive>
+              <NotRunnable>0</NotRunnable>
+              <Skipped>0</Skipped>
+              <Ignored>0</Ignored>
+              <Time />
+              <Message>One or more child tests had errors</Message>
+            </UnitTestResult>
+          </Results>
+          <Tests>
+            <TestRecord Name="TestCreateDb">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T14:29:19</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+near "(": syntax error</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T14:31:13</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+near "(": syntax error</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T14:33:31</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.05ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T14:45:08</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T16:45:39</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.10ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T17:57:38</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+near "(": syntax error</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T18:00:38</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.05ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T18:09:08</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.05ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:25:08</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:26:34</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:27:18</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:28:56</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.05ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:33:57</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.05ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:41:42</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:50:49</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.07ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:54:30</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:56:19</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+table delay_jobs already exists</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+              <Tests />
+            </TestRecord>
+            <TestRecord Name="TestCreateJob">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:25:08</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+8 values for 10 columns</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:26:34</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+near ")": syntax error</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:27:18</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : Abort due to constraint violation
+delay_jobs.id may not be NULL</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Reset (Mono.Data.Sqlite.SqliteStatement stmt) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SQLite3.Step (Mono.Data.Sqlite.SqliteStatement stmt) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteDataReader.NextResult () [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteDataReader..ctor (Mono.Data.Sqlite.SqliteCommand cmd, CommandBehavior behave) [0x00000] in &lt;filename unknown&gt;:0 
+  at (wrapper remoting-invoke-with-check) Mono.Data.Sqlite.SqliteDataReader:.ctor (Mono.Data.Sqlite.SqliteCommand,System.Data.CommandBehavior)
+  at Mono.Data.Sqlite.SqliteCommand.ExecuteReader (CommandBehavior behavior) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.ExecuteScalar () [0x00000] in &lt;filename unknown&gt;:0 
+  at delay_job.RepositorySQLite.CreateJob (delay_job.Job job) [0x000f8] in /Users/Fritz/Projects/delay_job/delay_job/RepositorySQLite.cs:83 
+  at delay_job.RepositorySQLiteTest.TestCreateJob () [0x0005c] in /Users/Fritz/Projects/delay_job/delay_job_test/RepositorySQLiteTest.cs:31 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (System.Reflection.MonoMethod,object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:28:56</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : Abort due to constraint violation
+delay_jobs.id may not be NULL</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Reset (Mono.Data.Sqlite.SqliteStatement stmt) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SQLite3.Step (Mono.Data.Sqlite.SqliteStatement stmt) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteDataReader.NextResult () [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteDataReader..ctor (Mono.Data.Sqlite.SqliteCommand cmd, CommandBehavior behave) [0x00000] in &lt;filename unknown&gt;:0 
+  at (wrapper remoting-invoke-with-check) Mono.Data.Sqlite.SqliteDataReader:.ctor (Mono.Data.Sqlite.SqliteCommand,System.Data.CommandBehavior)
+  at Mono.Data.Sqlite.SqliteCommand.ExecuteReader (CommandBehavior behavior) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.ExecuteScalar () [0x00000] in &lt;filename unknown&gt;:0 
+  at delay_job.RepositorySQLite.CreateJob (delay_job.Job job) [0x000f8] in /Users/Fritz/Projects/delay_job/delay_job/RepositorySQLite.cs:83 
+  at delay_job.RepositorySQLiteTest.TestCreateJob () [0x0005c] in /Users/Fritz/Projects/delay_job/delay_job_test/RepositorySQLiteTest.cs:31 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (System.Reflection.MonoMethod,object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:33:57</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Mono.Data.Sqlite.SqliteException : SQLite error
+near "last_insert_rowid": syntax error</Message>
+                  <StackTrace>  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String&amp; strRemain) [0x00000] in &lt;filename unknown&gt;:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:41:42</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>System.InvalidCastException : Cannot cast from source type to destination type.</Message>
+                  <StackTrace>  at delay_job.RepositorySQLite.CreateJob (delay_job.Job job) [0x000f8] in /Users/Fritz/Projects/delay_job/delay_job/RepositorySQLite.cs:83 
+  at delay_job.RepositorySQLiteTest.TestCreateJob () [0x0005c] in /Users/Fritz/Projects/delay_job/delay_job_test/RepositorySQLiteTest.cs:31 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (System.Reflection.MonoMethod,object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:50:49</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>System.InvalidCastException : Cannot cast from source type to destination type.</Message>
+                  <StackTrace>  at delay_job.RepositorySQLite.CreateJob (delay_job.Job job) [0x00100] in /Users/Fritz/Projects/delay_job/delay_job/RepositorySQLite.cs:85 
+  at delay_job.RepositorySQLiteTest.TestCreateJob () [0x0005c] in /Users/Fritz/Projects/delay_job/delay_job_test/RepositorySQLiteTest.cs:31 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (System.Reflection.MonoMethod,object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:54:30</TestDate>
+                  <Passed>0</Passed>
+                  <Errors>1</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>System.InvalidCastException : Cannot cast from source type to destination type.</Message>
+                  <StackTrace>  at delay_job.RepositorySQLite.CreateJob (delay_job.Job job) [0x00100] in /Users/Fritz/Projects/delay_job/delay_job/RepositorySQLite.cs:85 
+  at delay_job.RepositorySQLiteTest.TestCreateJob () [0x0005c] in /Users/Fritz/Projects/delay_job/delay_job_test/RepositorySQLiteTest.cs:31 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (System.Reflection.MonoMethod,object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+                <UnitTestResult>
+                  <TestDate>2013-03-24T20:56:19</TestDate>
+                  <Passed>1</Passed>
+                  <Errors>0</Errors>
+                  <Failures>0</Failures>
+                  <Inconclusive>0</Inconclusive>
+                  <NotRunnable>0</NotRunnable>
+                  <Skipped>0</Skipped>
+                  <Ignored>0</Ignored>
+                  <Time />
+                  <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                  <ConsoleOutput />
+                  <ConsoleError />
+                </UnitTestResult>
+              </Results>
+            </TestRecord>
+          </Tests>
+        </TestRecord>
+      </Tests>
+    </TestRecord>
+  </Tests>
+</TestRecord>
