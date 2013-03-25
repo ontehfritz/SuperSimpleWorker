@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delay_job", "delay_job\delay_job.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delayed_job", "delay_job\delayed_job.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "worker", "worker\worker.csproj", "{8A0D11EF-65E8-4876-A322-2BAC9E028DA3}"
 EndProject

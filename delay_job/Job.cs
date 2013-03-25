@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-namespace delay_job
+namespace delayed_job
 {
 	public class Job
 	{

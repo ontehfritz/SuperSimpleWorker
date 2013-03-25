@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using Mono.Data.Sqlite;
 
-namespace delay_job
+namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{

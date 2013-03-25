@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Mono.Data.Sqlite;
 
-namespace delay_job
+namespace delayed_job
 {
 	[TestFixture()]
 	public class RepositorySQLiteTest

@@ -1,6 +1,6 @@
 using System;
 
-namespace delay_job
+namespace delayed_job
 {
 	public class DelayJob
 	{
