@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>delay_job</RootNamespace>
+    <RootNamespace>delayed_job</RootNamespace>
     <AssemblyName>delay_job</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

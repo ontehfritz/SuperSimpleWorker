@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delayed_job", "delay_job\delayed_job.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "worker", "worker\worker.csproj", "{8A0D11EF-65E8-4876-A322-2BAC9E028DA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "job", "job\job.csproj", "{E8E2F81C-ED68-4454-A972-EE13AD03FB61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delay_job_test", "delay_job_test\delay_job_test.csproj", "{683FC90B-874A-4B0A-93F1-E4334D65B27F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delayed_job", "delayed_job\delayed_job.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
