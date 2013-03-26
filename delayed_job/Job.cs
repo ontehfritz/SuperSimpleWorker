@@ -1,5 +1,8 @@
 using System;
 using System.Data;
+using System.Globalization;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace delayed_job
 {
@@ -22,6 +25,24 @@ namespace delayed_job
 		public Job ()
 		{
 
+		}
+
+		private static string SerializeToXml(IJob job)
+		{
+			StringWriter writer = new StringWriter(CultureInfo.InvariantCulture);
+			XmlSerializer serializer = new XmlSerializer(job.GetType());
+			serializer.Serialize(writer, job);
+			return writer.ToString();
+		}
+
+		public static void enqueue(IJob job, int priority = 0, DateTime? run_at = null)
+		{
+			Job newJob = new Job();
+			newJob.priority = priority;
+			newJob.handler = SerializeToXml(job);
+			newJob.run_at = (run_at == null ? DateTime.Now : (DateTime)run_at);
+			RepositorySQLite sqlite = new RepositorySQLite();
+			sqlite.CreateJob(newJob);
 		}
 
 		public bool failed ()

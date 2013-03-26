@@ -32,6 +32,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -39,6 +40,7 @@
     <Compile Include="Job.cs" />
     <Compile Include="RepositorySQLite.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IJob.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

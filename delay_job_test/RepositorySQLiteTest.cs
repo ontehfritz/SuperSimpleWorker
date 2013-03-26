@@ -30,6 +30,24 @@ namespace delayed_job
 
 			db.CreateJob(job);
 		}
+
+		[Test()]
+		public void TestGetJob()
+		{
+			RepositorySQLite db = new RepositorySQLite();
+
+			Job job = db.GetJob(1);
+			Assert.AreEqual(job.id, 1);
+		}
+
+		[Test()]
+		public void TestGetJobs()
+		{
+			RepositorySQLite db = new RepositorySQLite();
+			
+			Job [] jobs = db.GetJobs();
+			Assert.Greater(jobs.Length, 0);
+		}
 	}
 }
 

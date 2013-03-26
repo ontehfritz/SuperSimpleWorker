@@ -1,15 +1,13 @@
 using System;
 using System.Data;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 
 namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{
-		public RepositorySQLite ()
-		{
-
-		}
+		public RepositorySQLite (){}
 
 		public void CreateDb()
 		{
@@ -21,13 +19,13 @@ namespace delayed_job
 
 				string createTable = "CREATE TABLE delay_jobs(" +
 					"id integer not null primary key," + 
-					"priority integer," + 
-					"attempts integer," + 
+					"priority integer default 0," + 
+					"attempts integer default 0," + 
 					"handler varchar(255)," + 
 					"last_error varchar(255)," + 
-					"run_at datetime," + 
-					"locked_at datetime," + 
-					"failed_at datetime," + 
+					"run_at datetime default null," + 
+					"locked_at datetime default null," + 
+					"failed_at datetime default null," + 
 					"locked_by varchar(255)," + 
 					"created_at timestamp default current_timestamp," + 
 					"modified_at timestamp default current_timestamp" + 
@@ -92,11 +90,74 @@ namespace delayed_job
 			return job;
 		}
 
-		public Job GetJob()
+		public Job GetJob(int pid)
 		{
 			Job job = new Job();
+
+			string connectionString = "URI=file:delay_job.db";
+			
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+				
+				string query = "select * from delay_jobs where id = @pid";
+				
+				dbcmd.CommandText = query;
+				
+				dbcmd.Parameters.AddWithValue("@pid",pid);
+
+				IDataReader reader = dbcmd.ExecuteReader();
+				while(reader.Read()) {
+					job.attempts = int.Parse(reader["attempts"].ToString());
+					job.id = int.Parse(reader["id"].ToString());
+					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					job.handler = reader["handler"].ToString();
+					job.last_error = reader["last_error"].ToString();
+					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+					job.locked_by = reader["locked_by"].ToString();
+					job.priority = int.Parse(reader["priority"].ToString());
+					job.run_at = DateTime.Parse(reader["run_at"].ToString());
+				}
+			}
+
 			return job;
 		}
+
+		public Job[] GetJobs()
+		{
+			List<Job> jobs = new List<Job>();
+
+			string connectionString = "URI=file:delay_job.db";
+			
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+				
+				string query = "select * from delay_jobs";
+				
+				dbcmd.CommandText = query;
+			
+				IDataReader reader = dbcmd.ExecuteReader();
+				Job job = new Job();
+				while(reader.Read()) {
+					job = new Job();
+					job.attempts = int.Parse(reader["attempts"].ToString());
+					job.id = int.Parse(reader["id"].ToString());
+					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					job.handler = reader["handler"].ToString();
+					job.last_error = reader["last_error"].ToString();
+					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+					job.locked_by = reader["locked_by"].ToString();
+					job.priority = int.Parse(reader["priority"].ToString());
+					job.run_at = DateTime.Parse(reader["run_at"].ToString());
+					jobs.Add(job);
+				}
+			}
+
+			return jobs.ToArray();
+		}
+
+
 	}
 }
 

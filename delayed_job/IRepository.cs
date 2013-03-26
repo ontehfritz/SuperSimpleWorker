@@ -6,7 +6,8 @@ namespace delayed_job
 	{
 		void CreateDb();
 		Job CreateJob(Job job);
-		Job GetJob();
+		Job GetJob(int pid);
+		Job[] GetJobs();
 	}
 }
 
