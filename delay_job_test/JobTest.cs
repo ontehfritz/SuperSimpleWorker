@@ -1,7 +1,8 @@
 using System;
 using NUnit.Framework;
+using delayed_job;
 
-namespace delayed_job
+namespace delay_job
 {
 	[TestFixture()]
 	public class JobTest
@@ -9,7 +10,16 @@ namespace delayed_job
 		[Test()]
 		public void TestEnqueue ()
 		{
-			Job.enqueue(new Ajob("Fritz"));
+			Job.Enqueue(new Ajob("Fritz"));
+		}
+
+		[Test()]
+		public void TestRunWithLock ()
+		{
+			//Assert.AreEqual("Fritz",Job.RunWithLock(typeof(Ajob),"worker1"));
+			Assert.AreEqual("Fritz",Job.RunWithLock(Type.GetType("delay_job.Ajob"),"worker1"));
+			//Assert.AreEqual("Hello",typeof(Ajob).ToString());
+			
 		}
 	}
 
@@ -22,9 +32,9 @@ namespace delayed_job
 			name = n;
 		}
 
-		public void perform()
+		public string perform()
 		{
-			System.Console.WriteLine(name);
+			return name;
 		}
 	}
 }

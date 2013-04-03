@@ -28,7 +28,7 @@ namespace delayed_job
 			job.priority = 0;
 			job.run_at = DateTime.Now;
 
-			db.CreateJob(job);
+			//db.CreateJob(job, new );
 		}
 
 		[Test()]

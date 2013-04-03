@@ -9,6 +9,24 @@ namespace delayed_job
 	{
 		public RepositorySQLite (){}
 
+
+		protected virtual string GetStorableJobTypeName(Type jobType)
+		{
+			if (jobType.AssemblyQualifiedName == null)
+			{
+				throw new ArgumentException("Cannot determine job type name when type's AssemblyQualifiedName is null");
+			}
+			
+			int idx = jobType.AssemblyQualifiedName.IndexOf(',');
+			// find next
+			idx = jobType.AssemblyQualifiedName.IndexOf(',', idx + 1);
+			
+			string retValue = jobType.AssemblyQualifiedName.Substring(0, idx);
+			
+			return retValue;
+		}
+
+
 		public void CreateDb()
 		{
 			string connectionString = "URI=file:delay_job.db";
@@ -19,6 +37,7 @@ namespace delayed_job
 
 				string createTable = "CREATE TABLE delay_jobs(" +
 					"id integer not null primary key," + 
+					"type varchar(255)," + 
 					"priority integer default 0," + 
 					"attempts integer default 0," + 
 					"handler varchar(255)," + 
@@ -39,7 +58,7 @@ namespace delayed_job
 			}
 		}
 
-		public Job CreateJob(Job job)
+		public Job CreateJob(Job job, IJob j)
 		{
 			string connectionString = "URI=file:delay_job.db";
 
@@ -48,6 +67,7 @@ namespace delayed_job
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
 				string insertRecord = "insert into delay_jobs (" +
+						"type," + 
 						"priority," + 
 						"attempts," + 
 						"handler," + 
@@ -56,7 +76,8 @@ namespace delayed_job
 						"locked_at," + 
 						"failed_at," + 
 						"locked_by" + 
-						") values (" + 
+						") values (" +
+						"@type," + 
 						"@priority," + 
 						"@attempts," + 
 						"@handler," + 
@@ -66,9 +87,9 @@ namespace delayed_job
 						"@failed_at," + 
 						"@locked_by" + 
 						");select last_insert_rowid();";
-				
+
 				dbcmd.CommandText = insertRecord;
-			
+				dbcmd.Parameters.AddWithValue("@type",GetStorableJobTypeName(j.GetType()));
 				dbcmd.Parameters.AddWithValue("@priority",job.priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.handler);
@@ -141,6 +162,7 @@ namespace delayed_job
 				Job job = new Job();
 				while(reader.Read()) {
 					job = new Job();
+					job.type = reader["type"].ToString();
 					job.attempts = int.Parse(reader["attempts"].ToString());
 					job.id = int.Parse(reader["id"].ToString());
 					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
