@@ -43,7 +43,21 @@ namespace delayed_job
 //			return (T) ci.Invoke(new object[0]);
 //		}
 
-		public static string RunWithLock(Type type, string worker_name)
+		public static bool LockExclusively(int max_run_time, 
+		                                   string worker_name)
+		{
+
+			return true;
+
+		}
+
+		public static void ClearLocks(string workerName)
+		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+			sqlite.ClearJobs(workerName);
+		}
+
+		public static bool RunWithLock(int max_run_time, string worker_name)
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
 			Job[] jobs = sqlite.GetJobs();
@@ -54,7 +68,17 @@ namespace delayed_job
 
 			IJob job = (IJob)serializer.Deserialize(new StringReader(jobs[0].handler));
 			//IJob job = (IJob)ci.Invoke(new object[0]);
-			return job.perform();
+			try
+			{
+				job.perform();
+			}
+			catch(Exception e)
+			{
+				throw e;
+				return false;
+			}
+
+			return true;
 		}
 
 		private static string SerializeToXml(IJob job)

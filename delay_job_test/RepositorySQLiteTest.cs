@@ -48,6 +48,14 @@ namespace delayed_job
 			Job [] jobs = db.GetJobs();
 			Assert.Greater(jobs.Length, 0);
 		}
+
+		[Test()]
+		public void TestClearJobs()
+		{
+			RepositorySQLite db = new RepositorySQLite();
+
+			db.ClearJobs("test");
+		}
 	}
 }
 

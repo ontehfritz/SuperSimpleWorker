@@ -41,6 +41,7 @@
     <Compile Include="RepositorySQLite.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IJob.cs" />
+    <Compile Include="Worker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

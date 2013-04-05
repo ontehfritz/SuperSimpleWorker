@@ -7,29 +7,76 @@ namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{
+		public string connectionString = "URI=file:delay_job.db";
 		public RepositorySQLite (){}
 
-
-		protected virtual string GetStorableJobTypeName(Type jobType)
+		private string ParseType(Type type)
 		{
-			if (jobType.AssemblyQualifiedName == null)
-			{
-				throw new ArgumentException("Cannot determine job type name when type's AssemblyQualifiedName is null");
-			}
+			if (type.AssemblyQualifiedName == null)
+				throw new ArgumentException("Assembly Qualified Name is null");
+
+			int idx = type.AssemblyQualifiedName.IndexOf(',', 
+			          type.AssemblyQualifiedName.IndexOf(',') + 1);
 			
-			int idx = jobType.AssemblyQualifiedName.IndexOf(',');
-			// find next
-			idx = jobType.AssemblyQualifiedName.IndexOf(',', idx + 1);
-			
-			string retValue = jobType.AssemblyQualifiedName.Substring(0, idx);
+			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
 			
 			return retValue;
 		}
 
 
+		public void UpdateJob(Job job)
+		{
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+
+				string update = "update delay_jobs " +
+					"set " +
+					"priority = @priority," + 
+					"attempts = @attempts," + 
+					"last_error = @last_error," +
+					"run_at = @run_at," + 
+					"failed_at = @failed_at," + 
+					"locked_by = @locked_by, " +
+					"locked_at = @locked_at " + 
+					"where ID = @ID";
+
+				dbcmd.CommandText = update;
+				dbcmd.Parameters.AddWithValue("@ID", job.id);
+				
+				dbcmd.ExecuteNonQuery();
+				
+				dbcmd.Dispose();
+				dbcmd = null;
+				dbcon.Close();
+			}
+		}
+
+		public void ClearJobs(string workerName)
+		{
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+
+				string update = "update delay_jobs " +
+						"set locked_by = null, " +
+						"locked_at = null " + 
+						"where locked_by = @WorkerName";
+
+				dbcmd.CommandText = update;
+				dbcmd.Parameters.AddWithValue("@WorkerName", workerName);
+
+				dbcmd.ExecuteNonQuery();
+
+				dbcmd.Dispose();
+				dbcmd = null;
+				dbcon.Close();
+			}
+		}
+
 		public void CreateDb()
 		{
-			string connectionString = "URI=file:delay_job.db";
+			//string connectionString = "URI=file:delay_job.db";
 
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
 				dbcon.Open();
@@ -60,7 +107,7 @@ namespace delayed_job
 
 		public Job CreateJob(Job job, IJob j)
 		{
-			string connectionString = "URI=file:delay_job.db";
+			//string connectionString = "URI=file:delay_job.db";
 
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
 				dbcon.Open();
@@ -89,7 +136,7 @@ namespace delayed_job
 						");select last_insert_rowid();";
 
 				dbcmd.CommandText = insertRecord;
-				dbcmd.Parameters.AddWithValue("@type",GetStorableJobTypeName(j.GetType()));
+				dbcmd.Parameters.AddWithValue("@type",ParseType(j.GetType()));
 				dbcmd.Parameters.AddWithValue("@priority",job.priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.handler);
@@ -115,7 +162,7 @@ namespace delayed_job
 		{
 			Job job = new Job();
 
-			string connectionString = "URI=file:delay_job.db";
+			//string connectionString = "URI=file:delay_job.db";
 			
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
 				dbcon.Open();
@@ -148,7 +195,7 @@ namespace delayed_job
 		{
 			List<Job> jobs = new List<Job>();
 
-			string connectionString = "URI=file:delay_job.db";
+			//string connectionString = "URI=file:delay_job.db";
 			
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
 				dbcon.Open();
@@ -178,8 +225,6 @@ namespace delayed_job
 
 			return jobs.ToArray();
 		}
-
-
 	}
 }
 

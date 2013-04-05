@@ -17,9 +17,9 @@ namespace delay_job
 		public void TestRunWithLock ()
 		{
 			//Assert.AreEqual("Fritz",Job.RunWithLock(typeof(Ajob),"worker1"));
-			Assert.AreEqual("Fritz",Job.RunWithLock(Type.GetType("delay_job.Ajob"),"worker1"));
+			//Assert.AreEqual("Fritz",Job.RunWithLock("worker1"));
 			//Assert.AreEqual("Hello",typeof(Ajob).ToString());
-			
+			Assert.AreEqual(true, Job.RunWithLock(12,"awesome"));
 		}
 	}
 
