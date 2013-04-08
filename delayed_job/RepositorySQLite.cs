@@ -10,18 +10,18 @@ namespace delayed_job
 		public string connectionString = "URI=file:delay_job.db";
 		public RepositorySQLite (){}
 
-		private string ParseType(Type type)
-		{
-			if (type.AssemblyQualifiedName == null)
-				throw new ArgumentException("Assembly Qualified Name is null");
-
-			int idx = type.AssemblyQualifiedName.IndexOf(',', 
-			          type.AssemblyQualifiedName.IndexOf(',') + 1);
-			
-			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
-			
-			return retValue;
-		}
+//		private string ParseType(Type type)
+//		{
+//			if (type.AssemblyQualifiedName == null)
+//				throw new ArgumentException("Assembly Qualified Name is null");
+//
+//			int idx = type.AssemblyQualifiedName.IndexOf(',', 
+//			          type.AssemblyQualifiedName.IndexOf(',') + 1);
+//			
+//			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
+//			
+//			return retValue;
+//		}
 
 
 		public void UpdateJob(Job job)
@@ -43,6 +43,13 @@ namespace delayed_job
 
 				dbcmd.CommandText = update;
 				dbcmd.Parameters.AddWithValue("@ID", job.id);
+				dbcmd.Parameters.AddWithValue("@priority", job.priority);
+				dbcmd.Parameters.AddWithValue("@attempts", job.attempts);
+				dbcmd.Parameters.AddWithValue("@last_error", job.last_error);
+				dbcmd.Parameters.AddWithValue("@run_at", job.run_at);
+				dbcmd.Parameters.AddWithValue("@failed_at", job.failed_at);
+				dbcmd.Parameters.AddWithValue("@locked_by", job.locked_by);
+				dbcmd.Parameters.AddWithValue("@locked_at", job.locked_at);
 				
 				dbcmd.ExecuteNonQuery();
 				
@@ -105,7 +112,7 @@ namespace delayed_job
 			}
 		}
 
-		public Job CreateJob(Job job, IJob j)
+		public Job CreateJob(Job job/*, IJob j*/)
 		{
 			//string connectionString = "URI=file:delay_job.db";
 
@@ -136,7 +143,7 @@ namespace delayed_job
 						");select last_insert_rowid();";
 
 				dbcmd.CommandText = insertRecord;
-				dbcmd.Parameters.AddWithValue("@type",ParseType(j.GetType()));
+				dbcmd.Parameters.AddWithValue("@type",job.type);
 				dbcmd.Parameters.AddWithValue("@priority",job.priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.handler);

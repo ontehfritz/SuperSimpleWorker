@@ -56,6 +56,15 @@ namespace delayed_job
 
 			db.ClearJobs("test");
 		}
+
+		[Test()]
+		public void TestUpdateJob()
+		{
+			RepositorySQLite db = new RepositorySQLite();
+			Job job = db.GetJob(1);
+			job.locked_by = "TestUpdateJob";
+			db.UpdateJob(job);
+		}
 	}
 }
 
