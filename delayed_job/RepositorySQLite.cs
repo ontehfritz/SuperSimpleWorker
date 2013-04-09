@@ -24,6 +24,41 @@ namespace delayed_job
 //		}
 
 
+		public Job GetNextReadyJob(string workerName)
+		{
+			Job job = new Job();
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+
+				string next = "select * from delay_jobs where " +
+					"locked_by is null " + 
+						"order by priority desc, run_at asc limit 1";
+			   
+				dbcmd.CommandText = next;
+				
+				IDataReader reader = dbcmd.ExecuteReader();
+				while(reader.Read()) {
+					job.attempts = int.Parse(reader["attempts"].ToString());
+					job.id = int.Parse(reader["id"].ToString());
+					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					job.type = reader["type"].ToString();
+					job.handler = reader["handler"].ToString();
+					job.last_error = reader["last_error"].ToString();
+					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+					job.locked_by = reader["locked_by"].ToString();
+					job.priority = int.Parse(reader["priority"].ToString());
+					job.run_at = DateTime.Parse(reader["run_at"].ToString());
+				}
+
+				dbcmd.Dispose();
+				dbcmd = null;
+				dbcon.Close();
+			}
+
+			return job;
+		}
+
 		public void UpdateJob(Job job)
 		{
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){

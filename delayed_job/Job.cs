@@ -35,7 +35,7 @@ namespace delayed_job
 
 		public Job ()
 		{
-
+			workerName = Guid.NewGuid().ToString();
 		}
 
 //		public static T InstantiateType<T>(Type type)
@@ -60,22 +60,33 @@ namespace delayed_job
 
 		public static void ClearLocks(string workerName)
 		{
-			using(RepositorySQLite sqlite = new RepositorySQLite())
-			{
-				sqlite.ClearJobs(workerName);
-			}
+			RepositorySQLite sqlite = new RepositorySQLite();
+			
+			sqlite.ClearJobs(workerName);
 		}
 
-		public static bool RunWithLock(int max_run_time, string worker_name)
+		public static bool RunWithLock(int max_run_time, string workerName)
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
-			Job[] jobs = sqlite.GetJobs();
-			Type types = Type.GetType(jobs[0].type, true);
+			Job newJob = sqlite.GetNextReadyJob(workerName);
+			     
+			if(newJob == null)
+			{
+				return false;
+			}
+			else
+			{
+				newJob.locked_by = workerName;
+				newJob.locked_at = DateTime.Now;
+				sqlite.UpdateJob(newJob);
+			}
+
+			Type types = Type.GetType(newJob.type, true);
 			//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
 
 			XmlSerializer serializer = new XmlSerializer(types);
 
-			IJob job = (IJob)serializer.Deserialize(new StringReader(jobs[0].handler));
+			IJob job = (IJob)serializer.Deserialize(new StringReader(newJob.handler));
 			//IJob job = (IJob)ci.Invoke(new object[0]);
 			try
 			{
@@ -84,7 +95,7 @@ namespace delayed_job
 			catch(Exception e)
 			{
 				throw e;
-				return false;
+				//return false;
 			}
 
 			return true;
@@ -125,11 +136,6 @@ namespace delayed_job
 		public bool Failed ()
 		{
 			return false;
-		}
-
-		public static void ClearLocks()
-		{
-
 		}
 	}
 }
