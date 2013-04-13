@@ -16,10 +16,25 @@ namespace delay_job
 		[Test()]
 		public void TestRunWithLock ()
 		{
+			RepositorySQLite sqlite = new RepositorySQLite();
 			//Assert.AreEqual("Fritz",Job.RunWithLock(typeof(Ajob),"worker1"));
 			//Assert.AreEqual("Fritz",Job.RunWithLock("worker1"));
 			//Assert.AreEqual("Hello",typeof(Ajob).ToString());
-			Assert.AreEqual(true, Job.RunWithLock(12,"awesome"));
+			Job.Enqueue(new Ajob("TestRunWithLock"));
+			Job newJob = sqlite.GetNextReadyJobs("test");
+			Assert.AreEqual(true, newJob.RunWithLock(12,"awesome"));
+		}
+
+		[Test()]
+		public void TestFindAvailable ()
+		{
+			Job[] jobs = Job.FindAvailable();
+			Assert.GreaterOrEqual(jobs.Length,0);
+		}
+		[Test()]
+		public void TestReserveAndRunOneJob()
+		{
+			Job.ReserveAndRunOneJob();
 		}
 	}
 
@@ -34,6 +49,11 @@ namespace delay_job
 
 		public string perform()
 		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+			Job job = sqlite.GetNextReadyJobs("test");
+			job.locked_by = "run";
+			sqlite.UpdateJob(job);
+
 			return name;
 		}
 	}

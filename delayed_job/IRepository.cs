@@ -8,7 +8,7 @@ namespace delayed_job
 		Job CreateJob(Job job/*, IJob j*/);
 		Job GetJob(int pid);
 		Job[] GetJobs();
-		Job GetNextReadyJob(string workerName);
+		Job GetNextReadyJobs(string workerName);
 		void ClearJobs(string workerName);
 		void UpdateJob(Job job);
 	}

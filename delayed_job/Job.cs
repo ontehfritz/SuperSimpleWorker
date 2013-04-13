@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Xml.Serialization;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace delayed_job
 {
@@ -61,32 +62,58 @@ namespace delayed_job
 		public static void ClearLocks(string workerName)
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
+
 			
 			sqlite.ClearJobs(workerName);
 		}
 
-		public static bool RunWithLock(int max_run_time, string workerName)
+		public static Job[] FindAvailable(int limit = 5, int max_run_time = MAX_RUN_TIME)
 		{
+			List<Job> jobs = new List<Job>();
 			RepositorySQLite sqlite = new RepositorySQLite();
-			Job newJob = sqlite.GetNextReadyJob(workerName);
-			     
-			if(newJob == null)
-			{
-				return false;
-			}
-			else
-			{
-				newJob.locked_by = workerName;
-				newJob.locked_at = DateTime.Now;
-				sqlite.UpdateJob(newJob);
+
+			Job job = new Job(); 
+
+			for(int i = 0; i < limit; i++){
+				job = sqlite.GetNextReadyJobs("test");
+				if(jobs.FindIndex(x => x.id == job.id) < 0)
+					jobs.Add(job);
 			}
 
-			Type types = Type.GetType(newJob.type, true);
+			return jobs.ToArray();
+		}
+
+		public static void ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
+		{
+			Job [] jobs = Job.FindAvailable();
+			bool t = false;
+			foreach(Job job in jobs)
+			{
+				t = job.RunWithLock(4, job.workerName);
+				if(t == true)
+				{
+					break;
+				}
+			}
+
+		}
+
+		public bool RunWithLock(int max_run_time, string workerName)
+		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+			     
+
+			this.locked_by = workerName;
+			this.locked_at = DateTime.Now;
+			sqlite.UpdateJob(this);
+		
+
+			Type types = Type.GetType(this.type, true);
 			//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
 
 			XmlSerializer serializer = new XmlSerializer(types);
 
-			IJob job = (IJob)serializer.Deserialize(new StringReader(newJob.handler));
+			IJob job = (IJob)serializer.Deserialize(new StringReader(this.handler));
 			//IJob job = (IJob)ci.Invoke(new object[0]);
 			try
 			{

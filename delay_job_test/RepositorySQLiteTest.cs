@@ -65,6 +65,7 @@ namespace delayed_job
 			job.locked_by = "TestUpdateJob";
 			db.UpdateJob(job);
 		}
+
 	}
 }
 

@@ -24,7 +24,7 @@ namespace delayed_job
 //		}
 
 
-		public Job GetNextReadyJob(string workerName)
+		public Job GetNextReadyJobs(string workerName)
 		{
 			Job job = new Job();
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
