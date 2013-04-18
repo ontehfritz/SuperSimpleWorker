@@ -6,7 +6,8 @@ namespace worker
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+			delayed_job.Job.WorkOff();
+			Console.WriteLine ("Done!");
 		}
 	}
 }

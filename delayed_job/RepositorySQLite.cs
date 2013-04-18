@@ -7,7 +7,7 @@ namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{
-		public string connectionString = "URI=file:delay_job.db";
+		public string connectionString = "URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
 		public RepositorySQLite (){}
 
 //		private string ParseType(Type type)
@@ -24,21 +24,24 @@ namespace delayed_job
 //		}
 
 
-		public Job GetNextReadyJobs(string workerName)
+		public Job[] GetNextReadyJobs(int limit = 1)
 		{
-			Job job = new Job();
+			List<Job> jobs = new List<Job>();
+
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
 				string next = "select * from delay_jobs where " +
 					"locked_by is null " + 
-						"order by priority desc, run_at asc limit 1";
+						"order by priority desc, run_at asc limit @limit";
 			   
 				dbcmd.CommandText = next;
-				
+				dbcmd.Parameters.AddWithValue("@limit", limit);
+				Job job = new Job();
 				IDataReader reader = dbcmd.ExecuteReader();
 				while(reader.Read()) {
+					job = new Job();
 					job.attempts = int.Parse(reader["attempts"].ToString());
 					job.id = int.Parse(reader["id"].ToString());
 					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
@@ -49,6 +52,7 @@ namespace delayed_job
 					job.locked_by = reader["locked_by"].ToString();
 					job.priority = int.Parse(reader["priority"].ToString());
 					job.run_at = DateTime.Parse(reader["run_at"].ToString());
+					jobs.Add(job);
 				}
 
 				dbcmd.Dispose();
@@ -56,7 +60,7 @@ namespace delayed_job
 				dbcon.Close();
 			}
 
-			return job;
+			return jobs.ToArray();
 		}
 
 		public void UpdateJob(Job job)

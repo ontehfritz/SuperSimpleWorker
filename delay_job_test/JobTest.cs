@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using NUnit.Framework;
 using delayed_job;
 
@@ -14,6 +15,12 @@ namespace delay_job
 		}
 
 		[Test()]
+		public void TestWorkOff ()
+		{
+			Job.WorkOff();
+		}
+
+		[Test()]
 		public void TestRunWithLock ()
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
@@ -21,8 +28,8 @@ namespace delay_job
 			//Assert.AreEqual("Fritz",Job.RunWithLock("worker1"));
 			//Assert.AreEqual("Hello",typeof(Ajob).ToString());
 			Job.Enqueue(new Ajob("TestRunWithLock"));
-			Job newJob = sqlite.GetNextReadyJobs("test");
-			Assert.AreEqual(true, newJob.RunWithLock(12,"awesome"));
+			Job[] newJobs = sqlite.GetNextReadyJobs(1);
+			Assert.AreEqual(true, newJobs[0].RunWithLock(12,"awesome"));
 		}
 
 		[Test()]
@@ -31,6 +38,7 @@ namespace delay_job
 			Job[] jobs = Job.FindAvailable();
 			Assert.GreaterOrEqual(jobs.Length,0);
 		}
+
 		[Test()]
 		public void TestReserveAndRunOneJob()
 		{
@@ -49,10 +57,11 @@ namespace delay_job
 
 		public string perform()
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
-			Job job = sqlite.GetNextReadyJobs("test");
-			job.locked_by = "run";
-			sqlite.UpdateJob(job);
+			//RepositorySQLite sqlite = new RepositorySQLite();
+			//Job job = sqlite.GetNextReadyJobs("test");
+			//job.locked_by = "run";
+			//sqlite.UpdateJob(job);
+			File.Create(name);
 
 			return name;
 		}

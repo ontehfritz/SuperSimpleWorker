@@ -69,33 +69,44 @@ namespace delayed_job
 
 		public static Job[] FindAvailable(int limit = 5, int max_run_time = MAX_RUN_TIME)
 		{
-			List<Job> jobs = new List<Job>();
 			RepositorySQLite sqlite = new RepositorySQLite();
-
-			Job job = new Job(); 
-
-			for(int i = 0; i < limit; i++){
-				job = sqlite.GetNextReadyJobs("test");
-				if(jobs.FindIndex(x => x.id == job.id) < 0)
-					jobs.Add(job);
-			}
-
-			return jobs.ToArray();
+			return sqlite.GetNextReadyJobs(limit);
 		}
 
-		public static void ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
+		public static bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
 		{
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
 			foreach(Job job in jobs)
 			{
 				t = job.RunWithLock(4, job.workerName);
-				if(t == true)
-				{
-					break;
-				}
+				return t;
 			}
 
+			return null;
+		}
+
+		public struct Report
+		{
+			public int success; 
+			public int failure;
+		}
+
+		public static Report WorkOff(int num = 100)
+		{
+			Report report = new Report();
+			for(int i = 0; i < num; i++)
+			{
+				if(Job.ReserveAndRunOneJob() == true)
+					report.success++;
+				else if(Job.ReserveAndRunOneJob() == false)
+					report.failure++;
+				else
+					break;
+
+			}
+
+			return report;
 		}
 
 		public bool RunWithLock(int max_run_time, string workerName)
@@ -155,6 +166,7 @@ namespace delayed_job
 			newJob.priority = priority;
 			newJob.type = ParseType(job.GetType());
 			newJob.handler = SerializeToXml(job);
+
 			newJob.run_at = (run_at == null ? DateTime.Now : (DateTime)run_at);
 			RepositorySQLite sqlite = new RepositorySQLite();
 			sqlite.CreateJob(newJob/*, job*/);
