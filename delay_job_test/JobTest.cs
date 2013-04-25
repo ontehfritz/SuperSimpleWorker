@@ -44,6 +44,15 @@ namespace delay_job
 		{
 			Job.ReserveAndRunOneJob();
 		}
+
+		[Test()]
+		public void TestReschedule()
+		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+			Job.Enqueue(new Ajob("Reschedule"));
+			Job[] newJobs = sqlite.GetNextReadyJobs(1);
+			newJobs[0].Reschedule("test");
+		}
 	}
 
 	public class Ajob : IJob

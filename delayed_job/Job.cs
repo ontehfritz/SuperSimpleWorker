@@ -17,8 +17,8 @@ namespace delayed_job
 		public int attempts;  //Provides for retries, but still fail eventually.
 		public string handler; //xml string of the object that will do work
 		public string last_error; //reason for last failure (See Note below)
-		public DateTime run_at; //When to run. Could be Time.now for immediately, or sometime in the future.
-		public DateTime locked_at; //Set when a client is working on this object
+		public DateTime? run_at; //When to run. Could be Time.now for immediately, or sometime in the future.
+		public DateTime? locked_at; //Set when a client is working on this object
 		public DateTime failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
 		public string locked_by; //Who is working on this object (if locked)
 		public string type;
@@ -39,6 +39,39 @@ namespace delayed_job
 			workerName = Guid.NewGuid().ToString();
 		}
 
+
+		public void Reschedule(string message, DateTime? time = null)
+		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+
+			if(attempts < MAX_ATTEMPTS)
+			{
+				time = (time == null ? DateTime.Now.AddSeconds(attempts ^ 4 + 5) : time );
+				attempts += 1;
+				run_at = time;
+				last_error = message;
+				unlock(); 
+				sqlite.UpdateJob(this);
+			}
+			else
+			{
+				if(destroyFailedJobs)
+				{
+					sqlite.Remove(this.id);
+				}
+				else
+				{
+					this.failed_at = DateTime.Now;
+					sqlite.UpdateJob(this);
+				}
+			}
+		}
+
+		public void unlock()
+		{
+			locked_at = null;
+			locked_by = null;
+		}
 //		public static T InstantiateType<T>(Type type)
 //		{
 //			if (type == null)

@@ -11,6 +11,7 @@ namespace delayed_job
 		Job[] GetNextReadyJobs(int limit = 1);
 		void ClearJobs(string workerName);
 		void UpdateJob(Job job);
+		void Remove(int jobID);
 	}
 }
 

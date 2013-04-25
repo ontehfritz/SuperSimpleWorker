@@ -23,6 +23,26 @@ namespace delayed_job
 //			return retValue;
 //		}
 
+		public void Remove(int jobID){
+
+			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+				dbcon.Open();
+				SqliteCommand dbcmd = dbcon.CreateCommand();
+				
+				string delete = "DELETE FROM delay_jobs WHERE id = @JobID";
+				
+				dbcmd.CommandText = delete;
+				dbcmd.Parameters.AddWithValue("@JobID", jobID);
+				
+				dbcmd.ExecuteNonQuery();
+				
+				dbcmd.Dispose();
+				dbcmd = null;
+				dbcon.Close();
+			}
+
+		}
+
 
 		public Job[] GetNextReadyJobs(int limit = 1)
 		{
