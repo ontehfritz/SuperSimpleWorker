@@ -19,15 +19,16 @@ namespace delayed_job
 		public string last_error; //reason for last failure (See Note below)
 		public DateTime? run_at; //When to run. Could be Time.now for immediately, or sometime in the future.
 		public DateTime? locked_at; //Set when a client is working on this object
-		public DateTime failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
+		public DateTime? failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
 		public string locked_by; //Who is working on this object (if locked)
 		public string type;
+		public string assembly;
 
 		/*Object attributes */ 
 		const int MAX_ATTEMPTS = 25;
 		const int MAX_RUN_TIME = 4; //hours
 		public bool destroyFailedJobs = true;
-		public string workerName; 
+		public static string workerName; 
 
 		public int minPriority;
 		public int maxPriority;
@@ -89,14 +90,13 @@ namespace delayed_job
 		public static bool LockExclusively(int max_run_time, 
 		                                   string worker_name)
 		{
+
 			return true;
 		}
 
-		public static void ClearLocks(string workerName)
+		public static void ClearLocks()
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
-
-			
 			sqlite.ClearJobs(workerName);
 		}
 
@@ -112,7 +112,7 @@ namespace delayed_job
 			bool t = false;
 			foreach(Job job in jobs)
 			{
-				t = job.RunWithLock(4, job.workerName);
+				t = job.RunWithLock(4, workerName);
 				return t;
 			}
 
@@ -151,8 +151,8 @@ namespace delayed_job
 			this.locked_at = DateTime.Now;
 			sqlite.UpdateJob(this);
 		
-
-			Type types = Type.GetType(this.type, true);
+			//@"/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job_test.dll"			
+			Type types = Assembly.LoadFrom(this.assembly).GetType(this.type, true);
 			//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
 
 			XmlSerializer serializer = new XmlSerializer(types);
@@ -185,8 +185,9 @@ namespace delayed_job
 			if (type.AssemblyQualifiedName == null)
 				throw new ArgumentException("Assembly Qualified Name is null");
 			
-			int idx = type.AssemblyQualifiedName.IndexOf(',', 
-			                                             type.AssemblyQualifiedName.IndexOf(',') + 1);
+			//int idx = type.AssemblyQualifiedName.IndexOf(',', 
+			//                                             type.AssemblyQualifiedName.IndexOf(',') + 1);
+			int idx = type.AssemblyQualifiedName.IndexOf(',');
 			
 			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
 			
@@ -198,16 +199,19 @@ namespace delayed_job
 			Job newJob = new Job();
 			newJob.priority = priority;
 			newJob.type = ParseType(job.GetType());
+			newJob.assembly =  System.Reflection.Assembly.GetAssembly(job.GetType()).Location;
 			newJob.handler = SerializeToXml(job);
-
 			newJob.run_at = (run_at == null ? DateTime.Now : (DateTime)run_at);
+			newJob.failed_at = null;
+			newJob.locked_at = null;
+
 			RepositorySQLite sqlite = new RepositorySQLite();
 			sqlite.CreateJob(newJob/*, job*/);
 		}
 
-		public bool Failed ()
+		public DateTime? Failed()
 		{
-			return false;
+			return this.failed_at;
 		}
 	}
 }

@@ -10,19 +10,6 @@ namespace delayed_job
 		public string connectionString = "URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
 		public RepositorySQLite (){}
 
-//		private string ParseType(Type type)
-//		{
-//			if (type.AssemblyQualifiedName == null)
-//				throw new ArgumentException("Assembly Qualified Name is null");
-//
-//			int idx = type.AssemblyQualifiedName.IndexOf(',', 
-//			          type.AssemblyQualifiedName.IndexOf(',') + 1);
-//			
-//			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
-//			
-//			return retValue;
-//		}
-
 		public void Remove(int jobID){
 
 			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
@@ -42,7 +29,6 @@ namespace delayed_job
 			}
 
 		}
-
 
 		public Job[] GetNextReadyJobs(int limit = 1)
 		{
@@ -64,11 +50,20 @@ namespace delayed_job
 					job = new Job();
 					job.attempts = int.Parse(reader["attempts"].ToString());
 					job.id = int.Parse(reader["id"].ToString());
-					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+
+					if(reader["failed_at"].ToString() != ""){
+						job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					}
+
 					job.type = reader["type"].ToString();
+					job.assembly = reader["assembly"].ToString();
 					job.handler = reader["handler"].ToString();
 					job.last_error = reader["last_error"].ToString();
-					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+
+					if(reader["locked_at"].ToString() != ""){
+						job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+					}
+
 					job.locked_by = reader["locked_by"].ToString();
 					job.priority = int.Parse(reader["priority"].ToString());
 					job.run_at = DateTime.Parse(reader["run_at"].ToString());
@@ -150,6 +145,7 @@ namespace delayed_job
 
 				string createTable = "CREATE TABLE delay_jobs(" +
 					"id integer not null primary key," + 
+					"assembly varchar(8000)," + 
 					"type varchar(255)," + 
 					"priority integer default 0," + 
 					"attempts integer default 0," + 
@@ -181,6 +177,7 @@ namespace delayed_job
 
 				string insertRecord = "insert into delay_jobs (" +
 						"type," + 
+						"assembly," + 
 						"priority," + 
 						"attempts," + 
 						"handler," + 
@@ -191,6 +188,7 @@ namespace delayed_job
 						"locked_by" + 
 						") values (" +
 						"@type," + 
+						"@assembly," + 
 						"@priority," + 
 						"@attempts," + 
 						"@handler," + 
@@ -203,6 +201,7 @@ namespace delayed_job
 
 				dbcmd.CommandText = insertRecord;
 				dbcmd.Parameters.AddWithValue("@type",job.type);
+				dbcmd.Parameters.AddWithValue("@assembly",job.assembly);
 				dbcmd.Parameters.AddWithValue("@priority",job.priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.handler);
@@ -244,10 +243,19 @@ namespace delayed_job
 				while(reader.Read()) {
 					job.attempts = int.Parse(reader["attempts"].ToString());
 					job.id = int.Parse(reader["id"].ToString());
-					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					job.type = reader["type"].ToString();
+					job.assembly = reader["assembly"].ToString();
+
+					if(reader["failed_at"].ToString() != ""){
+						job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					}
 					job.handler = reader["handler"].ToString();
 					job.last_error = reader["last_error"].ToString();
-					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+
+					if(reader["failed_at"].ToString() != ""){
+						job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+					}
+
 					job.locked_by = reader["locked_by"].ToString();
 					job.priority = int.Parse(reader["priority"].ToString());
 					job.run_at = DateTime.Parse(reader["run_at"].ToString());
@@ -276,12 +284,19 @@ namespace delayed_job
 				while(reader.Read()) {
 					job = new Job();
 					job.type = reader["type"].ToString();
+					job.assembly = reader["assembly"].ToString();
 					job.attempts = int.Parse(reader["attempts"].ToString());
 					job.id = int.Parse(reader["id"].ToString());
-					job.failed_at = DateTime.Parse(reader["failed_at"].ToString());
+					if (reader ["failed_at"].ToString () != "") {
+						job.failed_at = DateTime.Parse (reader["failed_at"].ToString());
+					}
 					job.handler = reader["handler"].ToString();
 					job.last_error = reader["last_error"].ToString();
-					job.locked_at = DateTime.Parse(reader["locked_at"].ToString());
+
+					if (reader ["locked_at"].ToString () != "") {
+						job.locked_at = DateTime.Parse (reader["locked_at"].ToString());
+					}
+
 					job.locked_by = reader["locked_by"].ToString();
 					job.priority = int.Parse(reader["priority"].ToString());
 					job.run_at = DateTime.Parse(reader["run_at"].ToString());
