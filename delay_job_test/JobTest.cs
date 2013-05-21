@@ -17,7 +17,8 @@ namespace delay_job
 		[Test()]
 		public void TestWorkOff ()
 		{
-			Job.WorkOff();
+			Job job = new Job ();
+			job.WorkOff();
 		}
 
 		[Test()]
@@ -42,7 +43,8 @@ namespace delay_job
 		[Test()]
 		public void TestReserveAndRunOneJob()
 		{
-			Job.ReserveAndRunOneJob();
+			Job job = new Job ();
+			job.ReserveAndRunOneJob();
 		}
 
 		[Test()]
@@ -51,7 +53,7 @@ namespace delay_job
 			RepositorySQLite sqlite = new RepositorySQLite();
 			Job.Enqueue(new Ajob("Reschedule"));
 			Job[] newJobs = sqlite.GetNextReadyJobs(1);
-			newJobs[0].Reschedule("test");
+			//newJobs[0].Reschedule("test");
 		}
 	}
 

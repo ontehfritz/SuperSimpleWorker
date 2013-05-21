@@ -5,7 +5,7 @@ namespace delayed_job
 	interface IRepository
 	{
 		void CreateDb();
-		Job CreateJob(Job job/*, IJob j*/);
+		Job CreateJob(Job job);
 		Job GetJob(int pid);
 		Job[] GetJobs();
 		Job[] GetNextReadyJobs(int limit = 1);

@@ -39,11 +39,14 @@ namespace delayed_job
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
 				string next = "select * from delay_jobs where " +
-					"locked_by is null " + 
+					"locked_by is null and " +
+						"run_at <= @time " +
 						"order by priority desc, run_at asc limit @limit";
 			   
 				dbcmd.CommandText = next;
 				dbcmd.Parameters.AddWithValue("@limit", limit);
+				dbcmd.Parameters.AddWithValue("@time", DateTime.Now);
+
 				Job job = new Job();
 				IDataReader reader = dbcmd.ExecuteReader();
 				while(reader.Read()) {

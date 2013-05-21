@@ -17,7 +17,8 @@ namespace worker
 
 			while(true)
 			{
-				delayed_job.Job.Report report = delayed_job.Job.WorkOff();
+				delayed_job.Job job = new delayed_job.Job ();
+				delayed_job.Job.Report report = job.WorkOff();
 
 				if (report.failure == 0 &&
 					report.success == 0) {
@@ -28,7 +29,7 @@ namespace worker
 				}
 
 				Console.WriteLine ("Done!");
-				delayed_job.Job.ClearLocks();
+				job.ClearLocks();
 			}
 		}
 	}

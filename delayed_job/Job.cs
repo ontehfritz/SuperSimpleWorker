@@ -28,7 +28,7 @@ namespace delayed_job
 		const int MAX_ATTEMPTS = 25;
 		const int MAX_RUN_TIME = 4; //hours
 		public bool destroyFailedJobs = true;
-		public static string workerName; 
+		public string workerName; 
 
 		public int minPriority;
 		public int maxPriority;
@@ -41,30 +41,30 @@ namespace delayed_job
 		}
 
 
-		public void Reschedule(string message, DateTime? time = null)
+		private void Reschedule(string message, DateTime? time = null)
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
 
 			if(attempts < MAX_ATTEMPTS)
 			{
 				time = (time == null ? DateTime.Now.AddSeconds(attempts ^ 4 + 5) : time );
-				attempts += 1;
-				run_at = time;
-				last_error = message;
-				unlock(); 
+				this.attempts += 1;
+				this.run_at = time;
+				this.last_error = message;
+				this.unlock(); 
 				sqlite.UpdateJob(this);
 			}
 			else
 			{
-				if(destroyFailedJobs)
-				{
-					sqlite.Remove(this.id);
-				}
-				else
-				{
+				//if(destroyFailedJobs)
+				//{
+					//sqlite.Remove(this.id);
+				//}
+				//else
+				//{
 					this.failed_at = DateTime.Now;
 					sqlite.UpdateJob(this);
-				}
+				//}
 			}
 		}
 
@@ -90,11 +90,10 @@ namespace delayed_job
 		public static bool LockExclusively(int max_run_time, 
 		                                   string worker_name)
 		{
-
 			return true;
 		}
 
-		public static void ClearLocks()
+		public void ClearLocks()
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
 			sqlite.ClearJobs(workerName);
@@ -106,7 +105,7 @@ namespace delayed_job
 			return sqlite.GetNextReadyJobs(limit);
 		}
 
-		public static bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
+		public bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
 		{
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
@@ -125,23 +124,32 @@ namespace delayed_job
 			public int failure;
 		}
 
-		public static Report WorkOff(int num = 100)
+		public Report WorkOff(int num = 100)
 		{
 			Report report = new Report();
 			for(int i = 0; i < num; i++)
 			{
-				if(Job.ReserveAndRunOneJob() == true)
-					report.success++;
-				else if(Job.ReserveAndRunOneJob() == false)
-					report.failure++;
-				else
-					break;
+				bool? work = this.ReserveAndRunOneJob ();
 
+				if(work == true){
+					report.success++;
+				}
+				else if(work == false){
+					report.failure++;
+				}
+				else{
+					break;
+				}
 			}
 
 			return report;
 		}
-
+		/// <summary>
+		/// Runs the with lock.
+		/// </summary>
+		/// <returns><c>true</c>, if with lock was run, <c>false</c> otherwise.</returns>
+		/// <param name="max_run_time">Max_run_time.</param>
+		/// <param name="workerName">Worker name.</param>
 		public bool RunWithLock(int max_run_time, string workerName)
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
@@ -165,8 +173,9 @@ namespace delayed_job
 			}
 			catch(Exception e)
 			{
-				throw e;
-				//return false;
+				this.Reschedule (e.Message);
+				//throw e;
+				return false;
 			}
 
 			return true;
