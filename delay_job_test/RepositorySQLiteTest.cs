@@ -36,8 +36,8 @@ namespace delayed_job
 		{
 			RepositorySQLite db = new RepositorySQLite();
 
-			Job job = db.GetJob(1);
-			Assert.AreEqual(job.id, 1);
+			Job job = db.GetJob(2);
+			Assert.AreEqual(2, job.id);
 		}
 
 		[Test()]

@@ -112,6 +112,11 @@ namespace delayed_job
 			foreach(Job job in jobs)
 			{
 				t = job.RunWithLock(4, workerName);
+				if (t == true) {
+					RepositorySQLite sqlite = new RepositorySQLite();
+					sqlite.Remove (job.id);
+				}
+
 				return t;
 			}
 
