@@ -19,14 +19,14 @@ namespace delayed_job
 		{
 			RepositorySQLite db = new RepositorySQLite();
 			Job job = new Job();
-			job.attempts = 0; 
-			job.failed_at = DateTime.Now;
-			job.handler = "";
-			job.last_error = "";
-			job.locked_at = DateTime.Now;
-			job.locked_by = "";
-			job.priority = 0;
-			job.run_at = DateTime.Now;
+			job.Attempts = 0; 
+			job.FailedAt = DateTime.Now;
+			job.Handler = "";
+			job.LastError = "";
+			job.LockedAt = DateTime.Now;
+			job.LockedBy = "";
+			job.Priority = 0;
+			job.RunAt = DateTime.Now;
 
 			//db.CreateJob(job, new );
 		}
@@ -37,7 +37,7 @@ namespace delayed_job
 			RepositorySQLite db = new RepositorySQLite();
 
 			Job job = db.GetJob(2);
-			Assert.AreEqual(2, job.id);
+			Assert.AreEqual(2, job.ID);
 		}
 
 		[Test()]
@@ -62,7 +62,7 @@ namespace delayed_job
 		{
 			RepositorySQLite db = new RepositorySQLite();
 			Job job = db.GetJob(1);
-			job.locked_by = "TestUpdateJob";
+			job.LockedBy = "TestUpdateJob";
 			db.UpdateJob(job);
 		}
 

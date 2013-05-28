@@ -10,24 +10,82 @@ namespace delayed_job
 {
 	public class Job
 	{
-
 		/*database fields*/
-		public int id;
-		public int priority;  //Allows some jobs to jump to the front of the queue
-		public int attempts;  //Provides for retries, but still fail eventually.
-		public string handler; //xml string of the object that will do work
-		public string last_error; //reason for last failure (See Note below)
-		public DateTime? run_at; //When to run. Could be Time.now for immediately, or sometime in the future.
-		public DateTime? locked_at; //Set when a client is working on this object
-		public DateTime? failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
-		public string locked_by; //Who is working on this object (if locked)
-		public string type;
-		public string assembly;
+		private int _id;
+		private int _priority;  //Allows some jobs to jump to the front of the queue
+		private int _attempts;  //Provides for retries, but still fail eventually.
+		private string _handler; //xml string of the object that will do work
+		private string _last_error; //reason for last failure (See Note below)
+		private DateTime? _run_at; //When to run. Could be Time.now for immediately, or sometime in the future.
+		private DateTime? _locked_at; //Set when a client is working on this object
+		private DateTime? _failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
+		private string _locked_by; //Who is working on this object (if locked)
+		private string _type;
+		public string _assembly;
 
+		/// <summary>
+		/// Gets or sets the ID.
+		/// This is the ID of the job from the database. 
+		/// If this is zero the ID has not been set. 
+		/// </summary>
+		/// <value>The ID</value>
+		public int ID{
+			get {return _id;}
+			set {_id = value;}
+		}
+
+		public int Priority{
+			get {return _priority;}
+			set {_priority = value;}
+		}
+
+		public int Attempts{
+			get {return _attempts;}
+			set {_attempts = value;}
+		}
+
+		public string Handler{
+			get {return _handler; }
+			set {_handler = value; }
+		}
+
+		public string LastError{
+			get { return _last_error; }
+			set {_last_error = value; }
+		}
+
+		public DateTime? RunAt{
+			get { return _run_at; }
+			set {_run_at = value; }
+		}
+
+		public DateTime? LockedAt{
+			get { return _locked_at; }
+			set {_locked_at = value; }
+		}
+		public DateTime? FailedAt{
+			get { return _failed_at; }
+			set {_failed_at = value; }
+		}
+
+		public string LockedBy{
+			get { return _locked_by; }
+			set {_locked_by = value; }
+		}
+
+		public string ObjectType{
+			get { return _type; }
+			set {_type = value; }
+		}
+
+		public string JobAssembly{
+			get { return _assembly; }
+			set {_assembly = value; }
+		}
 		/*Object attributes */ 
 		const int MAX_ATTEMPTS = 25;
 		const int MAX_RUN_TIME = 4; //hours
-		public bool destroyFailedJobs = true;
+		public bool destroyFailedJobs = false;
 		public string workerName; 
 
 		public int minPriority;
@@ -45,33 +103,33 @@ namespace delayed_job
 		{
 			RepositorySQLite sqlite = new RepositorySQLite();
 
-			if(attempts < MAX_ATTEMPTS)
+			if(_attempts < MAX_ATTEMPTS)
 			{
-				time = (time == null ? DateTime.Now.AddSeconds(attempts ^ 4 + 5) : time );
-				this.attempts += 1;
-				this.run_at = time;
-				this.last_error = message;
+				time = (time == null ? DateTime.Now.AddSeconds(_attempts ^ 4 + 5) : time );
+				_attempts += 1;
+				_run_at = time;
+				_last_error = message;
 				this.unlock(); 
 				sqlite.UpdateJob(this);
 			}
 			else
 			{
-				//if(destroyFailedJobs)
-				//{
-					//sqlite.Remove(this.id);
-				//}
-				//else
-				//{
-					this.failed_at = DateTime.Now;
+				if(destroyFailedJobs)
+				{
+					sqlite.Remove(_id);
+				}
+				else
+				{
+					_failed_at = DateTime.Now;
 					sqlite.UpdateJob(this);
-				//}
+				}
 			}
 		}
 
 		public void unlock()
 		{
-			locked_at = null;
-			locked_by = null;
+			_locked_at = null;
+			_locked_by = null;
 		}
 //		public static T InstantiateType<T>(Type type)
 //		{
@@ -87,9 +145,19 @@ namespace delayed_job
 //			return (T) ci.Invoke(new object[0]);
 //		}
 
-		public static bool LockExclusively(int max_run_time, 
-		                                   string worker_name)
+		public bool LockExclusively(int max_run_time)
 		{
+			RepositorySQLite sqlite = new RepositorySQLite();
+			_locked_by = this.workerName;
+			_locked_at = DateTime.Now;
+			try
+			{
+				sqlite.UpdateJob(this);
+			}
+			catch(Exception e) {
+				return false;
+			}
+
 			return true;
 		}
 
@@ -114,12 +182,10 @@ namespace delayed_job
 				t = job.RunWithLock(4, workerName);
 				if (t == true) {
 					RepositorySQLite sqlite = new RepositorySQLite();
-					sqlite.Remove (job.id);
+					sqlite.Remove (job.ID);
 				}
-
 				return t;
 			}
-
 			return null;
 		}
 
@@ -157,29 +223,21 @@ namespace delayed_job
 		/// <param name="workerName">Worker name.</param>
 		public bool RunWithLock(int max_run_time, string workerName)
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
-			     
-
-			this.locked_by = workerName;
-			this.locked_at = DateTime.Now;
-			sqlite.UpdateJob(this);
-		
-			//@"/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job_test.dll"			
-			Type types = Assembly.LoadFrom(this.assembly).GetType(this.type, true);
-			//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
-
-			XmlSerializer serializer = new XmlSerializer(types);
-
-			IJob job = (IJob)serializer.Deserialize(new StringReader(this.handler));
-			//IJob job = (IJob)ci.Invoke(new object[0]);
-			try
-			{
-				job.perform();
-			}
-			catch(Exception e)
-			{
-				this.Reschedule (e.Message);
-				//throw e;
+			if (this.LockExclusively(8)) {
+				//@"/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job_test.dll"	
+				try {
+					Type types = Assembly.LoadFrom (_assembly).GetType (_type, true);
+					//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
+					XmlSerializer serializer = new XmlSerializer (types);
+					IJob job = (IJob)serializer.Deserialize (new StringReader(_handler));
+					//IJob job = (IJob)ci.Invoke(new object[0]);
+					job.perform ();
+				} catch (Exception e) {
+					this.Reschedule (e.Message);
+					//throw e;
+					return false;
+				}
+			} else {
 				return false;
 			}
 
@@ -211,21 +269,16 @@ namespace delayed_job
 		public static void Enqueue(IJob job, int priority = 0, DateTime? run_at = null)
 		{
 			Job newJob = new Job();
-			newJob.priority = priority;
-			newJob.type = ParseType(job.GetType());
-			newJob.assembly =  System.Reflection.Assembly.GetAssembly(job.GetType()).Location;
-			newJob.handler = SerializeToXml(job);
-			newJob.run_at = (run_at == null ? DateTime.Now : (DateTime)run_at);
-			newJob.failed_at = null;
-			newJob.locked_at = null;
+			newJob.Priority = priority;
+			newJob.ObjectType = ParseType(job.GetType());
+			newJob.JobAssembly =  System.Reflection.Assembly.GetAssembly(job.GetType()).Location;
+			newJob.Handler = SerializeToXml(job);
+			newJob.RunAt = (run_at == null ? DateTime.Now : (DateTime)run_at);
+			newJob.FailedAt = null;
+			newJob.LockedAt = null;
 
 			RepositorySQLite sqlite = new RepositorySQLite();
 			sqlite.CreateJob(newJob/*, job*/);
-		}
-
-		public DateTime? Failed()
-		{
-			return this.failed_at;
 		}
 	}
 }
