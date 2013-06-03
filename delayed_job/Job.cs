@@ -22,6 +22,13 @@ namespace delayed_job
 		private string _locked_by; //Who is working on this object (if locked)
 		private string _type;
 		public string _assembly;
+		private static IRepository _repository;
+
+		public static IRepository Repository
+		{
+			get {return _repository;}
+			set {_repository = value; }
+		}
 
 		/// <summary>
 		/// Gets or sets the ID.
@@ -86,22 +93,18 @@ namespace delayed_job
 		const int MAX_ATTEMPTS = 25;
 		const int MAX_RUN_TIME = 4; //hours
 		public bool destroyFailedJobs = false;
-		public string workerName; 
+		private static string workerName = Guid.NewGuid().ToString(); 
 
 		public int minPriority;
 		public int maxPriority;
 
-		string set_table_name = "delayed_jobs";
+		//string set_table_name = "delayed_jobs";
 
-		public Job ()
-		{
-			workerName = Guid.NewGuid().ToString();
-		}
-
+		public Job (){}
 
 		private void Reschedule(string message, DateTime? time = null)
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
+			//RepositorySQLite repo = new RepositorySQLite();
 
 			if(_attempts < MAX_ATTEMPTS)
 			{
@@ -110,18 +113,18 @@ namespace delayed_job
 				_run_at = time;
 				_last_error = message;
 				this.unlock(); 
-				sqlite.UpdateJob(this);
+				_repository.UpdateJob(this);
 			}
 			else
 			{
 				if(destroyFailedJobs)
 				{
-					sqlite.Remove(_id);
+					_repository.Remove(_id);
 				}
 				else
 				{
 					_failed_at = DateTime.Now;
-					sqlite.UpdateJob(this);
+					_repository.UpdateJob(this);
 				}
 			}
 		}
@@ -147,12 +150,11 @@ namespace delayed_job
 
 		public bool LockExclusively(int max_run_time)
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
-			_locked_by = this.workerName;
+			_locked_by = workerName;
 			_locked_at = DateTime.Now;
 			try
 			{
-				sqlite.UpdateJob(this);
+				_repository.UpdateJob(this);
 			}
 			catch(Exception e) {
 				return false;
@@ -163,17 +165,15 @@ namespace delayed_job
 
 		public void ClearLocks()
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
-			sqlite.ClearJobs(workerName);
+			_repository.ClearJobs(workerName);
 		}
 
 		public static Job[] FindAvailable(int limit = 5, int max_run_time = MAX_RUN_TIME)
 		{
-			RepositorySQLite sqlite = new RepositorySQLite();
-			return sqlite.GetNextReadyJobs(limit);
+			return _repository.GetNextReadyJobs(limit);
 		}
 
-		public bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
+		public static bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
 		{
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
@@ -181,8 +181,7 @@ namespace delayed_job
 			{
 				t = job.RunWithLock(4, workerName);
 				if (t == true) {
-					RepositorySQLite sqlite = new RepositorySQLite();
-					sqlite.Remove (job.ID);
+					_repository.Remove (job.ID);
 				}
 				return t;
 			}
@@ -195,12 +194,12 @@ namespace delayed_job
 			public int failure;
 		}
 
-		public Report WorkOff(int num = 100)
+		public static Report WorkOff(int num = 100)
 		{
 			Report report = new Report();
 			for(int i = 0; i < num; i++)
 			{
-				bool? work = this.ReserveAndRunOneJob ();
+				bool? work = Job.ReserveAndRunOneJob ();
 
 				if(work == true){
 					report.success++;
@@ -277,8 +276,7 @@ namespace delayed_job
 			newJob.FailedAt = null;
 			newJob.LockedAt = null;
 
-			RepositorySQLite sqlite = new RepositorySQLite();
-			sqlite.CreateJob(newJob/*, job*/);
+			_repository.CreateJob(newJob/*, job*/);
 		}
 	}
 }

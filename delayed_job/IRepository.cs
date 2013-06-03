@@ -2,7 +2,7 @@ using System;
 
 namespace delayed_job
 {
-	interface IRepository
+	public interface IRepository
 	{
 		void CreateDb();
 		Job CreateJob(Job job);

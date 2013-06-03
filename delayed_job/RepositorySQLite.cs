@@ -7,7 +7,8 @@ namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{
-		public string connectionString = "URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
+		public string connectionString = 
+			"URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
 		public RepositorySQLite (){}
 
 		public void Remove(int jobID){

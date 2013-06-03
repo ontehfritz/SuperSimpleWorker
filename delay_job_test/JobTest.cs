@@ -11,14 +11,14 @@ namespace delay_job
 		[Test()]
 		public void TestEnqueue ()
 		{
+			Job.Repository = new RepositorySQLite ();
 			Job.Enqueue(new Ajob("Fritz"));
 		}
 
 		[Test()]
 		public void TestWorkOff ()
 		{
-			Job job = new Job ();
-			job.WorkOff();
+			Job.WorkOff();
 		}
 
 		[Test()]
@@ -43,8 +43,8 @@ namespace delay_job
 		[Test()]
 		public void TestReserveAndRunOneJob()
 		{
-			Job job = new Job ();
-			job.ReserveAndRunOneJob();
+
+			Job.ReserveAndRunOneJob();
 		}
 
 		[Test()]
