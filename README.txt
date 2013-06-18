@@ -1,4 +1,4 @@
-h1. Delayed Job.net 
+# Delayed Job.net 
 
 Delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background.
 This is ported and inspired from the original project:
@@ -33,16 +33,16 @@ Like the ruby version of delayed_job some examples of use are:
 * batch imports 
 * spam checks 
 
-h2. Setup
+## Setup
 
 The library evolves around a delayed_jobs table which can be created by using:
-<pre><code>
+```
   script .sql in the database you wish to use. 
-</code></pre>
+```
 
 The created table looks as follows: 
 
-<pre><code>
+```
   CREATE TABLE delay_jobs(
   	id integer not null primary key,  
     assembly varchar(8000), 
@@ -58,7 +58,7 @@ The created table looks as follows:
 	created_at timestamp default current_timestamp, 
 	modified_at timestamp default current_timestamp
   )
-</code></pre>
+```
 
 On failure, the job is scheduled again in 5 seconds + N ** 4, where N is the number of retries.
 
