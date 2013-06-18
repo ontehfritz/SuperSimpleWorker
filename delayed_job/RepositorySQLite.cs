@@ -7,13 +7,28 @@ namespace delayed_job
 {
 	public class RepositorySQLite : IRepository 
 	{
-		public string connectionString = 
-			"URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
+		private string _connectionString;
+
+		public string ConnectionString
+		{
+			get {
+				return _connectionString;
+			}
+
+			set{
+				_connectionString = value;
+			}
+		}
+
 		public RepositorySQLite (){}
 
-		public void Remove(int jobID){
+		public RepositorySQLite(string connectionString)
+		{
+			_connectionString = connectionString;
+		}
 
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+		public void Remove(int jobID){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				
@@ -35,7 +50,7 @@ namespace delayed_job
 		{
 			List<Job> jobs = new List<Job>();
 
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
@@ -84,7 +99,7 @@ namespace delayed_job
 
 		public void UpdateJob(Job job)
 		{
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
@@ -119,7 +134,7 @@ namespace delayed_job
 
 		public void ClearJobs(string workerName)
 		{
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
@@ -143,7 +158,7 @@ namespace delayed_job
 		{
 			//string connectionString = "URI=file:delay_job.db";
 
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
@@ -175,7 +190,7 @@ namespace delayed_job
 		{
 			//string connectionString = "URI=file:delay_job.db";
 
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
@@ -233,7 +248,7 @@ namespace delayed_job
 
 			//string connectionString = "URI=file:delay_job.db";
 			
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				
@@ -275,7 +290,7 @@ namespace delayed_job
 
 			//string connectionString = "URI=file:delay_job.db";
 			
-			using(SqliteConnection dbcon = new SqliteConnection(connectionString)){
+			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				

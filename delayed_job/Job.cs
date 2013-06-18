@@ -163,7 +163,7 @@ namespace delayed_job
 			return true;
 		}
 
-		public void ClearLocks()
+		public static void ClearLocks()
 		{
 			_repository.ClearJobs(workerName);
 		}
