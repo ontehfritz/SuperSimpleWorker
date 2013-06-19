@@ -15,14 +15,14 @@ I worked from the original repo as the code is more straight forward and due to 
 allowed me to focus on functionality rather than keeping the code the same. Although I structured it as close as I 
 could.
 
-If you would like more indepth information on use and FAQ please see the wiki: 
+If you would like more in-depth information on use and FAQ please see the wiki: 
 
 https://github.com/fritzcoder/delayed_job.net/wiki
 
 There are two major components to Delayed_job.net 
 1. The delayed_job assembly which gives your program access to creating jobs for scheduling
 2. worker.exe, this runs the jobs scheduled by your program. It can be run in the background.
-It must also currently be run on the system as the program or webserver as it 
+It must also currently be run on the system as the program or web server as it 
 needs access to the assemblies where the jobs where created. This will hopefully be solved in the future.
 
 Like the ruby version of delayed_job some examples of use are: 
@@ -36,6 +36,7 @@ Like the ruby version of delayed_job some examples of use are:
 ## Setup
 
 The library evolves around a delayed_jobs table which can be created by using:
+
 ```
   script .sql in the database you wish to use. 
 ```
