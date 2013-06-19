@@ -1,4 +1,5 @@
-delay_job_test/bin/**/*
+delayed_job_test/bin/**/*
+delayed_job_test/test-results
 test-results
-delay_job/bin
-worker/bin
+delayed_job/bin
+worker/bin/**/*

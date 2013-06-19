@@ -8,7 +8,7 @@ namespace delayed_job
 	public class RepositorySQLiteTest
 	{
 		string connectionString = 
-			"URI=file:/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job.db";
+			"URI=file:/Users/Fritz/Documents/Projects/delayed_job/delayed_job_test/bin/Debug/delay_job.db";
 
 		[Test()]
 		public void TestCreateDb ()
