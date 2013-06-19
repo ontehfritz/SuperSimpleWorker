@@ -1,10 +1,8 @@
 using System;
 
-namespace delayed_job
+namespace DelayedJob
 {
-	public interface IRepository
-	{
-		void CreateDb();
+	public interface IRepository{
 		Job CreateJob(Job job);
 		Job GetJob(int pid);
 		Job[] GetJobs();

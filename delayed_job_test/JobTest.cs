@@ -1,15 +1,15 @@
 using System;
 using System.IO;
 using NUnit.Framework;
-using delayed_job;
+using DelayedJob;
 
-namespace delay_job
+namespace DelayedJob
 {
 	[TestFixture()]
 	public class JobTest
 	{
 		string connectionString = 
-		 "URI=file:/Users/Fritz/Documents/Projects/delayed_job/delayed_job_test/bin/Debug/delay_job.db";
+		 "URI=file:delay_job.db";
 
 		[Test()]
 		public void TestEnqueue ()
@@ -71,10 +71,6 @@ namespace delay_job
 
 		public string perform()
 		{
-			//RepositorySQLite sqlite = new RepositorySQLite();
-			//Job job = sqlite.GetNextReadyJobs("test");
-			//job.locked_by = "run";
-			//sqlite.UpdateJob(job);
 			File.Create(name);
 
 			return name;

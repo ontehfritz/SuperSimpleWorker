@@ -1,13 +1,12 @@
 using System;
 using System.Configuration;
+using DelayedJob;
 
-namespace worker
+namespace Worker
 {
-
 	class MainClass
 	{
-		public static void Main (string[] args)
-		{
+		public static void Main (string[] args){
 			//How many seconds to sleep
 			string connectionString = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ConnectionString;
 			string providerName = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ProviderName;
@@ -16,7 +15,7 @@ namespace worker
 
 			switch (providerName) {
 			case "RepositorySQLite":
-				delayed_job.Job.Repository = new delayed_job.RepositorySQLite (connectionString);
+				Job.Repository = new RepositorySQLite (connectionString);
 				break;
 			default:
 				throw new ArgumentException (String.Format("No such provider {0}", providerName));
@@ -28,7 +27,7 @@ namespace worker
 
 			while(true)
 			{
-				delayed_job.Job.Report report = delayed_job.Job.WorkOff();
+				Job.Report report = Job.WorkOff();
 
 				if (report.failure == 0 &&
 					report.success == 0) {

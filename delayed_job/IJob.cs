@@ -1,6 +1,6 @@
 using System;
 
-namespace delayed_job
+namespace DelayedJob
 {
 	public interface IJob
 	{

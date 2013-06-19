@@ -6,11 +6,11 @@ using System.Xml.Serialization;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace delayed_job
+namespace DelayedJob
 {
 	public class Job
 	{
-		/*database fields*/
+		/* database fields */
 		private int _id;
 		private int _priority;  //Allows some jobs to jump to the front of the queue
 		private int _attempts;  //Provides for retries, but still fail eventually.
@@ -21,9 +21,22 @@ namespace delayed_job
 		private DateTime? _failed_at; //Set when all retries have failed (actually, by default, the record is deleted instead)
 		private string _locked_by; //Who is working on this object (if locked)
 		private string _type;
-		public string _assembly;
+		private string _assembly;
+		/************************/
+
 		private static IRepository _repository;
 
+		//This struct is used to report how many jobs failed or succeeded 
+		public struct Report{
+			public int success; 
+			public int failure;
+		}
+
+		/// <summary>
+		/// Gets or sets the repository.
+		/// This needs to be set before any operations can be done
+		/// </summary>
+		/// <value>The repository.</value>
 		public static IRepository Repository
 		{
 			get {return _repository;}
@@ -91,23 +104,27 @@ namespace delayed_job
 		}
 		/*Object attributes */ 
 		const int MAX_ATTEMPTS = 25;
-		const int MAX_RUN_TIME = 4; //hours
-		public bool destroyFailedJobs = false;
-		private static string workerName = Guid.NewGuid().ToString(); 
+		//const int MAX_RUN_TIME = 4; //hours
+		private bool _destroyFailedJobs = false;
 
-		public int minPriority;
-		public int maxPriority;
+		public bool DestroyFailedJobs
+		{
+			get{
+				return _destroyFailedJobs;
+			}
+			set{
+				_destroyFailedJobs = value;
+			}
+		}
+
+		private static string workerName = Guid.NewGuid().ToString(); 
 
 		//string set_table_name = "delayed_jobs";
 
 		public Job (){}
 
-		private void Reschedule(string message, DateTime? time = null)
-		{
-			//RepositorySQLite repo = new RepositorySQLite();
-
-			if(_attempts < MAX_ATTEMPTS)
-			{
+		private void Reschedule(string message, DateTime? time = null){
+			if(_attempts < MAX_ATTEMPTS){
 				time = (time == null ? DateTime.Now.AddSeconds(_attempts ^ 4 + 5) : time );
 				_attempts += 1;
 				_run_at = time;
@@ -115,45 +132,26 @@ namespace delayed_job
 				this.unlock(); 
 				_repository.UpdateJob(this);
 			}
-			else
-			{
-				if(destroyFailedJobs)
-				{
+			else{
+				if(_destroyFailedJobs){
 					_repository.Remove(_id);
 				}
-				else
-				{
+				else{
 					_failed_at = DateTime.Now;
 					_repository.UpdateJob(this);
 				}
 			}
 		}
 
-		public void unlock()
-		{
+		public void unlock(){
 			_locked_at = null;
 			_locked_by = null;
 		}
-//		public static T InstantiateType<T>(Type type)
-//		{
-//			if (type == null)
-//			{
-//				throw new ArgumentNullException("type", "Cannot instantiate null");
-//			}
-//			ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
-//			if (ci == null)
-//			{
-//				throw new ArgumentException("Cannot instantiate type which has no empty constructor", type.Name);
-//			}
-//			return (T) ci.Invoke(new object[0]);
-//		}
 
-		public bool LockExclusively(int max_run_time)
-		{
+		public bool LockExclusively(){
 			_locked_by = workerName;
 			_locked_at = DateTime.Now;
-			try
-			{
+			try{
 				_repository.UpdateJob(this);
 			}
 			catch(Exception e) {
@@ -163,22 +161,18 @@ namespace delayed_job
 			return true;
 		}
 
-		public static void ClearLocks()
-		{
+		public static void ClearLocks(){
 			_repository.ClearJobs(workerName);
 		}
 
-		public static Job[] FindAvailable(int limit = 5, int max_run_time = MAX_RUN_TIME)
-		{
+		public static Job[] FindAvailable(int limit = 5){
 			return _repository.GetNextReadyJobs(limit);
 		}
 
-		public static bool? ReserveAndRunOneJob(int max_run_time = MAX_RUN_TIME)
-		{
+		public static bool? ReserveAndRunOneJob(){
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
-			foreach(Job job in jobs)
-			{
+			foreach(Job job in jobs){
 				t = job.RunWithLock(4, workerName);
 				if (t == true) {
 					_repository.Remove (job.ID);
@@ -188,17 +182,10 @@ namespace delayed_job
 			return null;
 		}
 
-		public struct Report
-		{
-			public int success; 
-			public int failure;
-		}
-
-		public static Report WorkOff(int num = 100)
-		{
+		public static Report WorkOff(int num = 100){
 			Report report = new Report();
-			for(int i = 0; i < num; i++)
-			{
+
+			for(int i = 0; i < num; i++){
 				bool? work = Job.ReserveAndRunOneJob ();
 
 				if(work == true){
@@ -220,10 +207,8 @@ namespace delayed_job
 		/// <returns><c>true</c>, if with lock was run, <c>false</c> otherwise.</returns>
 		/// <param name="max_run_time">Max_run_time.</param>
 		/// <param name="workerName">Worker name.</param>
-		public bool RunWithLock(int max_run_time, string workerName)
-		{
-			if (this.LockExclusively(8)) {
-				//@"/Users/Fritz/Documents/Projects/delayed_job/delay_job_test/bin/Debug/delay_job_test.dll"	
+		public bool RunWithLock(int max_run_time, string workerName){
+			if (this.LockExclusively()) {
 				try {
 					Type types = Assembly.LoadFrom (_assembly).GetType (_type, true);
 					//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
@@ -243,21 +228,17 @@ namespace delayed_job
 			return true;
 		}
 
-		private static string SerializeToXml(IJob job)
-		{
+		private static string SerializeToXml(IJob job){
 			StringWriter writer = new StringWriter(CultureInfo.InvariantCulture);
 			XmlSerializer serializer = new XmlSerializer(job.GetType());
 			serializer.Serialize(writer, job);
 			return writer.ToString();
 		}
 
-		private static string ParseType(Type type)
-		{
+		private static string ParseType(Type type){
 			if (type.AssemblyQualifiedName == null)
 				throw new ArgumentException("Assembly Qualified Name is null");
-			
-			//int idx = type.AssemblyQualifiedName.IndexOf(',', 
-			//                                             type.AssemblyQualifiedName.IndexOf(',') + 1);
+
 			int idx = type.AssemblyQualifiedName.IndexOf(',');
 			
 			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
@@ -265,8 +246,7 @@ namespace delayed_job
 			return retValue;
 		}
 
-		public static void Enqueue(IJob job, int priority = 0, DateTime? run_at = null)
-		{
+		public static void Enqueue(IJob job, int priority = 0, DateTime? run_at = null){
 			Job newJob = new Job();
 			newJob.Priority = priority;
 			newJob.ObjectType = ParseType(job.GetType());
@@ -276,7 +256,7 @@ namespace delayed_job
 			newJob.FailedAt = null;
 			newJob.LockedAt = null;
 
-			_repository.CreateJob(newJob/*, job*/);
+			_repository.CreateJob(newJob);
 		}
 	}
 }

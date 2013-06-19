@@ -3,14 +3,13 @@ using System.Data;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 
-namespace delayed_job
+namespace DelayedJob
 {
 	public class RepositorySQLite : IRepository 
 	{
 		private string _connectionString;
 
-		public string ConnectionString
-		{
+		public string ConnectionString{
 			get {
 				return _connectionString;
 			}
@@ -22,8 +21,7 @@ namespace delayed_job
 
 		public RepositorySQLite (){}
 
-		public RepositorySQLite(string connectionString)
-		{
+		public RepositorySQLite(string connectionString){
 			_connectionString = connectionString;
 		}
 
@@ -32,7 +30,7 @@ namespace delayed_job
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				
-				string delete = "DELETE FROM delay_jobs WHERE id = @JobID";
+				string delete = "DELETE FROM delayed_jobs WHERE id = @JobID";
 				
 				dbcmd.CommandText = delete;
 				dbcmd.Parameters.AddWithValue("@JobID", jobID);
@@ -46,15 +44,14 @@ namespace delayed_job
 
 		}
 
-		public Job[] GetNextReadyJobs(int limit = 1)
-		{
+		public Job[] GetNextReadyJobs(int limit = 1){
 			List<Job> jobs = new List<Job>();
 
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
-				string next = "select * from delay_jobs where " +
+				string next = "select * from delayed_jobs where " +
 					"locked_by is null and " +
 						"run_at <= @time " +
 						"order by priority desc, run_at asc limit @limit";
@@ -65,6 +62,7 @@ namespace delayed_job
 
 				Job job = new Job();
 				IDataReader reader = dbcmd.ExecuteReader();
+
 				while(reader.Read()) {
 					job = new Job();
 					job.Attempts = int.Parse(reader["attempts"].ToString());
@@ -97,13 +95,12 @@ namespace delayed_job
 			return jobs.ToArray();
 		}
 
-		public void UpdateJob(Job job)
-		{
+		public void UpdateJob(Job job){
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
-				string update = "update delay_jobs " +
+				string update = "update delayed_jobs " +
 					"set " +
 					"priority = @priority," + 
 					"attempts = @attempts," + 
@@ -132,13 +129,12 @@ namespace delayed_job
 			}
 		}
 
-		public void ClearJobs(string workerName)
-		{
+		public void ClearJobs(string workerName){
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
-				string update = "update delay_jobs " +
+				string update = "update delayed_jobs " +
 						"set locked_by = null, " +
 						"locked_at = null " + 
 						"where locked_by = @WorkerName";
@@ -154,47 +150,12 @@ namespace delayed_job
 			}
 		}
 
-		public void CreateDb()
-		{
-			//string connectionString = "URI=file:delay_job.db";
-
+		public Job CreateJob(Job job){
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 
-				string createTable = "CREATE TABLE delay_jobs(" +
-					"id integer not null primary key," + 
-					"assembly varchar(8000)," + 
-					"type varchar(255)," + 
-					"priority integer default 0," + 
-					"attempts integer default 0," + 
-					"handler varchar(255)," + 
-					"last_error varchar(255)," + 
-					"run_at datetime default null," + 
-					"locked_at datetime default null," + 
-					"failed_at datetime default null," + 
-					"locked_by varchar(255)," + 
-					"created_at timestamp default current_timestamp," + 
-					"modified_at timestamp default current_timestamp" + 
-					")";
-
-				dbcmd.CommandText = createTable;
-				dbcmd.ExecuteNonQuery();
-				dbcmd.Dispose();
-				dbcmd = null;
-				dbcon.Close();
-			}
-		}
-
-		public Job CreateJob(Job job/*, IJob j*/)
-		{
-			//string connectionString = "URI=file:delay_job.db";
-
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
-				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
-
-				string insertRecord = "insert into delay_jobs (" +
+				string insertRecord = "insert into delayed_jobs (" +
 						"type," + 
 						"assembly," + 
 						"priority," + 
@@ -242,17 +203,14 @@ namespace delayed_job
 			return job;
 		}
 
-		public Job GetJob(int pid)
-		{
+		public Job GetJob(int pid){
 			Job job = new Job();
 
-			//string connectionString = "URI=file:delay_job.db";
-			
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				
-				string query = "select * from delay_jobs where id = @pid";
+				string query = "select * from delayed_jobs where id = @pid";
 
 				dbcmd.CommandText = query;
 				
@@ -284,17 +242,14 @@ namespace delayed_job
 			return job;
 		}
 
-		public Job[] GetJobs()
-		{
+		public Job[] GetJobs(){
 			List<Job> jobs = new List<Job>();
 
-			//string connectionString = "URI=file:delay_job.db";
-			
 			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
 				dbcon.Open();
 				SqliteCommand dbcmd = dbcon.CreateCommand();
 				
-				string query = "select * from delay_jobs";
+				string query = "select * from delayed_jobs";
 				
 				dbcmd.CommandText = query;
 			
