@@ -1,13 +1,13 @@
-using System;
-using System.Data;
-using System.Globalization;
-using System.IO;
-using System.Xml.Serialization;
-using System.Reflection;
-using System.Collections.Generic;
-
 namespace DelayedJob
 {
+	using System;
+	using System.Data;
+	using System.Globalization;
+	using System.IO;
+	using System.Xml.Serialization;
+	using System.Reflection;
+	using System.Collections.Generic;
+
 	public class Job
 	{
 		/* database fields */
@@ -118,6 +118,19 @@ namespace DelayedJob
 		}
 
 		private static string workerName = Guid.NewGuid().ToString(); 
+		/// <summary>
+		/// Gets or sets the name of the worker. This is useful for server reboots. If not set a guid is used, which 
+		/// will be different each time the worker service is restarted. 
+		/// </summary>
+		/// <value>The name of the worker.</value>
+		public static string WorkerName{
+			get{
+				return workerName;
+			}
+			set{
+				workerName = value;
+			}
+		}
 
 		//string set_table_name = "delayed_jobs";
 
@@ -147,7 +160,10 @@ namespace DelayedJob
 			_locked_at = null;
 			_locked_by = null;
 		}
-
+		/// <summary>
+		/// Locks the exclusively.
+		/// </summary>
+		/// <returns><c>true</c>, if exclusively was locked, <c>false</c> otherwise.</returns>
 		public bool LockExclusively(){
 			_locked_by = workerName;
 			_locked_at = DateTime.Now;
@@ -160,15 +176,24 @@ namespace DelayedJob
 
 			return true;
 		}
-
+		/// <summary>
+		/// Clears the locks.
+		/// </summary>
 		public static void ClearLocks(){
 			_repository.ClearJobs(workerName);
 		}
-
+		/// <summary>
+		/// Finds the available.
+		/// </summary>
+		/// <returns>The available.</returns>
+		/// <param name="limit">Limit.</param>
 		public static Job[] FindAvailable(int limit = 5){
 			return _repository.GetNextReadyJobs(limit);
 		}
-
+		/// <summary>
+		/// Reserves the and run one job.
+		/// </summary>
+		/// <returns>The and run one job.</returns>
 		public static bool? ReserveAndRunOneJob(){
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
@@ -182,6 +207,11 @@ namespace DelayedJob
 			return null;
 		}
 
+		/// <summary>
+		/// Works the off.
+		/// </summary>
+		/// <returns>The off.</returns>
+		/// <param name="num">Number.</param>
 		public static Report WorkOff(int num = 100){
 			Report report = new Report();
 
@@ -228,6 +258,38 @@ namespace DelayedJob
 			return true;
 		}
 
+		/// <summary>
+		/// Enqueue the specified job, priority, run_at and dllPath.
+		/// </summary>
+		/// <param name="job">The object that uses the IJob interface.</param>
+		/// <param name="priority">Give the job priority. 0 is default and 1 has highest priority.
+		/// all numbers above 1 will be organized in ascending order. </param>
+		/// <param name="run_at">If no time is specfied, the job will be scheduled to run ASAP</param>
+		/// <param name="dllPath">Supplying a path will override the path set automatically. The path 
+		/// that is automatically generated is the path of the dll of the running program.
+		/// When using with asp.net/MVC the dll of the running web application is in a temporary directory. This is 
+		/// usually not a problem. However, on server reboots it may not be the same directory in most cases it is. 
+		/// Most of the time you will not need to set this.
+		/// </param>
+		public static void Enqueue(IJob job, int priority = 0, 
+		                           DateTime? run_at = null,
+		                           string dllPath = null){
+			Job newJob = new Job();
+			newJob.Priority = priority;
+			newJob.ObjectType = ParseType(job.GetType());
+			if (dllPath == null) {
+				newJob.JobAssembly = System.Reflection.Assembly.GetAssembly (job.GetType()).Location;
+			} else {
+				newJob.JobAssembly = dllPath;
+			}
+			newJob.Handler = SerializeToXml(job);
+			newJob.RunAt = (run_at == null ? DateTime.Now : (DateTime)run_at);
+			newJob.FailedAt = null;
+			newJob.LockedAt = null;
+
+			_repository.CreateJob(newJob);
+		}
+
 		private static string SerializeToXml(IJob job){
 			StringWriter writer = new StringWriter(CultureInfo.InvariantCulture);
 			XmlSerializer serializer = new XmlSerializer(job.GetType());
@@ -240,23 +302,10 @@ namespace DelayedJob
 				throw new ArgumentException("Assembly Qualified Name is null");
 
 			int idx = type.AssemblyQualifiedName.IndexOf(',');
-			
+
 			string retValue = type.AssemblyQualifiedName.Substring(0, idx);
-			
+
 			return retValue;
-		}
-
-		public static void Enqueue(IJob job, int priority = 0, DateTime? run_at = null){
-			Job newJob = new Job();
-			newJob.Priority = priority;
-			newJob.ObjectType = ParseType(job.GetType());
-			newJob.JobAssembly =  System.Reflection.Assembly.GetAssembly(job.GetType()).Location;
-			newJob.Handler = SerializeToXml(job);
-			newJob.RunAt = (run_at == null ? DateTime.Now : (DateTime)run_at);
-			newJob.FailedAt = null;
-			newJob.LockedAt = null;
-
-			_repository.CreateJob(newJob);
 		}
 	}
 }
