@@ -69,11 +69,11 @@ namespace DelayedJob
 			name = n;
 		}
 
-		public string perform()
+		public void perform()
 		{
 			File.Create(name);
 
-			return name;
+			//return name;
 		}
 	}
 }

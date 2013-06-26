@@ -1,7 +1,7 @@
-using System;
-
 namespace DelayedJob
 {
+	using System;
+
 	public interface IRepository{
 		Job CreateJob(Job job);
 		Job GetJob(int pid);

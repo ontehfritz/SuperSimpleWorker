@@ -1,10 +1,10 @@
-using System;
-
 namespace DelayedJob
 {
+	using System;
+
 	public interface IJob
 	{
-		string perform();
+		void perform();
 	}
 }
 
