@@ -136,6 +136,11 @@ namespace DelayedJob
 
 		public Job (){}
 
+		/// <summary>
+		/// Reschedule the specified message and time.
+		/// </summary>
+		/// <param name="message">Message.</param>
+		/// <param name="time">Time.</param>
 		private void Reschedule(string message, DateTime? time = null){
 			if(_attempts < MAX_ATTEMPTS){
 				time = (time == null ? DateTime.Now.AddSeconds(_attempts ^ 4 + 5) : time );
@@ -289,7 +294,11 @@ namespace DelayedJob
 
 			_repository.CreateJob(newJob);
 		}
-
+		/// <summary>
+		/// Serializes to xml.
+		/// </summary>
+		/// <returns>The to xml.</returns>
+		/// <param name="job">Job.</param>
 		private static string SerializeToXml(IJob job){
 			StringWriter writer = new StringWriter(CultureInfo.InvariantCulture);
 			XmlSerializer serializer = new XmlSerializer(job.GetType());
@@ -297,6 +306,11 @@ namespace DelayedJob
 			return writer.ToString();
 		}
 
+		/// <summary>
+		/// Parses the type.
+		/// </summary>
+		/// <returns>The type.</returns>
+		/// <param name="type">Type.</param>
 		private static string ParseType(Type type){
 			if (type.AssemblyQualifiedName == null)
 				throw new ArgumentException("Assembly Qualified Name is null");

@@ -13,7 +13,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestCreateJob()
 		{
-			RepositorySQLite db = new RepositorySQLite(connectionString);
+			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 			Job job = new Job();
 			job.Attempts = 0; 
 			job.FailedAt = DateTime.Now;
@@ -30,7 +30,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJob()
 		{
-			RepositorySQLite db = new RepositorySQLite(connectionString);
+			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 
 			Job job = db.GetJob(2);
 			Assert.AreEqual(2, job.ID);
@@ -39,7 +39,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJobs()
 		{
-			RepositorySQLite db = new RepositorySQLite(connectionString);
+			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 			
 			Job [] jobs = db.GetJobs();
 			Assert.Greater(jobs.Length, 0);
@@ -48,7 +48,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestClearJobs()
 		{
-			RepositorySQLite db = new RepositorySQLite(connectionString);
+			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 
 			db.ClearJobs("test");
 		}
@@ -56,7 +56,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestUpdateJob()
 		{
-			RepositorySQLite db = new RepositorySQLite(connectionString);
+			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 			Job job = db.GetJob(1);
 			job.LockedBy = "TestUpdateJob";
 			db.UpdateJob(job);

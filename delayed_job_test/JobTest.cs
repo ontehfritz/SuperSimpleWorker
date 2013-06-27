@@ -8,13 +8,14 @@ namespace DelayedJob
 	[TestFixture()]
 	public class JobTest
 	{
-		string connectionString = 
-		 "URI=file:delay_job.db";
+		//string connectionString = 
+		 //"URI=file:delay_job.db";
+		IRepository repo = new RepositorySQLite("URI=file:delay_job.db");
 
 		[Test()]
 		public void TestEnqueue ()
 		{
-			Job.Repository = new RepositorySQLite (connectionString);
+			Job.Repository = repo;
 			Job.Enqueue(new Ajob("Fritz"));
 		}
 
@@ -27,12 +28,12 @@ namespace DelayedJob
 		[Test()]
 		public void TestRunWithLock ()
 		{
-			RepositorySQLite sqlite = new RepositorySQLite(connectionString);
+
 			//Assert.AreEqual("Fritz",Job.RunWithLock(typeof(Ajob),"worker1"));
 			//Assert.AreEqual("Fritz",Job.RunWithLock("worker1"));
 			//Assert.AreEqual("Hello",typeof(Ajob).ToString());
 			Job.Enqueue(new Ajob("TestRunWithLock"));
-			Job[] newJobs = sqlite.GetNextReadyJobs(1);
+			Job[] newJobs = repo.GetNextReadyJobs(1);
 			Assert.AreEqual(true, newJobs[0].RunWithLock(12,"awesome"));
 		}
 
@@ -53,9 +54,9 @@ namespace DelayedJob
 		[Test()]
 		public void TestReschedule()
 		{
-			RepositorySQLite sqlite = new RepositorySQLite(connectionString);
+
 			Job.Enqueue(new Ajob("Reschedule"));
-			Job[] newJobs = sqlite.GetNextReadyJobs(1);
+			Job[] newJobs = repo.GetNextReadyJobs(1);
 			//newJobs[0].Reschedule("test");
 		}
 	}

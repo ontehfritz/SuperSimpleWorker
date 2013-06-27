@@ -3,14 +3,41 @@ using System.Configuration;
 using DelayedJob;
 using System.Reflection;
 using System.Linq;
+using System.ServiceProcess;
 
 namespace DelayJob.Worker
 {
+	public class WorkerService : ServiceBase
+	{
+		public WorkerService()
+		{
+			ServiceName = "DelayJob_Worker";
+		}
+
+		protected override void OnStart(string[] args)
+		{
+			MainClass.Start(args);
+		}
+
+		protected override void OnStop()
+		{
+			MainClass.Stop();
+		}
+	}
+
 	class MainClass
 	{
 		private static bool work = true;
 		public static void Main (string[] args){
 
+			Start (args);
+			Stop ();
+
+			Console.WriteLine ("Exiting ...");
+		}
+
+		public static void Start(string[] args)
+		{
 			string connectionString = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ConnectionString;
 			string providerName = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ProviderName;
 
@@ -41,7 +68,7 @@ namespace DelayJob.Worker
 				Job.Report report = Job.WorkOff();
 
 				if (report.failure == 0 &&
-					report.success == 0) {
+				    report.success == 0) {
 					//sleep if no jobs 
 					System.Threading.Thread.Sleep (SLEEP * 1000); 
 				} else {
@@ -51,9 +78,11 @@ namespace DelayJob.Worker
 					                   " failed ...");
 				}
 			}
+		}
 
+		public static void Stop()
+		{
 			Job.ClearLocks();
-			Console.WriteLine ("Exiting ...");
 		}
 	}
 }
