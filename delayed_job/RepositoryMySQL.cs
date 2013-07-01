@@ -4,11 +4,16 @@ namespace DelayedJob
 	using System.Data;
 	using System.Collections.Generic;
 	using MySql.Data.MySqlClient;
-
+	/// <summary>
+	/// Repository my SQ.
+	/// </summary>
 	public class RepositoryMySQL : IRepository 
 	{
 		private string _connectionString;
-
+		/// <summary>
+		/// Gets or sets the connection string.
+		/// </summary>
+		/// <value>The connection string.</value>
 		public string ConnectionString{
 			get {
 				return _connectionString;
@@ -18,13 +23,22 @@ namespace DelayedJob
 				_connectionString = value;
 			}
 		}
-
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMySQL"/> class.
+		/// </summary>
 		public RepositoryMySQL (){}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMySQL"/> class.
+		/// </summary>
+		/// <param name="connectionString">Connection string.</param>
 		public RepositoryMySQL(string connectionString){
 			_connectionString = connectionString;
 		}
-
+		/// <summary>
+		/// Remove the specified job with ID.
+		/// </summary>
+		/// <param name="jobID">Job I.</param>
 		public void Remove(int jobID){
 
 			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
@@ -44,7 +58,11 @@ namespace DelayedJob
 			}
 
 		}
-
+		/// <summary>
+		/// Gets the next ready jobs.
+		/// </summary>
+		/// <returns>.</returns>
+		/// <param name="limit">Limit is how many jobs will be returned</param>
 		public Job[] GetNextReadyJobs(int limit = 1){
 			List<Job> jobs = new List<Job>();
 
@@ -95,7 +113,10 @@ namespace DelayedJob
 
 			return jobs.ToArray();
 		}
-
+		/// <summary>
+		/// Updates the job.
+		/// </summary>
+		/// <param name="job">Job.</param>
 		public void UpdateJob(Job job){
 			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
 				dbcon.Open();
@@ -129,7 +150,10 @@ namespace DelayedJob
 				dbcon.Close();
 			}
 		}
-
+		/// <summary>
+		/// Clears the jobs.
+		/// </summary>
+		/// <param name="workerName">Worker name.</param>
 		public void ClearJobs(string workerName){
 			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
 				dbcon.Open();
@@ -150,7 +174,11 @@ namespace DelayedJob
 				dbcon.Close();
 			}
 		}
-
+		/// <summary>
+		/// Pass a job object and that object will be created in the database.
+		/// </summary>
+		/// <returns>After creation of the object it will return the object with its ID</returns>
+		/// <param name="job">Job.</param>
 		public Job CreateJob(Job job){
 			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
 				dbcon.Open();
@@ -203,7 +231,11 @@ namespace DelayedJob
 
 			return job;
 		}
-
+		/// <summary>
+		/// Gets a job with the specified id.
+		/// </summary>
+		/// <returns>A job object with that has the id provided.</returns>
+		/// <param name="pid">Pid.</param>
 		public Job GetJob(int pid){
 			Job job = new Job();
 
@@ -242,7 +274,10 @@ namespace DelayedJob
 
 			return job;
 		}
-
+		/// <summary>
+		/// This will get all jobs.
+		/// </summary>
+		/// <returns>an array of job objects</returns>
 		public Job[] GetJobs(){
 			List<Job> jobs = new List<Job>();
 

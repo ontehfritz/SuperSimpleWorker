@@ -3,11 +3,12 @@ namespace DelayedJob
 	using System;
 	using System.Data;
 	using System.Collections.Generic;
-	using Mono.Data.Sqlite;
+	using System.Data.SqlClient;
+
 	/// <summary>
-	/// Repository mono SQ lite.
+	/// Repository ms SQ.
 	/// </summary>
-	public class RepositoryMonoSQLite : IRepository 
+	public class RepositoryMsSQL : IRepository 
 	{
 		private string _connectionString;
 		/// <summary>
@@ -24,14 +25,14 @@ namespace DelayedJob
 			}
 		}
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMonoSQLite"/> class.
+		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMsSQL"/> class.
 		/// </summary>
-		public RepositoryMonoSQLite (){}
+		public RepositoryMsSQL (){}
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMonoSQLite"/> class.
+		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMsSQL"/> class.
 		/// </summary>
 		/// <param name="connectionString">Connection string.</param>
-		public RepositoryMonoSQLite(string connectionString){
+		public RepositoryMsSQL(string connectionString){
 			_connectionString = connectionString;
 		}
 		/// <summary>
@@ -39,17 +40,18 @@ namespace DelayedJob
 		/// </summary>
 		/// <param name="jobID">Job I.</param>
 		public void Remove(int jobID){
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
-				
+				SqlCommand dbcmd = dbcon.CreateCommand();
+
 				string delete = "DELETE FROM delayed_jobs WHERE id = @JobID";
-				
+
 				dbcmd.CommandText = delete;
 				dbcmd.Parameters.AddWithValue("@JobID", jobID);
-				
+
 				dbcmd.ExecuteNonQuery();
-				
+
 				dbcmd.Dispose();
 				dbcmd = null;
 				dbcon.Close();
@@ -64,15 +66,15 @@ namespace DelayedJob
 		public Job[] GetNextReadyJobs(int limit = 1){
 			List<Job> jobs = new List<Job>();
 
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
+				SqlCommand dbcmd = dbcon.CreateCommand();
 
-				string next = "select * from delayed_jobs where " +
+				string next = "select top(@limit) * from delayed_jobs where " +
 					"locked_by is null and " +
-						"run_at <= @time " +
-						"order by priority desc, run_at asc limit @limit";
-			   
+					"run_at <= @time " +
+					"order by priority desc, run_at asc";
+
 				dbcmd.CommandText = next;
 				dbcmd.Parameters.AddWithValue("@limit", limit);
 				dbcmd.Parameters.AddWithValue("@time", DateTime.Now);
@@ -116,9 +118,9 @@ namespace DelayedJob
 		/// </summary>
 		/// <param name="job">Job.</param>
 		public void UpdateJob(Job job){
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
+				SqlCommand dbcmd = dbcon.CreateCommand();
 
 				string update = "update delayed_jobs " +
 					"set " +
@@ -140,9 +142,9 @@ namespace DelayedJob
 				dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);
 				dbcmd.Parameters.AddWithValue("@locked_by", job.LockedBy);
 				dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
-				
+
 				dbcmd.ExecuteNonQuery();
-				
+
 				dbcmd.Dispose();
 				dbcmd = null;
 				dbcon.Close();
@@ -153,12 +155,12 @@ namespace DelayedJob
 		/// </summary>
 		/// <param name="workerName">Worker name.</param>
 		public void ClearJobs(string workerName){
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
+				SqlCommand dbcmd = dbcon.CreateCommand();
 
 				string update = "update delayed_jobs " +
-						"set locked_by = null, " +
+					"set locked_by = null, " +
 						"locked_at = null " + 
 						"where locked_by = @WorkerName";
 
@@ -178,12 +180,12 @@ namespace DelayedJob
 		/// <returns>After creation of the object it will return the object with its ID</returns>
 		/// <param name="job">Job.</param>
 		public Job CreateJob(Job job){
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
+				SqlCommand dbcmd = dbcon.CreateCommand();
 
 				string insertRecord = "insert into delayed_jobs (" +
-						"type," + 
+					"type," + 
 						"assembly," + 
 						"priority," + 
 						"attempts," + 
@@ -204,7 +206,7 @@ namespace DelayedJob
 						"@locked_at," + 
 						"@failed_at," + 
 						"@locked_by" + 
-						");select last_insert_rowid();";
+						");select SCOPE_IDENTITY();";
 
 				dbcmd.CommandText = insertRecord;
 				dbcmd.Parameters.AddWithValue("@type",job.ObjectType);
@@ -237,14 +239,14 @@ namespace DelayedJob
 		public Job GetJob(int pid){
 			Job job = new Job();
 
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
-				
+				SqlCommand dbcmd = dbcon.CreateCommand();
+
 				string query = "select * from delayed_jobs where id = @pid";
 
 				dbcmd.CommandText = query;
-				
+
 				dbcmd.Parameters.AddWithValue("@pid",pid);
 
 				IDataReader reader = dbcmd.ExecuteReader();
@@ -279,14 +281,14 @@ namespace DelayedJob
 		public Job[] GetJobs(){
 			List<Job> jobs = new List<Job>();
 
-			using(SqliteConnection dbcon = new SqliteConnection(_connectionString)){
+			using(SqlConnection dbcon = new SqlConnection(_connectionString)){
 				dbcon.Open();
-				SqliteCommand dbcmd = dbcon.CreateCommand();
-				
+				SqlCommand dbcmd = dbcon.CreateCommand();
+
 				string query = "select * from delayed_jobs";
-				
+
 				dbcmd.CommandText = query;
-			
+
 				IDataReader reader = dbcmd.ExecuteReader();
 				Job job = new Job();
 				while(reader.Read()) {
@@ -316,4 +318,7 @@ namespace DelayedJob
 		}
 	}
 }
+
+
+
 

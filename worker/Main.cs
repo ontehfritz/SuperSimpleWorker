@@ -4,9 +4,13 @@ using DelayedJob;
 using System.Reflection;
 using System.Linq;
 using System.ServiceProcess;
+using System.Diagnostics;
 
 namespace DelayJob.Worker
 {
+	/// <summary>
+	/// Worker service.
+	/// </summary>
 	public class WorkerService : ServiceBase
 	{
 		public WorkerService()
@@ -24,10 +28,18 @@ namespace DelayJob.Worker
 			MainClass.Stop();
 		}
 	}
-
+	/// <summary>
+	/// Main class.
+	/// </summary>
 	class MainClass
 	{
 		private static bool work = true;
+		/// <summary>
+		/// The entry point of the program, where the program control starts and ends.
+		/// </summary>
+		/// <param name="args">The command-line arguments. 1 arg can be supplied. This arguement is the name of the
+		/// worker. 
+		/// </param>
 		public static void Main (string[] args){
 
 			Start (args);
@@ -43,7 +55,6 @@ namespace DelayJob.Worker
 
 			if (args.Length > 0) {
 				Job.WorkerName = args [0];
-				Console.WriteLine ("set workername");
 			}
 
 			int SLEEP = 5;
@@ -62,10 +73,14 @@ namespace DelayJob.Worker
 			};
 
 			Console.WriteLine ("*** Starting job worker " + Job.WorkerName);
+			Stopwatch benchmark = new Stopwatch ();
 
 			while(work)
 			{
+				benchmark.Start ();
 				Job.Report report = Job.WorkOff();
+				benchmark.Stop ();
+				TimeSpan ts = benchmark.Elapsed;
 
 				if (report.failure == 0 &&
 				    report.success == 0) {
@@ -74,7 +89,9 @@ namespace DelayJob.Worker
 				} else {
 					//if jobs have run then print out a report on success and failures
 					int count = report.success + report.failure;
-					Console.WriteLine (count.ToString() + " jobs processed at %.4f j/s, " + report.failure.ToString() + 
+					double jobsPerSecond = (((double)ts.Milliseconds) / (count * 1.0)) / 1000;
+					Console.WriteLine (count.ToString() + " jobs processed at " + jobsPerSecond.ToString() +  
+					                   " j/s, " + report.failure.ToString() + 
 					                   " failed ...");
 				}
 			}

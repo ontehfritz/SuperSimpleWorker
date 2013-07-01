@@ -11,5 +11,5 @@ CREATE TABLE delayed_jobs(
 	failed_at datetime default null,
 	locked_by varchar(255), 
 	created_at timestamp default current_timestamp, 
-	modified_at timestamp default null 
+	modified_at datetime default null 
 );

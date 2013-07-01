@@ -8,6 +8,9 @@ namespace DelayedJob
 	using System.Reflection;
 	using System.Collections.Generic;
 
+	/// <summary>
+	/// This class is used to create/schedule/delete jobs. Also contains static methods for worker.exe.
+	/// </summary>
 	public class Job
 	{
 		/* database fields */
@@ -26,9 +29,17 @@ namespace DelayedJob
 
 		private static IRepository _repository;
 
-		//This struct is used to report how many jobs failed or succeeded 
+		/// <summary>
+		/// The inner report class is used to track how many successful and failed jobs. 
+		/// </summary>
 		public struct Report{
+			/// <summary>
+			/// The number of successful jobs
+			/// </summary>
 			public int success; 
+			/// <summary>
+			/// The number of failed jobs.
+			/// </summary>
 			public int failure;
 		}
 
@@ -54,50 +65,82 @@ namespace DelayedJob
 			set {_id = value;}
 		}
 
+		/// <summary>
+		/// Gets or sets the priority.
+		/// </summary>
+		/// <value>The priority.</value>
 		public int Priority{
 			get {return _priority;}
 			set {_priority = value;}
 		}
-
+		/// <summary>
+		/// Gets or sets the attempts.
+		/// </summary>
+		/// <value>The attempts.</value>
 		public int Attempts{
 			get {return _attempts;}
 			set {_attempts = value;}
 		}
-
+		/// <summary>
+		/// Gets or sets the handler.
+		/// </summary>
+		/// <value>The handler.</value>
 		public string Handler{
 			get {return _handler; }
 			set {_handler = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the last error.
+		/// </summary>
+		/// <value>The last error.</value>
 		public string LastError{
 			get { return _last_error; }
 			set {_last_error = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the run at.
+		/// </summary>
+		/// <value>The run at.</value>
 		public DateTime? RunAt{
 			get { return _run_at; }
 			set {_run_at = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the locked at.
+		/// </summary>
+		/// <value>The locked at.</value>
 		public DateTime? LockedAt{
 			get { return _locked_at; }
 			set {_locked_at = value; }
 		}
+		/// <summary>
+		/// Gets or sets the failed at.
+		/// </summary>
+		/// <value>The failed at.</value>
 		public DateTime? FailedAt{
 			get { return _failed_at; }
 			set {_failed_at = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the locked by.
+		/// </summary>
+		/// <value>The locked by.</value>
 		public string LockedBy{
 			get { return _locked_by; }
 			set {_locked_by = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the type of the object.
+		/// </summary>
+		/// <value>The type of the object.</value>
 		public string ObjectType{
 			get { return _type; }
 			set {_type = value; }
 		}
-
+		/// <summary>
+		/// Gets or sets the job assembly.
+		/// </summary>
+		/// <value>The job assembly.</value>
 		public string JobAssembly{
 			get { return _assembly; }
 			set {_assembly = value; }
@@ -107,6 +150,10 @@ namespace DelayedJob
 		//const int MAX_RUN_TIME = 4; //hours
 		private bool _destroyFailedJobs = false;
 
+		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="DelayedJob.Job"/> destroy failed jobs.
+		/// </summary>
+		/// <value><c>true</c> if destroy failed jobs; otherwise, <c>false</c>.</value>
 		public bool DestroyFailedJobs
 		{
 			get{
@@ -133,7 +180,9 @@ namespace DelayedJob
 		}
 
 		//string set_table_name = "delayed_jobs";
-
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DelayedJob.Job"/> class.
+		/// </summary>
 		public Job (){}
 
 		/// <summary>
@@ -160,7 +209,9 @@ namespace DelayedJob
 				}
 			}
 		}
-
+		/// <summary>
+		/// Unlock this instance.
+		/// </summary>
 		public void unlock(){
 			_locked_at = null;
 			_locked_by = null;
