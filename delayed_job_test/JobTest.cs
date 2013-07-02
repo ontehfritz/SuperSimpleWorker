@@ -10,12 +10,12 @@ namespace DelayedJob
 	{
 		//string connectionString = 
 		 //"URI=file:delay_job.db";
-		//"Data Source=172.16.24.128;Database=delayed_job_test;User ID=root;Password=thedrag0n";
-		//IRepository repo = new RepositorySQLite("URI=file:delay_job.db");
+		//"Data Source=172.16.24.128;Database=delayed_job_test;User ID=;Password=";
+		IRepository repo = new RepositoryMonoSQLite("URI=file:delay_job.db");
 		//IRepository repo = 
-		//	new RepositoryMySQL("Data Source=172.16.24.131;Database=delayed_job_test;User ID=root;Password=thedrag0n");
-		IRepository repo = 
-			new RepositoryMsSQL("Data Source=172.16.24.129;Database=delayed_job_test;User ID=sa;Password=Thedrag0n123");
+		//	new RepositoryMySQL("Data Source=172.16.24.131;Database=delayed_job_test;User ID=;Password=");
+		//IRepository repo = 
+		//	new RepositoryMsSQL("Data Source=172.16.24.129;Database=delayed_job_test;User ID=;Password=");
 
 
 		[Test()]
@@ -79,8 +79,6 @@ namespace DelayedJob
 		public void perform()
 		{
 			File.Create(name);
-
-			//return name;
 		}
 	}
 }

@@ -26,6 +26,7 @@ namespace DelayedJob
 		}
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMsSQL"/> class.
+		/// If you intialize this way you have to set the ConnectionString property before use. 
 		/// </summary>
 		public RepositoryMsSQL (){}
 		/// <summary>

@@ -7,6 +7,7 @@ namespace DelayedJob
 	using System.Xml.Serialization;
 	using System.Reflection;
 	using System.Collections.Generic;
+	using System.Diagnostics;
 
 	/// <summary>
 	/// This class is used to create/schedule/delete jobs. Also contains static methods for worker.exe.
@@ -186,6 +187,18 @@ namespace DelayedJob
 		public Job (){}
 
 		/// <summary>
+		/// Log the specified message.
+		/// </summary>
+		/// <param name="message">Message.</param>
+		private void Log(string message)
+		{
+			using (System.IO.StreamWriter file = 
+			       new System.IO.StreamWriter(workerName + ".log",true)) {
+				file.WriteLine (message);
+			}
+		}
+
+		/// <summary>
 		/// Reschedule the specified message and time.
 		/// </summary>
 		/// <param name="message">Message.</param>
@@ -200,6 +213,8 @@ namespace DelayedJob
 				_repository.UpdateJob(this);
 			}
 			else{
+				Log (string.Format("* [Job] PERMANENTLY removing {0} because of {1} consecutive failures.",
+				                   _type, _attempts));
 				if(_destroyFailedJobs){
 					_repository.Remove(_id);
 				}
@@ -227,6 +242,8 @@ namespace DelayedJob
 				_repository.UpdateJob(this);
 			}
 			catch(Exception e) {
+				Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
+				                   "#{3} failed attempts",_type,_assembly,e.Message,_attempts));
 				return false;
 			}
 
@@ -294,6 +311,7 @@ namespace DelayedJob
 		/// <param name="max_run_time">Max_run_time.</param>
 		/// <param name="workerName">Worker name.</param>
 		public bool RunWithLock(int max_run_time, string workerName){
+			Log (string.Format ("* [JOB] aquiring lock on {0}",_type));
 			if (this.LockExclusively()) {
 				try {
 					Type types = Assembly.LoadFrom (_assembly).GetType (_type, true);
@@ -301,13 +319,23 @@ namespace DelayedJob
 					XmlSerializer serializer = new XmlSerializer (types);
 					IJob job = (IJob)serializer.Deserialize (new StringReader(_handler));
 					//IJob job = (IJob)ci.Invoke(new object[0]);
+					Stopwatch benchmark = new Stopwatch ();
+					benchmark.Start();
 					job.perform ();
+					benchmark.Stop();
+					TimeSpan ts = benchmark.Elapsed;
+					Log(string.Format("* [JOB] #{0} completed after {1}",
+					                  _type, (ts.TotalMilliseconds / 1000).ToString()));
+
 				} catch (Exception e) {
+					Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
+						"#{3} failed attempts",_type,_assembly,e.Message,_attempts));
 					this.Reschedule (e.Message);
 					//throw e;
 					return false;
 				}
 			} else {
+				Log (string.Format ("* [JOB] failed to aquire exclusive lock for {0}",_type));
 				return false;
 			}
 
