@@ -45,6 +45,7 @@ Like the ruby version of delayed_job some examples of use are:
 3. Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.
 
 4. Start creating jobs use The IJob interface and create your class:
+
 ```
 public class EmailJob : DelayedJob.IJob
 {
@@ -86,6 +87,7 @@ public class EmailJob : DelayedJob.IJob
 ```
 
 5. Now schedule the job:
+
 ```
 //Set the Repository with the database you would like to use with a
 //connection string. 
@@ -99,11 +101,13 @@ Job.Enqueue(new EmailJob());
 app.config. Configure the database you want to use and the connection string. 
 It Should be the same database you are enqueueing your jobs in. You can now 
 run worker process by:
+
 ```
 mono worker.exe [optional name]
 ```
 
 In the background: 
+
 ```
 mono worker.exe &
 ```
@@ -124,7 +128,7 @@ The library evolves around a delayed_jobs table which can be created by using:
 ```
 
 The create table script looks as follows:
-*May differ slightly between database types 
+* May differ slightly between database types 
 
 ```
   CREATE TABLE delay_jobs(
