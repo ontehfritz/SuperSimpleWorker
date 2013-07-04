@@ -1,26 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job/Job.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job/RepositoryMonoSQLite.cs">
     <Files>
-      <File FileName="worker/Main.cs" Line="76" Column="43" />
-      <File FileName="delayed_job/RepositoryMySQL.cs" Line="278" Column="7" />
-      <File FileName="delayed_job/sql/SQLite.sql" Line="1" Column="1" />
-      <File FileName="delayed_job_test/JobTest.cs" Line="81" Column="22" />
-      <File FileName="worker/app.config" Line="16" Column="34" />
-      <File FileName="delayed_job/sql/MySql.sql" Line="14" Column="22" />
-      <File FileName="delayed_job/RepositoryMsSQL.cs" Line="29" Column="78" />
-      <File FileName="delayed_job/RepositorySQLite.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/IRepository.cs" Line="5" Column="70" />
-      <File FileName="delayed_job/IJob.cs" Line="16" Column="1" />
-      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="276" Column="7" />
-      <File FileName="delayed_job/sql/MsSql.sql" Line="19" Column="15" />
-      <File FileName="delayed_job/Job.cs" Line="316" Column="6" />
+      <File FileName="worker/Main.cs" Line="88" Column="8" />
+      <File FileName="worker/app.config" Line="18" Column="17" />
+      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="19" Column="50" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="delayed_job" expanded="True">
-            <Node name="Job.cs" selected="True" />
+            <Node name="RepositoryMonoSQLite.cs" selected="True" />
           </Node>
           <Node name="delayed_job_tests" expanded="True" />
           <Node name="worker" expanded="True" />
@@ -33,11 +23,12 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="delayed_job_tests" expanded="True">
             <Node name="DelayedJob" expanded="True">
-              <Node name="JobTest" expanded="True" />
-              <Node name="RepositorySQLiteTest" expanded="True" />
+              <Node name="JobTest" expanded="True">
+                <Node name="TestEnqueue" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

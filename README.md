@@ -1,4 +1,12 @@
-# Delayed Job.net v0.1
+# Delayed Job.net v0.1b
+*Not production ready, but can be used with assumption there may be bugs and edge cases not considered.*
+
+Cross platform Status:
+OSX: **PASS**
+Ubuntu: **PASS**
+Windows: **FAIL**
+
+Currently being developed using mono and OSX. The goal of the project is to have it work equally across platforms. 
 
 Delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background.
 
@@ -7,17 +15,16 @@ https://github.com/tobi/delayed_job
 
 I needed to have a simple job scheduler (cross platform) in my ASP.NET/MVC or Nancy (http://nancyfx.org) projects. There is no simple way of doing this without something heavy like MSMQ and no solution that works cross platform. Ruby and RoR have had many available solutions. 
 
-This can be used with Mono or Microsoft .Net framework. As well as cross platform Windows, OSX, and Linux. It can be used with other .NET projects as it is stand alone. 
-
-I worked from the original repo as the code is more straight forward and due to difference between ruby and c# it 
-allowed me to focus on functionality rather than keeping the code the same. Although I structured it as close as I could.
+This can be used with Mono or Microsoft .Net framework. As well as cross platform Windows, OSX, and Linux. It can be used with other .NET projects as it is stand alone, not only web projects.
 
 If you would like more in-depth information on use and FAQ please see the wiki: 
 
 https://github.com/fritzcoder/delayed_job.net/wiki
 
-There are two major components to Delayed_job.net 
+There are two major components to Delayed_job.net:
+
 1. The DelayedJob assembly which gives your program access to creating jobs for scheduling
+
 2. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. This process had to be separate as there is no rake interface with .net, where as ruby the worker process is run through rake. 
 
 Some important notes:
@@ -50,7 +57,7 @@ Like the ruby version of delayed_job some examples of use are:
 public class EmailJob : DelayedJob.IJob
 {
 	//Make sure information you want to persist in the database is public
-	//There is no way to serialize and desrialize private data.
+	//There is no way to serialize and deserialize private data.
 	public string fromName = "YourName";
 	public string toName = "ToName";
 	public string fromAddress = "email@gmail.com";
@@ -98,7 +105,7 @@ Job.Enqueue(new EmailJob());
 ```
 
 5. The worker process needs to be configured. The worker.exe has a file called
-app.config. Configure the database you want to use and the connection string. 
+worker.exe.config. Configure the database you want to use and the connection string. 
 It Should be the same database you are enqueueing your jobs in. You can now 
 run worker process by:
 
@@ -112,7 +119,7 @@ In the background:
 mono worker.exe &
 ```
 
-Or on windows you can install it as a service. 
+Or on windows you can install it as a service.
 
 
 Please see the wiki for more detailed information. 
@@ -128,7 +135,7 @@ The library evolves around a delayed_jobs table which can be created by using:
 ```
 
 The create table script looks as follows:
-* May differ slightly between database types 
+* May differ slightly between database types *
 
 ```
   CREATE TABLE delay_jobs(

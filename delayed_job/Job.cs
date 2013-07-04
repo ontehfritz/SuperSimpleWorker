@@ -49,7 +49,7 @@ namespace DelayedJob
 		/// This needs to be set before any operations can be done
 		/// </summary>
 		/// <value>The repository.</value>
-		public static IRepository Repository
+		public static IRepository  Repository
 		{
 			get {return _repository;}
 			set {_repository = value; }
@@ -203,7 +203,7 @@ namespace DelayedJob
 		/// </summary>
 		/// <param name="message">Message.</param>
 		/// <param name="time">Time.</param>
-		private void Reschedule(string message, DateTime? time = null){
+		public void Reschedule(string message, DateTime? time = null){
 			if(_attempts < MAX_ATTEMPTS){
 				time = (time == null ? DateTime.Now.AddSeconds(_attempts ^ 4 + 5) : time );
 				_attempts += 1;
@@ -227,7 +227,7 @@ namespace DelayedJob
 		/// <summary>
 		/// Unlock this instance.
 		/// </summary>
-		public void unlock(){
+		private void unlock(){
 			_locked_at = null;
 			_locked_by = null;
 		}

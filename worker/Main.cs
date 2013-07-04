@@ -9,29 +9,9 @@ using System.Diagnostics;
 namespace DelayJob.Worker
 {
 	/// <summary>
-	/// Worker service.
-	/// </summary>
-	public class WorkerService : ServiceBase
-	{
-		public WorkerService()
-		{
-			ServiceName = "DelayJob_Worker";
-		}
-
-		protected override void OnStart(string[] args)
-		{
-			MainClass.Start(args);
-		}
-
-		protected override void OnStop()
-		{
-			MainClass.Stop();
-		}
-	}
-	/// <summary>
 	/// Main class.
 	/// </summary>
-	class MainClass
+	class Program
 	{
 		private static bool work = true;
 		/// <summary>
@@ -42,13 +22,19 @@ namespace DelayJob.Worker
 		/// </param>
 		public static void Main (string[] args){
 
-			Start (args);
-			Stop ();
+			try{
+				Start (args);
+			}catch(Exception e) {
+				throw e;
+			}
+			finally{
+				Stop ();
+			}
 
 			Console.WriteLine ("Exiting ...");
 		}
 
-		public static void Start(string[] args)
+		private static void Start(string[] args)
 		{
 			string connectionString = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ConnectionString;
 			string providerName = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ProviderName;
@@ -97,7 +83,7 @@ namespace DelayJob.Worker
 			}
 		}
 
-		public static void Stop()
+		private static void Stop()
 		{
 			Job.ClearLocks();
 		}

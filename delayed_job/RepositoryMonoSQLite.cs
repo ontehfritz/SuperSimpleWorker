@@ -1,8 +1,17 @@
+
 namespace DelayedJob
 {
 	using System;
 	using System.Data;
 	using System.Collections.Generic;
+	#if WINDOWS
+	public class RepositoryMonoSQLite 
+	{
+		public RepositoryMonoSQLite (){
+			throw new NotImplementedException("Mono SQLite is not implemented for Windows.");
+		}
+	}
+	#else
 	using Mono.Data.Sqlite;
 	/// <summary>
 	/// Repository mono SQ lite.
@@ -26,7 +35,7 @@ namespace DelayedJob
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMonoSQLite"/> class.
 		/// </summary>
-		public RepositoryMonoSQLite (){}
+		public RepositoryMonoSQLite (){ }
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMonoSQLite"/> class.
 		/// </summary>
@@ -315,5 +324,7 @@ namespace DelayedJob
 			return jobs.ToArray();
 		}
 	}
+	#endif
 }
+
 
