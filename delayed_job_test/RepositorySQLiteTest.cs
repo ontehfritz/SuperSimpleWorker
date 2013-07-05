@@ -3,6 +3,12 @@ using NUnit.Framework;
 
 namespace DelayedJob
 {
+#if WINDOWS
+	public class RepositorySQLiteTest
+	{
+		public RepositorySQLiteTest(){}
+	}
+#else
 	[TestFixture()]
 	public class RepositorySQLiteTest
 	{
@@ -62,5 +68,6 @@ namespace DelayedJob
 		}
 
 	}
+#endif
 }
 

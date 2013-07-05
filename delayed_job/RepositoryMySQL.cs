@@ -214,7 +214,7 @@ namespace DelayedJob
 				dbcmd.Parameters.AddWithValue("@priority",job.Priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.Attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.Handler);
-				dbcmd.Parameters.AddWithValue("@last_error",job.LastError);
+				dbcmd.Parameters.AddWithValue("@last_error", job.LastError);
 				dbcmd.Parameters.AddWithValue("@run_at",job.RunAt);
 				dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
 				dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);

@@ -138,11 +138,30 @@ namespace DelayedJob
 				dbcmd.Parameters.AddWithValue("@ID", job.ID);
 				dbcmd.Parameters.AddWithValue("@priority", job.Priority);
 				dbcmd.Parameters.AddWithValue("@attempts", job.Attempts);
-				dbcmd.Parameters.AddWithValue("@last_error", job.LastError);
-				dbcmd.Parameters.AddWithValue("@run_at", job.RunAt);
-				dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);
-				dbcmd.Parameters.AddWithValue("@locked_by", job.LockedBy);
-				dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
+				if(job.LastError == null)
+					dbcmd.Parameters.AddWithValue("@last_error", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@last_error", job.LastError);
+
+				if(job.RunAt == null)
+					dbcmd.Parameters.AddWithValue("@run_at", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@run_at", job.RunAt);
+
+				if(job.FailedAt == null)
+					dbcmd.Parameters.AddWithValue("@failed_at", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);
+
+				if(job.LockedBy == null)
+					dbcmd.Parameters.AddWithValue("@locked_by", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@locked_by", job.LockedBy);
+
+				if(job.LockedAt == null)
+					dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
+				else
+					dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
 
 				dbcmd.ExecuteNonQuery();
 
@@ -215,11 +234,31 @@ namespace DelayedJob
 				dbcmd.Parameters.AddWithValue("@priority",job.Priority);
 				dbcmd.Parameters.AddWithValue("@attempts",job.Attempts);
 				dbcmd.Parameters.AddWithValue("@handler", job.Handler);
-				dbcmd.Parameters.AddWithValue("@last_error",job.LastError);
-				dbcmd.Parameters.AddWithValue("@run_at",job.RunAt);
-				dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
-				dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);
-				dbcmd.Parameters.AddWithValue("@locked_by", job.LockedBy);
+
+				if(job.LastError == null)
+					dbcmd.Parameters.AddWithValue("@last_error",DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@last_error",job.LastError);
+
+				if(job.RunAt == null)
+					dbcmd.Parameters.AddWithValue("@run_at",DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@run_at",job.RunAt);
+
+				if(job.LockedAt == null)
+					dbcmd.Parameters.AddWithValue("@locked_at", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@locked_at", job.LockedAt);
+
+				if(job.FailedAt == null)
+					dbcmd.Parameters.AddWithValue("@failed_at", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@failed_at", job.FailedAt);
+
+				if(job.LockedBy == null)
+					dbcmd.Parameters.AddWithValue("@locked_by", DBNull.Value);
+				else
+					dbcmd.Parameters.AddWithValue("@locked_by", job.LockedBy);
 
 				var id = dbcmd.ExecuteScalar();
 

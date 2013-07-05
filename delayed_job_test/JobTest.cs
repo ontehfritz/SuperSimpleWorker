@@ -11,11 +11,11 @@ namespace DelayedJob
 		//string connectionString = 
 		 //"URI=file:delay_job.db";
 		//"Data Source=172.16.24.128;Database=delayed_job_test;User ID=;Password=";
-		IRepository repo = new RepositoryMonoSQLite("URI=file:delay_job.db");
+		//IRepository repo = new RepositoryMonoSQLite("URI=file:delay_job.db");
 		//IRepository repo = 
 		//	new RepositoryMySQL("Data Source=172.16.24.131;Database=delayed_job_test;User ID=;Password=");
-		//IRepository repo = 
-		//	new RepositoryMsSQL("Data Source=172.16.24.129;Database=delayed_job_test;User ID=;Password=");
+		IRepository repo = 
+			new RepositoryMsSQL("Server=172.16.24.134;Database=delayed_job_test;User ID=;Password=");
 
 
 		[Test()]

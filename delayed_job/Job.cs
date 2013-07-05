@@ -366,6 +366,7 @@ namespace DelayedJob
 			} else {
 				newJob.JobAssembly = dllPath;
 			}
+			newJob.LastError = null;
 			newJob.Handler = SerializeToXml(job);
 			newJob.RunAt = (run_at == null ? DateTime.Now : (DateTime)run_at);
 			newJob.FailedAt = null;

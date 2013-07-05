@@ -4,7 +4,11 @@
 Cross platform Status:
 OSX: **PASS**
 Ubuntu: **PASS**
-Windows: **FAIL**
+Windows: **PASS** 
+
+For compiling please see the wiki at: 
+
+
 
 Currently being developed using mono and OSX. The goal of the project is to have it work equally across platforms. 
 
@@ -31,7 +35,7 @@ Some important notes:
 * worker.exe must currently be run on the same system as the code that is scheduling jobs. Unlike ruby, the serialisation process is different. 
 C# cannot execute code stored in the database. It must be compiled into byte-code. Instead objects are serialised into xml in the database.
 Then the objects are deserialized using the dll file the job objects are defined. 
-* a potential issue is when using this with mono and ASP.NET or ASP.NET MVC; when the webserver runs the web application it stores the assembly (dll) in a temporary directory. This temp directory is where delay_job.net will store the path of the assembly to instantiate the objects when deserializing. Currently in testing this has not been a problem even during reboots of system or webserver. However, it may be possible for this directory to change making the jobs fail.  
+* a potential issue is when using this with mono and ASP.NET or ASP.NET MVC; when the webserver runs the web application it stores the assembly (dll) in a temporary directory. This temp directory is where delayed_job.net will store the path of the assembly to instantiate the objects when deserializing. Currently in testing this has not been a problem even during reboots of system or webserver. However, it may be possible for this directory to change making the jobs fail.  
 * classes and/or there instantiated objects must by serialisable, this also means that any class members are not serialisable, you must instantiate them in the perform method or a default constructor. To be serialisable you must have a default constructor and all values you want to be assigned on deserialization must be public members or public properties of a class. 
 
 

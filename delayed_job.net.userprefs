@@ -1,17 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job/RepositoryMonoSQLite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="worker/app.config">
     <Files>
-      <File FileName="worker/Main.cs" Line="88" Column="8" />
+      <File FileName="worker/Main.cs" Line="1" Column="1" />
       <File FileName="worker/app.config" Line="18" Column="17" />
-      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="19" Column="50" />
+      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="17" Column="16" />
+      <File FileName="delayed_job_test/RepositorySQLiteTest.cs" Line="2" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="delayed_job" expanded="True">
-            <Node name="RepositoryMonoSQLite.cs" selected="True" />
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="delayed_job" expanded="True" />
           <Node name="delayed_job_tests" expanded="True" />
           <Node name="worker" expanded="True" />
         </State>
@@ -23,12 +22,10 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="delayed_job_tests" expanded="True">
             <Node name="DelayedJob" expanded="True">
-              <Node name="JobTest" expanded="True">
-                <Node name="TestEnqueue" selected="True" />
-              </Node>
+              <Node name="JobTest" expanded="True" />
             </Node>
           </Node>
         </State>
