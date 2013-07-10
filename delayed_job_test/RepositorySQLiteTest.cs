@@ -29,7 +29,8 @@ namespace DelayedJob
 			job.Priority = 0;
 			job.RunAt = DateTime.Now;
 
-			//db.CreateJob(job, new );
+			job = db.CreateJob(job);
+			Assert.Greater (job.ID, 0);
 		}
 
 		[Test()]
@@ -62,11 +63,23 @@ namespace DelayedJob
 		public void TestUpdateJob()
 		{
 			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
-			Job job = db.GetJob(1);
+
+			Job job = new Job();
+			job.Attempts = 0; 
+			job.FailedAt = DateTime.Now;
+			job.Handler = "";
+			job.LastError = "";
+			job.LockedAt = DateTime.Now;
+			job.LockedBy = "";
+			job.Priority = 0;
+			job.RunAt = DateTime.Now;
+
+			job = db.CreateJob(job);
+
 			job.LockedBy = "TestUpdateJob";
 			db.UpdateJob(job);
+			Assert.AreEqual (db.GetJob(job.ID).LockedBy, "TestUpdateJob");
 		}
-
 	}
 #endif
 }

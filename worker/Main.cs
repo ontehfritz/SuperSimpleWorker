@@ -76,9 +76,11 @@ namespace DelayJob.Worker
 
 				try {
 					Start (args);
-					while(work)
-					{ 
-					
+					//keep the program looping so the timer can run
+					//timer must be used when worker is installed as 
+					//a service.
+					while(work){
+
 					}
 				} catch (Exception e) {
 					throw e;
@@ -138,7 +140,7 @@ namespace DelayJob.Worker
 
 			if (report.failure == 0 &&
 				report.success == 0) {
-					//sleep if no jobs 
+					//sleep if no jobs. 1000, is milliseconds * how many seconds 
 				System.Threading.Thread.Sleep (SLEEP * 1000); 
 			} else {
 				//if jobs have run then print out a report on success and failures

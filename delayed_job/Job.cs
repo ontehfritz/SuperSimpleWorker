@@ -271,7 +271,7 @@ namespace DelayedJob
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
 			foreach(Job job in jobs){
-				t = job.RunWithLock(4, workerName);
+				t = job.RunWithLock();
 				if (t == true) {
 					_repository.Remove (job.ID);
 				}
@@ -308,9 +308,7 @@ namespace DelayedJob
 		/// Runs the with lock.
 		/// </summary>
 		/// <returns><c>true</c>, if with lock was run, <c>false</c> otherwise.</returns>
-		/// <param name="max_run_time">Max_run_time.</param>
-		/// <param name="workerName">Worker name.</param>
-		public bool RunWithLock(int max_run_time, string workerName){
+		public bool RunWithLock(){
 			Log (string.Format ("* [JOB] aquiring lock on {0}",_type));
 			if (this.LockExclusively()) {
 				try {
@@ -346,8 +344,8 @@ namespace DelayedJob
 		/// Enqueue the specified job, priority, run_at and dllPath.
 		/// </summary>
 		/// <param name="job">The object that uses the IJob interface.</param>
-		/// <param name="priority">Give the job priority. 0 is default and 1 has highest priority.
-		/// all numbers above 1 will be organized in ascending order. </param>
+		/// <param name="priority">Give the job priority. 0 is default and higher the number the more priority.
+		/// </param>
 		/// <param name="run_at">If no time is specfied, the job will be scheduled to run ASAP</param>
 		/// <param name="dllPath">Supplying a path will override the path set automatically. The path 
 		/// that is automatically generated is the path of the dll of the running program.
@@ -355,7 +353,7 @@ namespace DelayedJob
 		/// usually not a problem. However, on server reboots it may not be the same directory in most cases it is. 
 		/// Most of the time you will not need to set this.
 		/// </param>
-		public static void Enqueue(IJob job, int priority = 0, 
+		public static Job Enqueue(IJob job, int priority = 0, 
 		                           DateTime? run_at = null,
 		                           string dllPath = null){
 			Job newJob = new Job();
@@ -372,7 +370,7 @@ namespace DelayedJob
 			newJob.FailedAt = null;
 			newJob.LockedAt = null;
 
-			_repository.CreateJob(newJob);
+			return _repository.CreateJob(newJob);
 		}
 		/// <summary>
 		/// Serializes to xml.

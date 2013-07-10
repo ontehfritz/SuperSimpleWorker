@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="worker/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job_test/JobTest.cs">
     <Files>
-      <File FileName="worker/Main.cs" Line="124" Column="4" />
+      <File FileName="worker/Main.cs" Line="150" Column="5" />
       <File FileName="worker/app.config" Line="7" Column="22" />
       <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="1" Column="1" />
       <File FileName="delayed_job_test/RepositorySQLiteTest.cs" Line="1" Column="1" />
@@ -15,9 +15,11 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="worker" expanded="True">
-            <Node name="Main.cs" selected="True" />
+          <Node name="delayed_job" expanded="True" />
+          <Node name="delayed_job_tests" expanded="True">
+            <Node name="JobTest.cs" selected="True" />
           </Node>
+          <Node name="worker" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
