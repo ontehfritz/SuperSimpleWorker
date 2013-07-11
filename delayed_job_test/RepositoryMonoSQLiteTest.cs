@@ -10,7 +10,7 @@ namespace DelayedJob
 	}
 #else
 	[TestFixture()]
-	public class RepositorySQLiteTest
+	public class RepositoryMonoSQLiteTest
 	{
 		string connectionString = 
 				"URI=file:delay_job.db";

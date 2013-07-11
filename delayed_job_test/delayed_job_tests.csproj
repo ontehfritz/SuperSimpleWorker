@@ -33,8 +33,10 @@
     <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RepositorySQLiteTest.cs" />
     <Compile Include="JobTest.cs" />
+    <Compile Include="RepositoryMonoSQLiteTest.cs" />
+    <Compile Include="RepositoryMsSQLTest.cs" />
+    <Compile Include="RepositoryMySQLTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

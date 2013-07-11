@@ -3,3 +3,4 @@ delayed_job_test/test-results
 test-results
 delayed_job/bin
 worker/bin/**/*
+worker/bin
