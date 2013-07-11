@@ -65,12 +65,12 @@ Windows: <strong>PASS</strong> </p>
 </ul><h2>
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
-<ol>
+<ul>
 <li><p>Copy the DelayedJob.dll in your project bin folder.</p></li>
 <li><p>Using MonoDevelop or Visual Studio reference the DelayedJob.dll</p></li>
 <li><p>Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.</p></li>
 <li><p>Start creating jobs use The IJob interface and create your class:</p></li>
-</ol><pre><code>public class EmailJob : DelayedJob.IJob
+</ul><pre><code>public class EmailJob : DelayedJob.IJob
 {
     //Make sure information you want to persist in the database is public
     //There is no way to serialize and deserialize private data.
@@ -109,9 +109,9 @@ Windows: <strong>PASS</strong> </p>
 
 </code></pre>
 
-<ol>
+<ul>
 <li>Now schedule the job:</li>
-</ol><pre><code>//Set the Repository with the database you would like to use with a
+</ul><pre><code>//Set the Repository with the database you would like to use with a
 //connection string. 
 Job.Repository = new RepositoryMonoSQLite("URI=file:delayed_job.db");
 //Enqueue the Job now. When the worker process runs it will execute the 
@@ -119,12 +119,12 @@ Job.Repository = new RepositoryMonoSQLite("URI=file:delayed_job.db");
 Job.Enqueue(new EmailJob());
 </code></pre>
 
-<ol>
+<ul>
 <li>The worker process needs to be configured. The worker.exe has a file called
 worker.exe.config. Configure the database you want to use and the connection string. 
 It Should be the same database you are enqueueing your jobs in. You can now 
 run worker process by:</li>
-</ol><pre><code>mono worker.exe [optional name]
+</ul><pre><code>mono worker.exe [optional name]
 </code></pre>
 
 <p>In the background: </p>
