@@ -14,9 +14,9 @@ https://github.com/tobi/delayed_job
 
 Currently being developed using mono and OSX. The goal of the project is to have it work equally across platforms.
 
-delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background. This is useful for off loading tasks from ASP.NET/MVC or Nancy (http://nancyfx.org) projects. It call also be used with any .Net technologies. 
+delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background. This is useful for off loading tasks from ASP.NET/MVC or Nancy (http://nancyfx.org) projects. It can also be used with any .Net technologies. 
 
-It can be used with Mono or Microsoft .Net framework. As well as cross platform Windows, OSX, and Linux. 
+It is ready to be used with Mono or Microsoft .Net framework; As well as cross platform Windows, OSX, and Linux. 
 
 Like the ruby version of delayed_job some examples of use are: 
  
