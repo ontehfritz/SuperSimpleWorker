@@ -1,24 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job_test/JobTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job/RepositoryMonoSQLite.cs">
     <Files>
-      <File FileName="worker/Main.cs" Line="150" Column="5" />
-      <File FileName="worker/app.config" Line="7" Column="22" />
-      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositorySQLiteTest.cs" Line="1" Column="1" />
+      <File FileName="worker/Main.cs" Line="1" Column="1" />
+      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="291" Column="72" />
+      <File FileName="delayed_job_test/RepositoryMonoSQLiteTest.cs" Line="1" Column="1" />
       <File FileName="delayed_job/Job.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/JobTest.cs" Line="1" Column="1" />
       <File FileName="delayed_job/RepositoryMySQL.cs" Line="1" Column="1" />
       <File FileName="delayed_job/RepositoryMsSQL.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/IRepository.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryMsSQLTest.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="delayed_job" expanded="True" />
-          <Node name="delayed_job_tests" expanded="True">
-            <Node name="JobTest.cs" selected="True" />
+          <Node name="delayed_job" expanded="True">
+            <Node name="RepositoryMonoSQLite.cs" selected="True" />
           </Node>
+          <Node name="delayed_job_tests" expanded="True" />
           <Node name="worker" expanded="True" />
         </State>
       </Pad>
@@ -29,7 +28,13 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True" selected="True">
+          <Node name="delayed_job_tests" expanded="True">
+            <Node name="DelayedJob" expanded="True">
+              <Node name="JobTest" expanded="True" />
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ConnectionManagerPad">
         <State selected="True" />
