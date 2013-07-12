@@ -36,9 +36,9 @@
 <span class="octicon octicon-link"></span></a>v0.1b</h1>
 
 <p>Cross platform Status:
-OSX: <strong>PASS</strong>
-Ubuntu: <strong>PASS</strong>
-Windows: <strong>PASS</strong> </p>
+OSX: <strong>PASS</strong><br />
+Ubuntu: <strong>PASS</strong><br />
+Windows: <strong>PASS</strong><br /> </p>
 
 <p>Delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background.</p>
 
@@ -68,10 +68,11 @@ Windows: <strong>PASS</strong> </p>
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <ul>
-<li><p>Copy the DelayedJob.dll in your project bin folder.</p></li>
-<li><p>Using MonoDevelop or Visual Studio reference the DelayedJob.dll</p></li>
-<li><p>Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.</p></li>
-<li><p>Start creating jobs use The IJob interface and create your class:</p></li>
+<li>Copy the DelayedJob.dll in your project bin folder.</li>
+<li>Using MonoDevelop or Visual Studio reference the DelayedJob.dll</li>
+<li>Create the delayed_job table in one of the supported databases. The sql table script can be found in the 
+sql folder.</li>
+<li>Start creating jobs use The IJob interface and create your class:</li>
 </ul><pre><code>public class EmailJob : DelayedJob.IJob
 {
     //Make sure information you want to persist in the database is public
