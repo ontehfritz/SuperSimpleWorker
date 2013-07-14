@@ -1,0 +1,6 @@
+<Namespace Name="DelayedJob">
+  <Docs>
+    <summary>This is the DelayedJob.dll Assembly. To use this it must be referenced inside a .net project</summary>
+    <remarks>DelayedJob.dll is the main assembly for creating and queuing jobs</remarks>
+  </Docs>
+</Namespace>

@@ -1,0 +1,48 @@
+<Type Name="Job+Report" FullName="DelayedJob.Job+Report">
+  <TypeSignature Language="C#" Value="public struct Job.Report" />
+  <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit Job/Report extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>DelayedJob</AssemblyName>
+    <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A simple class for reporting failed or successful jobs</summary>
+    <remarks>This class is used by the Job.WorkOff() method. Outside this method it has no real use.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="failure">
+      <MemberSignature Language="C#" Value="public int failure;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 failure" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Assigned how many failed jobs</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="success">
+      <MemberSignature Language="C#" Value="public int success;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 success" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Assigned how many successful jobs.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

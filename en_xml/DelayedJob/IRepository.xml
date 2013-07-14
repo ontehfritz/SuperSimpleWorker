@@ -1,0 +1,149 @@
+<Type Name="IRepository" FullName="DelayedJob.IRepository">
+  <TypeSignature Language="C#" Value="public interface IRepository" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IRepository" />
+  <AssemblyInfo>
+    <AssemblyName>DelayedJob</AssemblyName>
+    <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>IRepository interface is used to provide delayed_job.net scaffolding for implementing repositories for different database types. This interface should only be used if developing new database support for delayed_job.net</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ClearJobs">
+      <MemberSignature Language="C#" Value="public void ClearJobs (string workerName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ClearJobs(string workerName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="workerName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="workerName">Name of worker</param>
+        <summary>This will clear any jobs locked by a worker.</summary>
+        <remarks>This is useful when the worker.exe exits, so another worker can pick it up, or if the worker crashes. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateJob">
+      <MemberSignature Language="C#" Value="public DelayedJob.Job CreateJob (DelayedJob.Job job);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class DelayedJob.Job CreateJob(class DelayedJob.Job job) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="job" Type="DelayedJob.Job" />
+      </Parameters>
+      <Docs>
+        <param name="job">The job to be created</param>
+        <summary>Creates a job in the database.</summary>
+        <returns>Returns the created job with database ID</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetJob">
+      <MemberSignature Language="C#" Value="public DelayedJob.Job GetJob (int pid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class DelayedJob.Job GetJob(int32 pid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pid" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="pid">The database ID of the job</param>
+        <summary>This method retrieves a Job from the database</summary>
+        <returns>returns a job object with the provided ID</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetJobs">
+      <MemberSignature Language="C#" Value="public DelayedJob.Job[] GetJobs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class DelayedJob.Job[] GetJobs() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Will retrieve all jobs in the database</summary>
+        <returns>An array of job objects</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetNextReadyJobs">
+      <MemberSignature Language="C#" Value="public DelayedJob.Job[] GetNextReadyJobs (int limit = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class DelayedJob.Job[] GetNextReadyJobs(int32 limit) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="limit" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="limit">A number of jobs to return</param>
+        <summary>This retrieve N jobs that are ready for processing</summary>
+        <returns>An array of Job objects</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public void Remove (int jobID);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Remove(int32 jobID) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="jobID" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="jobID">integer ID of Job</param>
+        <summary>This will remove the job with the provided ID</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateJob">
+      <MemberSignature Language="C#" Value="public void UpdateJob (DelayedJob.Job job);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateJob(class DelayedJob.Job job) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="job" Type="DelayedJob.Job" />
+      </Parameters>
+      <Docs>
+        <param name="job">Job object to update</param>
+        <summary>This method updates a job object based on the object provided. It will use the Job ID to find the object. Then it will take all class member values and update the object. </summary>
+        <remarks>The job must exist in the database.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

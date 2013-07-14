@@ -1,0 +1,934 @@
+<html>
+  <head>
+    <title>DelayedJob.Job</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">DelayedJob</a> : <a href="index.html">DelayedJob Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:DelayedJob.Job">Overview</a>
+      </p>
+      <p>
+        <a href="#T:DelayedJob.Job:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:DelayedJob.Job:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:DelayedJob.Job:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:DelayedJob.Job">Job  Class</h1>
+    <p class="Summary" id="T:DelayedJob.Job:Summary">Main class of delayed_job.net. This is used by the api user to queue jobs. Provides all functionality for the worker process.</p>
+    <div>
+      <h2>Syntax</h2>
+      <div class="Signature" id="T:DelayedJob.Job:Signature">public class  <b>Job</b></div>
+    </div>
+    <div class="Remarks" id="T:DelayedJob.Job:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:DelayedJob.Job:Docs:Remarks">Main method to be used in an application will be Job.Enqueue(). All other methods can be used to build a custom worker process. However a worker process is provided, and should be used.</div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:DelayedJob.Job:Docs:Version Information">
+        <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:DelayedJob.Job()">Job</a>
+                    </b>()</div>
+                </td>
+                <td>Used to create a default job object</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.Attempts">Attempts</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. Keeps track of attempts to run this job</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.DestroyFailedJobs">DestroyFailedJobs</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. This determines it failed jobs should be deleted.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.FailedAt">FailedAt</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a>
+                  </i>. The time the job failed</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.Handler">Handler</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. Stores serialized IJob.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.ID">ID</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. ID of the object. It will be zero if the object has not been queued in the database. Once it is queued the Job.Enqueue will return the object with the ID in the database</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.JobAssembly">JobAssembly</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. This is the path of the assembly that scheduled a job and contains the object that Implements IJob</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.LastError">LastError</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. If the job failed then field will contain the error message. </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.LockedAt">LockedAt</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a>
+                  </i>. If this is picked up by a worker it will set a lock date.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.LockedBy">LockedBy</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. This will contain the name of the worker process.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.ObjectType">ObjectType</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. This is the type of the object queued. This is used to instantiate the object </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.Priority">Priority</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. Priority of the Job, 0 is default, A larger number represents a higher priority job.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.Repository">Repository</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../DelayedJob/IRepository.html">IRepository</a>
+                  </i>. This needs to be set before Job can queue or retrieve any jobs. It can be assigned from one the supported Repositories.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.RunAt">RunAt</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a>
+                  </i>. The date the job will run</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:DelayedJob.Job.WorkerName">WorkerName</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. The name of the worker</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.ClearLocks()">ClearLocks</a>
+                  </b>()<blockquote>Will clear locks of a current worker process</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String)">Enqueue</a>
+                  </b>(<a href="../DelayedJob/IJob.html">IJob</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a></nobr><blockquote>Enqueue is the most important method as this will queue jobs in the database for the worker process to run. This is the main method used in an application</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.FindAvailable(System.Int32)">FindAvailable</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a>[]</nobr><blockquote>Used to retrieve N jobs for processing</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.LockExclusively()">LockExclusively</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>This will lock a job by committing the locked_by and locked_at fields</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime})">Reschedule</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a>)<blockquote>Reschedules a job</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.ReserveAndRunOneJob()">ReserveAndRunOneJob</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;bool&gt;</a></nobr><blockquote>Locks and runs a job.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.RunWithLock()">RunWithLock</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Locks the current job and runs it</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:DelayedJob.Job.WorkOff(System.Int32)">WorkOff</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job+Report.html">Job.Report</a></nobr><blockquote>This will run a number of available jobs</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:DelayedJob.Job:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:DelayedJob.Job()">Job Constructor</h3>
+        <blockquote id="C:DelayedJob.Job():member">
+          <p class="Summary">Used to create a default job object</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>Job</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:DelayedJob.Job():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:DelayedJob.Job():Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.Attempts">Attempts Property</h3>
+        <blockquote id="P:DelayedJob.Job.Attempts:member">
+          <p class="Summary">Keeps track of attempts to run this job</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Attempts</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.Attempts:Value">Integer</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Attempts:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Attempts:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.ClearLocks()">ClearLocks Method</h3>
+        <blockquote id="M:DelayedJob.Job.ClearLocks():member">
+          <p class="Summary">Will clear locks of a current worker process</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ClearLocks</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.ClearLocks():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.ClearLocks():Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.DestroyFailedJobs">DestroyFailedJobs Property</h3>
+        <blockquote id="P:DelayedJob.Job.DestroyFailedJobs:member">
+          <p class="Summary">This determines it failed jobs should be deleted.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DestroyFailedJobs</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.DestroyFailedJobs:Value">bool</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.DestroyFailedJobs:Remarks">True failed jobs will be deleted, false the will stay in the database </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.DestroyFailedJobs:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String)">Enqueue Method</h3>
+        <blockquote id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String):member">
+          <p class="Summary">Enqueue is the most important method as this will queue jobs in the database for the worker process to run. This is the main method used in an application</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../DelayedJob/Job.html">Job</a> <b>Enqueue</b> (<a href="../DelayedJob/IJob.html">IJob</a> job, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> priority, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a> run_at, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> dllPath)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String):Parameters">
+            <dl>
+              <dt>
+                <i>job</i>
+              </dt>
+              <dd>An object that implements the IJob interface</dd>
+              <dt>
+                <i>priority</i>
+              </dt>
+              <dd>Level of importance in the job queue. 0 default , higher the number more priority is given in the queue.</dd>
+              <dt>
+                <i>run_at</i>
+              </dt>
+              <dd>The time the job should run, defaut is now</dd>
+              <dt>
+                <i>dllPath</i>
+              </dt>
+              <dd>This can be used to customize the path of the dll. By default it will include the path to the assembly that creates and queues a job object. </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String):Returns">The queued job object now with the database ID</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String):Remarks">dllPath could be used for workers to share a custom directory such as a shared drive. This way workers can be used to distribute the load over many servers. HAS NOT BEEN TESTED YET.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.Enqueue(DelayedJob.IJob,System.Int32,System.Nullable{System.DateTime},System.String):Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.FailedAt">FailedAt Property</h3>
+        <blockquote id="P:DelayedJob.Job.FailedAt:member">
+          <p class="Summary">The time the job failed</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a> <b>FailedAt</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.FailedAt:Value">DateTime</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.FailedAt:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.FailedAt:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.FindAvailable(System.Int32)">FindAvailable Method</h3>
+        <blockquote id="M:DelayedJob.Job.FindAvailable(System.Int32):member">
+          <p class="Summary">Used to retrieve N jobs for processing</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../DelayedJob/Job.html">Job</a>[] <b>FindAvailable</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> limit)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.FindAvailable(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>limit</i>
+              </dt>
+              <dd>The number of jobs to return.Default value is 1</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.FindAvailable(System.Int32):Returns">an array of jobs.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.FindAvailable(System.Int32):Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.FindAvailable(System.Int32):Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.Handler">Handler Property</h3>
+        <blockquote id="P:DelayedJob.Job.Handler:member">
+          <p class="Summary">Stores serialized IJob.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Handler</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.Handler:Value">XML serialized object. String. </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Handler:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Handler:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.ID">ID Property</h3>
+        <blockquote id="P:DelayedJob.Job.ID:member">
+          <p class="Summary">ID of the object. It will be zero if the object has not been queued in the database. Once it is queued the Job.Enqueue will return the object with the ID in the database</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ID</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.ID:Value">Integer</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.ID:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.ID:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.JobAssembly">JobAssembly Property</h3>
+        <blockquote id="P:DelayedJob.Job.JobAssembly:member">
+          <p class="Summary">This is the path of the assembly that scheduled a job and contains the object that Implements IJob</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>JobAssembly</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.JobAssembly:Value">string</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.JobAssembly:Remarks">You can supply a dll path to the Enqueue method, however when doing this you need to take care. By default it will resolve which assembly is running the code and reference that dll</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.JobAssembly:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.LastError">LastError Property</h3>
+        <blockquote id="P:DelayedJob.Job.LastError:member">
+          <p class="Summary">If the job failed then field will contain the error message. </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>LastError</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.LastError:Value">string</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LastError:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LastError:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.LockedAt">LockedAt Property</h3>
+        <blockquote id="P:DelayedJob.Job.LockedAt:member">
+          <p class="Summary">If this is picked up by a worker it will set a lock date.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a> <b>LockedAt</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.LockedAt:Value">DateTime</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LockedAt:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LockedAt:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.LockedBy">LockedBy Property</h3>
+        <blockquote id="P:DelayedJob.Job.LockedBy:member">
+          <p class="Summary">This will contain the name of the worker process.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>LockedBy</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.LockedBy:Value">String</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LockedBy:Remarks">The worker.exe process can have a name assigned or it will use a default name.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.LockedBy:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.LockExclusively()">LockExclusively Method</h3>
+        <blockquote id="M:DelayedJob.Job.LockExclusively():member">
+          <p class="Summary">This will lock a job by committing the locked_by and locked_at fields</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>LockExclusively</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.LockExclusively():Returns">bool</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.LockExclusively():Remarks">True - if lock was successful and False - if failed</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.LockExclusively():Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.ObjectType">ObjectType Property</h3>
+        <blockquote id="P:DelayedJob.Job.ObjectType:member">
+          <p class="Summary">This is the type of the object queued. This is used to instantiate the object </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ObjectType</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.ObjectType:Value">String</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.ObjectType:Remarks">You should not have to change this, but currently public for was assignment. Should be changed to read only</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.ObjectType:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.Priority">Priority Property</h3>
+        <blockquote id="P:DelayedJob.Job.Priority:member">
+          <p class="Summary">Priority of the Job, 0 is default, A larger number represents a higher priority job.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Priority</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.Priority:Value">Integer</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Priority:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Priority:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.Repository">Repository Property</h3>
+        <blockquote id="P:DelayedJob.Job.Repository:member">
+          <p class="Summary">This needs to be set before Job can queue or retrieve any jobs. It can be assigned from one the supported Repositories.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../DelayedJob/IRepository.html">IRepository</a> <b>Repository</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.Repository:Value">IRepository</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Repository:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.Repository:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime})">Reschedule Method</h3>
+        <blockquote id="M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime}):member">
+          <p class="Summary">Reschedules a job</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Reschedule</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> message, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a> time)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime}):Parameters">
+            <dl>
+              <dt>
+                <i>message</i>
+              </dt>
+              <dd>An error that occured</dd>
+              <dt>
+                <i>time</i>
+              </dt>
+              <dd>The time the job will run. By default uses an exponential calculation based on the number of attempts.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime}):Remarks">Used by worker.exe</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.Reschedule(System.String,System.Nullable{System.DateTime}):Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.ReserveAndRunOneJob()">ReserveAndRunOneJob Method</h3>
+        <blockquote id="M:DelayedJob.Job.ReserveAndRunOneJob():member">
+          <p class="Summary">Locks and runs a job.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;bool&gt;</a> <b>ReserveAndRunOneJob</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.ReserveAndRunOneJob():Returns">bool</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.ReserveAndRunOneJob():Remarks">True if successful and False is failed</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.ReserveAndRunOneJob():Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.RunAt">RunAt Property</h3>
+        <blockquote id="P:DelayedJob.Job.RunAt:member">
+          <p class="Summary">The date the job will run</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Nullable`1">Nullable&lt;DateTime&gt;</a> <b>RunAt</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.RunAt:Value">DateTime</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.RunAt:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.RunAt:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.RunWithLock()">RunWithLock Method</h3>
+        <blockquote id="M:DelayedJob.Job.RunWithLock():member">
+          <p class="Summary">Locks the current job and runs it</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>RunWithLock</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.RunWithLock():Returns">bool</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.RunWithLock():Remarks">True if complete and false if failed</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.RunWithLock():Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:DelayedJob.Job.WorkerName">WorkerName Property</h3>
+        <blockquote id="P:DelayedJob.Job.WorkerName:member">
+          <p class="Summary">The name of the worker</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>WorkerName</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:DelayedJob.Job.WorkerName:Value">String</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.WorkerName:Remarks">This is a static member, that is used by worker process </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:DelayedJob.Job.WorkerName:Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:DelayedJob.Job.WorkOff(System.Int32)">WorkOff Method</h3>
+        <blockquote id="M:DelayedJob.Job.WorkOff(System.Int32):member">
+          <p class="Summary">This will run a number of available jobs</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../DelayedJob/Job+Report.html">Job.Report</a> <b>WorkOff</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.WorkOff(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>Number of jobs to work off by default this is a 100 jobs at time.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.Job.WorkOff(System.Int32):Returns">Report which will indicate the number of successful or failed jibs</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.WorkOff(System.Int32):Remarks">used by worker.exe</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:DelayedJob.Job.WorkOff(System.Int32):Version Information">
+            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

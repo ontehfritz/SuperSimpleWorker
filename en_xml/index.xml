@@ -1,0 +1,49 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="DelayedJob" Version="0.0.4941.19919">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("Fritz (Fredrick Seitz)")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Fritz (Fredrick Seitz)")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("The library files to create jobs. This assembly should be included in the bin folder of your project and referenced. Any connections used in the project. Should also be configured with the delay_job.net worker application.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("delayed_job.net")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>
+	Simple light weight job worker
+	http://fritzcoder.github.io/delayed_job.net/
+  </Remarks>
+  <Copyright>© 2013 Fritz (Fredrick Seitz)</Copyright>
+  <Types>
+    <Namespace Name="DelayedJob">
+      <Type Name="IJob" Kind="Interface" />
+      <Type Name="IRepository" Kind="Interface" />
+      <Type Name="Job" Kind="Class" />
+      <Type Name="Job+Report" Kind="Structure" />
+      <Type Name="RepositoryMonoSQLite" Kind="Class" />
+      <Type Name="RepositoryMsSQL" Kind="Class" />
+      <Type Name="RepositoryMySQL" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>DelayedJob</Title>
+</Overview>

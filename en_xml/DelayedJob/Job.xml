@@ -1,0 +1,409 @@
+<Type Name="Job" FullName="DelayedJob.Job">
+  <TypeSignature Language="C#" Value="public class Job" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Job extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>DelayedJob</AssemblyName>
+    <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Main class of delayed_job.net. This is used by the api user to queue jobs. Provides all functionality for the worker process.</summary>
+    <remarks>Main method to be used in an application will be Job.Enqueue(). All other methods can be used to build a custom worker process. However a worker process is provided, and should be used.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Job ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Used to create a default job object</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Attempts">
+      <MemberSignature Language="C#" Value="public int Attempts { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Attempts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Keeps track of attempts to run this job</summary>
+        <value>Integer</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearLocks">
+      <MemberSignature Language="C#" Value="public static void ClearLocks ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ClearLocks() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Will clear locks of a current worker process</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DestroyFailedJobs">
+      <MemberSignature Language="C#" Value="public bool DestroyFailedJobs { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DestroyFailedJobs" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This determines it failed jobs should be deleted.</summary>
+        <value>bool</value>
+        <remarks>True failed jobs will be deleted, false the will stay in the database </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enqueue">
+      <MemberSignature Language="C#" Value="public static DelayedJob.Job Enqueue (DelayedJob.IJob job, int priority = 0, Nullable&lt;DateTime&gt; run_at = null, string dllPath = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class DelayedJob.Job Enqueue(class DelayedJob.IJob job, int32 priority, valuetype System.Nullable`1&lt;valuetype System.DateTime&gt; run_at, string dllPath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="job" Type="DelayedJob.IJob" />
+        <Parameter Name="priority" Type="System.Int32" />
+        <Parameter Name="run_at" Type="System.Nullable&lt;System.DateTime&gt;" />
+        <Parameter Name="dllPath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="job">An object that implements the IJob interface</param>
+        <param name="priority">Level of importance in the job queue. 0 default , higher the number more priority is given in the queue.</param>
+        <param name="run_at">The time the job should run, defaut is now</param>
+        <param name="dllPath">This can be used to customize the path of the dll. By default it will include the path to the assembly that creates and queues a job object. </param>
+        <summary>Enqueue is the most important method as this will queue jobs in the database for the worker process to run. This is the main method used in an application</summary>
+        <returns>The queued job object now with the database ID</returns>
+        <remarks>dllPath could be used for workers to share a custom directory such as a shared drive. This way workers can be used to distribute the load over many servers. HAS NOT BEEN TESTED YET.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FailedAt">
+      <MemberSignature Language="C#" Value="public Nullable&lt;DateTime&gt; FailedAt { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;valuetype System.DateTime&gt; FailedAt" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.DateTime&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The time the job failed</summary>
+        <value>DateTime</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindAvailable">
+      <MemberSignature Language="C#" Value="public static DelayedJob.Job[] FindAvailable (int limit = 5);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class DelayedJob.Job[] FindAvailable(int32 limit) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="limit" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="limit">The number of jobs to return.Default value is 1</param>
+        <summary>Used to retrieve N jobs for processing</summary>
+        <returns>an array of jobs.</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Handler">
+      <MemberSignature Language="C#" Value="public string Handler { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Handler" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Stores serialized IJob.</summary>
+        <value>XML serialized object. String. </value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ID">
+      <MemberSignature Language="C#" Value="public int ID { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ID" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>ID of the object. It will be zero if the object has not been queued in the database. Once it is queued the Job.Enqueue will return the object with the ID in the database</summary>
+        <value>Integer</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="JobAssembly">
+      <MemberSignature Language="C#" Value="public string JobAssembly { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string JobAssembly" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This is the path of the assembly that scheduled a job and contains the object that Implements IJob</summary>
+        <value>string</value>
+        <remarks>You can supply a dll path to the Enqueue method, however when doing this you need to take care. By default it will resolve which assembly is running the code and reference that dll</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LastError">
+      <MemberSignature Language="C#" Value="public string LastError { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LastError" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If the job failed then field will contain the error message. </summary>
+        <value>string</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LockedAt">
+      <MemberSignature Language="C#" Value="public Nullable&lt;DateTime&gt; LockedAt { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;valuetype System.DateTime&gt; LockedAt" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.DateTime&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If this is picked up by a worker it will set a lock date.</summary>
+        <value>DateTime</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LockedBy">
+      <MemberSignature Language="C#" Value="public string LockedBy { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LockedBy" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This will contain the name of the worker process.</summary>
+        <value>String</value>
+        <remarks>The worker.exe process can have a name assigned or it will use a default name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LockExclusively">
+      <MemberSignature Language="C#" Value="public bool LockExclusively ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool LockExclusively() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This will lock a job by committing the locked_by and locked_at fields</summary>
+        <returns>bool</returns>
+        <remarks>True - if lock was successful and False - if failed</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectType">
+      <MemberSignature Language="C#" Value="public string ObjectType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ObjectType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This is the type of the object queued. This is used to instantiate the object </summary>
+        <value>String</value>
+        <remarks>You should not have to change this, but currently public for was assignment. Should be changed to read only</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Priority">
+      <MemberSignature Language="C#" Value="public int Priority { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Priority" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Priority of the Job, 0 is default, A larger number represents a higher priority job.</summary>
+        <value>Integer</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Repository">
+      <MemberSignature Language="C#" Value="public static DelayedJob.IRepository Repository { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property class DelayedJob.IRepository Repository" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.IRepository</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This needs to be set before Job can queue or retrieve any jobs. It can be assigned from one the supported Repositories.</summary>
+        <value>IRepository</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reschedule">
+      <MemberSignature Language="C#" Value="public void Reschedule (string message, Nullable&lt;DateTime&gt; time = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Reschedule(string message, valuetype System.Nullable`1&lt;valuetype System.DateTime&gt; time) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="message" Type="System.String" />
+        <Parameter Name="time" Type="System.Nullable&lt;System.DateTime&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="message">An error that occured</param>
+        <param name="time">The time the job will run. By default uses an exponential calculation based on the number of attempts.</param>
+        <summary>Reschedules a job</summary>
+        <remarks>Used by worker.exe</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReserveAndRunOneJob">
+      <MemberSignature Language="C#" Value="public static Nullable&lt;bool&gt; ReserveAndRunOneJob ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Nullable`1&lt;bool&gt; ReserveAndRunOneJob() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Boolean&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Locks and runs a job.</summary>
+        <returns>bool</returns>
+        <remarks>True if successful and False is failed</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunAt">
+      <MemberSignature Language="C#" Value="public Nullable&lt;DateTime&gt; RunAt { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;valuetype System.DateTime&gt; RunAt" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.DateTime&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The date the job will run</summary>
+        <value>DateTime</value>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunWithLock">
+      <MemberSignature Language="C#" Value="public bool RunWithLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RunWithLock() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Locks the current job and runs it</summary>
+        <returns>bool</returns>
+        <remarks>True if complete and false if failed</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WorkerName">
+      <MemberSignature Language="C#" Value="public static string WorkerName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property string WorkerName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the worker</summary>
+        <value>String</value>
+        <remarks>This is a static member, that is used by worker process </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WorkOff">
+      <MemberSignature Language="C#" Value="public static DelayedJob.Job.Report WorkOff (int num = 100);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype DelayedJob.Job/Report WorkOff(int32 num) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>DelayedJob.Job+Report</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="num" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="num">Number of jobs to work off by default this is a 100 jobs at time.</param>
+        <summary>This will run a number of available jobs</summary>
+        <returns>Report which will indicate the number of successful or failed jibs</returns>
+        <remarks>used by worker.exe</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
