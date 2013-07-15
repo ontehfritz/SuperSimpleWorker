@@ -14,8 +14,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Repository for MySql</summary>
+    <remarks>Set Job.Repository = new RepositoryMySQL("ConnectioString");</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -61,25 +61,9 @@
         <Parameter Name="workerName" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="workerName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ConnectionString">
-      <MemberSignature Language="C#" Value="public string ConnectionString { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string ConnectionString" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.4941.19919</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <param name="workerName">Name of worker</param>
+        <summary>This will clear any jobs locked by a worker.</summary>
+        <remarks>This is useful when the worker.exe exits, so another worker can pick it up, or if the worker crashes. </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateJob">
@@ -96,10 +80,10 @@
         <Parameter Name="job" Type="DelayedJob.Job" />
       </Parameters>
       <Docs>
-        <param name="job">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="job">The job to be created</param>
+        <summary>Creates a job in the database.</summary>
+        <returns>Returns the created job with database ID</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetJob">
@@ -116,10 +100,10 @@
         <Parameter Name="pid" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="pid">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="pid">The database ID of the job</param>
+        <summary>This method retrieves a Job from the database</summary>
+        <returns>returns a job object with the provided ID</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetJobs">
@@ -134,8 +118,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Will retrieve all jobs in the database</summary>
+        <returns>An array of job objects</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -153,9 +137,9 @@
         <Parameter Name="limit" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="limit">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="limit">A number of jobs to return</param>
+        <summary>This retrieve N jobs that are ready for processing</summary>
+        <returns>An array of Job objects</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -173,8 +157,8 @@
         <Parameter Name="jobID" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="jobID">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="jobID">integer ID of Job</param>
+        <summary>This will remove the job with the provided ID</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -192,9 +176,9 @@
         <Parameter Name="job" Type="DelayedJob.Job" />
       </Parameters>
       <Docs>
-        <param name="job">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="job">Job object to update</param>
+        <summary>This method updates a job object based on the object provided. It will use the Job ID to find the object. Then it will take all class member values and update the object. </summary>
+        <remarks>The job must exist in the database.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -206,18 +206,14 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:DelayedJob.RepositoryMySQL">RepositoryMySQL  Class</h1>
-    <p class="Summary" id="T:DelayedJob.RepositoryMySQL:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:DelayedJob.RepositoryMySQL:Summary">Repository for MySql</p>
     <div>
       <h2>Syntax</h2>
       <div class="Signature" id="T:DelayedJob.RepositoryMySQL:Signature">public class  <b>RepositoryMySQL</b> : <a href="../DelayedJob/IRepository.html">IRepository</a></div>
     </div>
     <div class="Remarks" id="T:DelayedJob.RepositoryMySQL:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:DelayedJob.RepositoryMySQL:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-      </div>
+      <div class="SectionBox" id="T:DelayedJob.RepositoryMySQL:Docs:Remarks">Set Job.Repository = new RepositoryMySQL("ConnectioString");</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:DelayedJob.RepositoryMySQL:Docs:Version Information">
         <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
@@ -264,28 +260,6 @@
             </table>
           </div>
         </div>
-        <h2 class="Section">Public Properties</h2>
-        <div class="SectionBox" id="Public Properties">
-          <div class="SubsectionBox">
-            <table class="TypeMembers">
-              <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
-                <td>
-                  <b>
-                    <a href="#P:DelayedJob.RepositoryMySQL.ConnectionString">ConnectionString</a>
-                  </b>
-                </td>
-                <td>
-                  <i>
-                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
-              </tr>
-            </table>
-          </div>
-        </div>
         <h2 class="Section">Public Methods</h2>
         <div class="SectionBox" id="Public Methods">
           <div class="SubsectionBox">
@@ -298,7 +272,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.ClearJobs(System.String)">ClearJobs</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote>This will clear any jobs locked by a worker.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -308,7 +282,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job)">CreateJob</a>
-                  </b>(<a href="../DelayedJob/Job.html">Job</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="../DelayedJob/Job.html">Job</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a></nobr><blockquote>Creates a job in the database.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -318,7 +292,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.GetJob(System.Int32)">GetJob</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a></nobr><blockquote>This method retrieves a Job from the database</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -328,7 +302,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.GetJobs()">GetJobs</a>
-                  </b>()<nobr> : <a href="../DelayedJob/Job.html">Job</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="../DelayedJob/Job.html">Job</a>[]</nobr><blockquote>Will retrieve all jobs in the database</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -338,7 +312,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32)">GetNextReadyJobs</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../DelayedJob/Job.html">Job</a>[]</nobr><blockquote>This retrieve N jobs that are ready for processing</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -348,7 +322,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.Remove(System.Int32)">Remove</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote>This will remove the job with the provided ID</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -358,7 +332,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job)">UpdateJob</a>
-                  </b>(<a href="../DelayedJob/Job.html">Job</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="../DelayedJob/Job.html">Job</a>)<blockquote>This method updates a job object based on the object provided. It will use the Job ID to find the object. Then it will take all class member values and update the object. </blockquote></td>
               </tr>
             </table>
           </div>
@@ -413,9 +387,7 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.ClearJobs(System.String)">ClearJobs Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.ClearJobs(System.String):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">This will clear any jobs locked by a worker.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ClearJobs</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> workerName)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -424,45 +396,19 @@
               <dt>
                 <i>workerName</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>Name of worker</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.ClearJobs(System.String):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.ClearJobs(System.String):Remarks">This is useful when the worker.exe exits, so another worker can pick it up, or if the worker crashes. </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.ClearJobs(System.String):Version Information">
             <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:DelayedJob.RepositoryMySQL.ConnectionString">ConnectionString Property</h3>
-        <blockquote id="P:DelayedJob.RepositoryMySQL.ConnectionString:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
-          <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ConnectionString</b>  { get; set; }</div>
-          <h4 class="Subsection">Value</h4>
-          <blockquote class="SubsectionBox" id="P:DelayedJob.RepositoryMySQL.ConnectionString:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
-          <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:DelayedJob.RepositoryMySQL.ConnectionString:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
-          <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="P:DelayedJob.RepositoryMySQL.ConnectionString:Version Information">
-            <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
-          <hr size="1" />
-        </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job)">CreateJob Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Creates a job in the database.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../DelayedJob/Job.html">Job</a> <b>CreateJob</b> (<a href="../DelayedJob/Job.html">Job</a> job)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -471,18 +417,13 @@
               <dt>
                 <i>job</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The job to be created</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job):Returns">Returns the created job with database ID</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.CreateJob(DelayedJob.Job):Version Information">
@@ -491,9 +432,7 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32)">GetJob Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">This method retrieves a Job from the database</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../DelayedJob/Job.html">Job</a> <b>GetJob</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> pid)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -502,18 +441,13 @@
               <dt>
                 <i>pid</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The database ID of the job</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32):Returns">returns a job object with the provided ID</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.GetJob(System.Int32):Version Information">
@@ -522,15 +456,11 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.GetJobs()">GetJobs Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.GetJobs():member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Will retrieve all jobs in the database</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../DelayedJob/Job.html">Job</a>[] <b>GetJobs</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetJobs():Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetJobs():Returns">An array of job objects</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.GetJobs():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -542,9 +472,7 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32)">GetNextReadyJobs Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">This retrieve N jobs that are ready for processing</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../DelayedJob/Job.html">Job</a>[] <b>GetNextReadyJobs</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> limit)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -553,15 +481,11 @@
               <dt>
                 <i>limit</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>A number of jobs to return</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32):Returns">An array of Job objects</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.GetNextReadyJobs(System.Int32):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -573,9 +497,7 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.Remove(System.Int32)">Remove Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.Remove(System.Int32):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">This will remove the job with the provided ID</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Remove</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> jobID)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -584,9 +506,7 @@
               <dt>
                 <i>jobID</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>integer ID of Job</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
@@ -600,9 +520,7 @@
         </blockquote>
         <h3 id="M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job)">UpdateJob Method</h3>
         <blockquote id="M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">This method updates a job object based on the object provided. It will use the Job ID to find the object. Then it will take all class member values and update the object. </p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>UpdateJob</b> (<a href="../DelayedJob/Job.html">Job</a> job)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -611,15 +529,11 @@
               <dt>
                 <i>job</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>Job object to update</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job):Remarks">The job must exist in the database.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:DelayedJob.RepositoryMySQL.UpdateJob(DelayedJob.Job):Version Information">
             <b>Namespace: </b>DelayedJob<br /><b>Assembly: </b>DelayedJob (in DelayedJob.dll)<br /><b>Assembly Versions: </b>0.0.4941.19919</div>
