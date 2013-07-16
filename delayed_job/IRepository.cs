@@ -41,7 +41,7 @@ namespace DelayedJob
 		/// <summary>
 		/// Remove the specified job with ID.
 		/// </summary>
-		/// <param name="jobID">Job I.</param>
+		/// <param name="jobID">Job ID</param>
 		void Remove(int jobID);
 	}
 }

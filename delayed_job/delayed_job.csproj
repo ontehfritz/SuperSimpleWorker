@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>DelayedJob</RootNamespace>
     <AssemblyName>DelayedJob</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -38,6 +39,9 @@
     <Reference Include="MySql.Data">
       <HintPath>bin\mysql.data.dll</HintPath>
     </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>bin\Npgsql.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -47,6 +51,7 @@
     <Compile Include="RepositoryMonoSQLite.cs" />
     <Compile Include="RepositoryMySQL.cs" />
     <Compile Include="RepositoryMsSQL.cs" />
+    <Compile Include="RepositoryPostgreSQL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -56,5 +61,6 @@
     <None Include="sql\SQLite.sql" />
     <None Include="sql\MySql.sql" />
     <None Include="sql\MsSql.sql" />
+    <None Include="sql\PostgreSQL.sql" />
   </ItemGroup>
 </Project>

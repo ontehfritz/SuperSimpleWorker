@@ -8,15 +8,14 @@ namespace DelayedJob
 	[TestFixture()]
 	public class JobTest
 	{
-		//string connectionString = 
-		 //"URI=file:delay_job.db";
 		//"Data Source=172.16.24.128;Database=delayed_job_test;User ID=;Password=";
 		IRepository repo = new RepositoryMonoSQLite("URI=file:delay_job.db");
 		//IRepository repo = 
 		//	new RepositoryMySQL("Data Source=172.16.24.131;Database=delayed_job_test;User ID=;Password=");
 		//IRepository repo = 
 		//	new RepositoryMsSQL("Server=172.16.24.134;Database=delayed_job_test;User ID=;Password=");
-
+		//IRepository repo = 
+			//new RepositoryPostgreSQL("Server=172.16.24.131;Port=5432;User Id=postgres;Password=;Database=delayed_job_test");
 
 		[Test()]
 		public void TestEnqueue ()

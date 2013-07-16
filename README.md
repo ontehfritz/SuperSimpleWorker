@@ -1,5 +1,5 @@
-# Delayed Job.net v0.1b
-## light weight background job runner
+# Delayed Job.net v0.1.1
+### Simple light weight background job runner
 
 Cross platform Status:
 
@@ -33,14 +33,12 @@ There are two major components to Delayed_job.net:
 
 1. The DelayedJob assembly which gives your program access to creating jobs for scheduling
 
-2. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. This process had to be separate as there is no rake interface with .net, where as ruby the worker process is run through rake. 
+2. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. 
 
 Some important notes:
-* worker.exe must currently be run on the same system as the code that is scheduling jobs. Unlike ruby, the serialisation process is different. 
-C# cannot execute code stored in the database. It must be compiled into byte-code. Instead objects are serialised into xml in the database.
-Then the objects are deserialized using the dll file the job objects are defined. 
+* worker.exe must currently be run on the same system as the code that is scheduling jobs. This is so it can resolve and deserialize the job objects.
 
-* classes and/or there instantiated objects must by serialisable, this also means that any class members are not serialisable, you must instantiate them in the perform method or a default constructor. To be serialisable you must have a default constructor and all values you want to be assigned on deserialization must be public members or public properties of a class. 
+* classes and/or there instantiated objects must by serialisable.
 
 ## Setup
 
@@ -57,8 +55,6 @@ public class EmailJob : DelayedJob.IJob
 {
 	//Make sure information you want to persist in the database is public
 	//There is no way to serialize and deserialize private data.
-	public string fromName = "YourName";
-	public string toName = "ToName";
 	public string fromAddress = "email@gmail.com";
 	public string toAddress = "toemail@gmail.com";
 	public const string fromPassword = "";
@@ -132,6 +128,7 @@ The library evolves around a delayed_jobs table
   Currently supporting: 
 	sqlite3 - Linux and OSX only (no windows support)
 	MySql
+	PostgreSQL
 	Microsoft SQL Server (Tested on version 2012)
 ```
 

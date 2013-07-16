@@ -1,24 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job/RepositoryMonoSQLite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="worker/app.config">
     <Files>
-      <File FileName="worker/Main.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="291" Column="72" />
-      <File FileName="delayed_job_test/RepositoryMonoSQLiteTest.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/Job.cs" Line="1" Column="1" />
+      <File FileName="delayed_job/RepositoryPostgreSQL.cs" Line="209" Column="24" />
+      <File FileName="delayed_job/sql/PostgreSQL.sql" Line="14" Column="2" />
+      <File FileName="delayed_job/sql/MySql.sql" Line="1" Column="1" />
+      <File FileName="delayed_job_test/JobTest.cs" Line="16" Column="95" />
       <File FileName="delayed_job/RepositoryMySQL.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryPostgreSQLTest.cs" Line="10" Column="88" />
+      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="12" Column="11" />
+      <File FileName="delayed_job/AssemblyInfo.cs" Line="9" Column="34" />
+      <File FileName="delayed_job/IRepository.cs" Line="1" Column="1" />
+      <File FileName="delayed_job/Job.cs" Line="1" Column="1" />
+      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="1" Column="1" />
       <File FileName="delayed_job/RepositoryMsSQL.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryMsSQLTest.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="1" Column="1" />
+      <File FileName="worker/AssemblyInfo.cs" Line="20" Column="32" />
+      <File FileName="worker/app.config" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="delayed_job" expanded="True">
-            <Node name="RepositoryMonoSQLite.cs" selected="True" />
-          </Node>
+          <Node name="delayed_job" expanded="True" />
           <Node name="delayed_job_tests" expanded="True" />
-          <Node name="worker" expanded="True" />
+          <Node name="worker" expanded="True">
+            <Node name="app.config" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -28,10 +34,13 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="delayed_job_tests" expanded="True">
             <Node name="DelayedJob" expanded="True">
               <Node name="JobTest" expanded="True" />
+              <Node name="RepositoryPostgreSQLTest" expanded="True">
+                <Node name="TestGetJob" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

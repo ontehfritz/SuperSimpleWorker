@@ -37,6 +37,7 @@
     <Compile Include="RepositoryMonoSQLiteTest.cs" />
     <Compile Include="RepositoryMsSQLTest.cs" />
     <Compile Include="RepositoryMySQLTest.cs" />
+    <Compile Include="RepositoryPostgreSQLTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

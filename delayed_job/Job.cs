@@ -164,7 +164,7 @@ namespace DelayedJob
 				_destroyFailedJobs = value;
 			}
 		}
-
+		//Set a default name a guid
 		private static string workerName = Guid.NewGuid().ToString(); 
 		/// <summary>
 		/// Gets or sets the name of the worker. This is useful for server reboots. If not set a guid is used, which 
@@ -243,7 +243,7 @@ namespace DelayedJob
 			}
 			catch(Exception e) {
 				Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
-				                   "#{3} failed attempts",_type,_assembly,e.Message,_attempts));
+				                   "{3} failed attempts",_type,_assembly,e.Message,_attempts));
 				return false;
 			}
 
@@ -322,12 +322,12 @@ namespace DelayedJob
 					job.perform ();
 					benchmark.Stop();
 					TimeSpan ts = benchmark.Elapsed;
-					Log(string.Format("* [JOB] #{0} completed after {1}",
+					Log(string.Format("* [JOB] {0} completed after {1}",
 					                  _type, (ts.TotalMilliseconds / 1000).ToString()));
 
 				} catch (Exception e) {
 					Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
-						"#{3} failed attempts",_type,_assembly,e.Message,_attempts));
+						"{3} failed attempts",_type,_assembly,e.Message,_attempts));
 					this.Reschedule (e.Message);
 					//throw e;
 					return false;
