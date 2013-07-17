@@ -7,7 +7,7 @@ namespace DelayedJob
 	public class RepositoryMsSQLTest
 	{
 		string connectionString = 
-			"Server=172.16.24.141;Database=delayed_job_test;User ID=;Password=";
+			"Server=172.16.24.136;Database=delayed_job_test;User ID=sa;Password=";
 
 		[Test()]
 		public void TestCreateJob()

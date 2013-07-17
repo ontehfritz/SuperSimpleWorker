@@ -108,8 +108,11 @@ namespace DelayJob.Worker
 				Job.WorkerName = args [0];
 			}
 
-			Assembly assembly = Assembly.Load("DelayedJob");
+			Assembly assembly = Assembly.Load(providerName);
 			Type type = assembly.GetType ("DelayedJob." + providerName);
+
+			//Assembly assembly = Assembly.Load("DelayedJob");
+			//Type type = assembly.GetType ("DelayedJob." + providerName);
 
 			Job.Repository = (IRepository)Activator.CreateInstance(type,connectionString);
 

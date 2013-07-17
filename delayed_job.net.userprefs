@@ -1,29 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="worker/app.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job_test/RepositoryPostgreSQLTest.cs">
     <Files>
-      <File FileName="delayed_job/RepositoryPostgreSQL.cs" Line="209" Column="24" />
-      <File FileName="delayed_job/sql/PostgreSQL.sql" Line="14" Column="2" />
+      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="209" Column="24" />
+      <File FileName="delayed_job/sql/PostgreSQL.sql" Line="1" Column="1" />
       <File FileName="delayed_job/sql/MySql.sql" Line="1" Column="1" />
-      <File FileName="delayed_job_test/JobTest.cs" Line="16" Column="95" />
-      <File FileName="delayed_job/RepositoryMySQL.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryPostgreSQLTest.cs" Line="10" Column="88" />
-      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="12" Column="11" />
-      <File FileName="delayed_job/AssemblyInfo.cs" Line="9" Column="34" />
-      <File FileName="delayed_job/IRepository.cs" Line="1" Column="1" />
+      <File FileName="worker/app.config" Line="1" Column="1" />
+      <File FileName="worker/Main.cs" Line="108" Column="31" />
       <File FileName="delayed_job/Job.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/RepositoryMonoSQLite.cs" Line="1" Column="1" />
-      <File FileName="delayed_job/RepositoryMsSQL.cs" Line="1" Column="1" />
-      <File FileName="worker/AssemblyInfo.cs" Line="20" Column="32" />
-      <File FileName="worker/app.config" Line="24" Column="1" />
+      <File FileName="RepositoryMonoSQLite/RepositoryMonoSQLite.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/JobTest.cs" Line="12" Column="26" />
+      <File FileName="RepositoryMsSQL/RepositoryMsSQL.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryMsSQLTest.cs" Line="15" Column="4" />
+      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="15" Column="4" />
+      <File FileName="RepositoryMySQL/RepositoryMySQL.cs" Line="4" Column="15" />
+      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="18" Column="9" />
+      <File FileName="delayed_job_test/RepositoryPostgreSQLTest.cs" Line="18" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="delayed_job" expanded="True" />
-          <Node name="delayed_job_tests" expanded="True" />
-          <Node name="worker" expanded="True">
-            <Node name="app.config" selected="True" />
+          <Node name="delayed_job_tests" expanded="True">
+            <Node name="References" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -34,16 +32,7 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="delayed_job_tests" expanded="True">
-            <Node name="DelayedJob" expanded="True">
-              <Node name="JobTest" expanded="True" />
-              <Node name="RepositoryPostgreSQLTest" expanded="True">
-                <Node name="TestGetJob" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="ConnectionManagerPad">
         <State selected="True" />

@@ -7,7 +7,7 @@ namespace DelayedJob
 	public class RepositoryMySQLTest
 	{
 		string connectionString = 
-			"Data Source=172.16.24.141;Database=delayed_job_test;User ID=;Password=";
+			"Data Source=172.16.24.160;Database=delayed_job_test;User ID=root;Password=";
 
 		[Test()]
 		public void TestCreateJob()

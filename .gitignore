@@ -1,3 +1,11 @@
+RepositoryPostgreSQL/bin/**/*
+RepositoryPostgreSQL/bin
+RepositoryMySQL/bin
+RepositoryMySQL/bin/**/*
+RepositoryMsSQL/bin
+RepositoryMsSQL/bin/**/*
+RepositoryMonoSQLite/bin
+RepositoryMonoSQLite/bin/**/*
 delayed_job_test/bin/**/*
 delayed_job_test/test-results
 test-results

@@ -7,7 +7,7 @@ namespace DelayedJob
 	public class RepositoryPostgreSQLTest
 	{
 		string connectionString = 
-			"Server=172.16.24.131;Port=5432;User Id=postgres;Password=;Database=delayed_job_test";
+			"Server=172.16.24.160;Port=5432;User Id=postgres;Password=;Database=delayed_job_test";
 
 		[Test()]
 		public void TestCreateJob()

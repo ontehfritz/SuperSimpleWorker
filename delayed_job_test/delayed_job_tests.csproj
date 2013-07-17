@@ -45,5 +45,21 @@
       <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
       <Name>delayed_job</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RepositoryMonoSQLite\RepositoryMonoSQLite.csproj">
+      <Project>{9D9335F0-126C-45D4-B346-309A60384C98}</Project>
+      <Name>RepositoryMonoSQLite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryMsSQL\RepositoryMsSQL.csproj">
+      <Project>{C162A269-9CDE-4457-BA6E-0FB44057256A}</Project>
+      <Name>RepositoryMsSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryMySQL\RepositoryMySQL.csproj">
+      <Project>{40EDD363-E2A0-4731-95EB-B6BC9E386E7E}</Project>
+      <Name>RepositoryMySQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryPostgreSQL\RepositoryPostgreSQL.csproj">
+      <Project>{B5919307-CCC8-4D99-A5CE-D3E1CA06EEED}</Project>
+      <Name>RepositoryPostgreSQL</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

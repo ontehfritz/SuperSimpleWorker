@@ -1,4 +1,4 @@
-# Delayed Job.net v0.1.1
+# Delayed Job.net v0.1.9
 ### Simple light weight background job runner
 
 Cross platform Status:
@@ -29,11 +29,13 @@ Like the ruby version of delayed_job some examples of use are:
 If you would like more in-depth information on use and FAQ please see the wiki: 
 https://github.com/fritzcoder/delayed_job.net/wiki
 
-There are two major components to Delayed_job.net:
+There are three major components to Delayed_job.net:
 
-1. The DelayedJob assembly which gives your program access to creating jobs for scheduling
+1. The DelayedJob.dll assembly which gives your program access to creating jobs for scheduling
 
-2. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. 
+2. Repository[databasename].dll assemblies, this gives DJ.Net and worker.exe access to an array of databases.
+
+3. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. 
 
 Some important notes:
 * worker.exe must currently be run on the same system as the code that is scheduling jobs. This is so it can resolve and deserialize the job objects.
@@ -46,9 +48,11 @@ Some important notes:
 
 2. Using MonoDevelop or Visual Studio reference the DelayedJob.dll
 
-3. Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.
+3. Copy a Repository[databasename].dll assembly in your bin folder and reference it with visual studio or MonoDevelop.
 
-4. Start creating jobs use The IJob interface and create your class:
+4. Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.
+
+5. Start creating jobs use The IJob interface and create your class:
 
 ```
 public class EmailJob : DelayedJob.IJob
