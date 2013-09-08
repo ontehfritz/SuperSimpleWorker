@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RepositoryMonoSQLite</RootNamespace>
     <AssemblyName>RepositoryMonoSQLite</AssemblyName>
+    <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

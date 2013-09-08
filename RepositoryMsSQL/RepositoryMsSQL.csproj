@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>RepositoryMsSQL</RootNamespace>
     <AssemblyName>RepositoryMsSQL</AssemblyName>
+    <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -60,5 +60,6 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = worker\worker.csproj
 		description = A .net port of the ruby on rails job runner delay_job
+		version = 0.1.9
 	EndGlobalSection
 EndGlobal
