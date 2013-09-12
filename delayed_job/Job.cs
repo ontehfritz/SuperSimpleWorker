@@ -33,7 +33,8 @@ namespace DelayedJob
 		/// <summary>
 		/// The inner report class is used to track how many successful and failed jobs. 
 		/// </summary>
-		public struct Report{
+		public struct Report
+		{
 			/// <summary>
 			/// The number of successful jobs
 			/// </summary>
@@ -61,7 +62,8 @@ namespace DelayedJob
 		/// If this is zero the ID has not been set. 
 		/// </summary>
 		/// <value>The ID</value>
-		public int ID{
+		public int ID
+		{
 			get {return _id;}
 			set {_id = value;}
 		}
@@ -70,7 +72,8 @@ namespace DelayedJob
 		/// Gets or sets the priority.
 		/// </summary>
 		/// <value>The priority.</value>
-		public int Priority{
+		public int Priority
+		{
 			get {return _priority;}
 			set {_priority = value;}
 		}
@@ -78,7 +81,8 @@ namespace DelayedJob
 		/// Gets or sets the attempts.
 		/// </summary>
 		/// <value>The attempts.</value>
-		public int Attempts{
+		public int Attempts
+		{
 			get {return _attempts;}
 			set {_attempts = value;}
 		}
@@ -86,7 +90,8 @@ namespace DelayedJob
 		/// Gets or sets the handler.
 		/// </summary>
 		/// <value>The handler.</value>
-		public string Handler{
+		public string Handler
+		{
 			get {return _handler; }
 			set {_handler = value; }
 		}
@@ -94,7 +99,8 @@ namespace DelayedJob
 		/// Gets or sets the last error.
 		/// </summary>
 		/// <value>The last error.</value>
-		public string LastError{
+		public string LastError
+		{
 			get { return _last_error; }
 			set {_last_error = value; }
 		}
@@ -102,7 +108,8 @@ namespace DelayedJob
 		/// Gets or sets the run at.
 		/// </summary>
 		/// <value>The run at.</value>
-		public DateTime? RunAt{
+		public DateTime? RunAt
+		{
 			get { return _run_at; }
 			set {_run_at = value; }
 		}
@@ -110,7 +117,8 @@ namespace DelayedJob
 		/// Gets or sets the locked at.
 		/// </summary>
 		/// <value>The locked at.</value>
-		public DateTime? LockedAt{
+		public DateTime? LockedAt
+		{
 			get { return _locked_at; }
 			set {_locked_at = value; }
 		}
@@ -118,7 +126,8 @@ namespace DelayedJob
 		/// Gets or sets the failed at.
 		/// </summary>
 		/// <value>The failed at.</value>
-		public DateTime? FailedAt{
+		public DateTime? FailedAt
+		{
 			get { return _failed_at; }
 			set {_failed_at = value; }
 		}
@@ -126,7 +135,8 @@ namespace DelayedJob
 		/// Gets or sets the locked by.
 		/// </summary>
 		/// <value>The locked by.</value>
-		public string LockedBy{
+		public string LockedBy
+		{
 			get { return _locked_by; }
 			set {_locked_by = value; }
 		}
@@ -134,7 +144,8 @@ namespace DelayedJob
 		/// Gets or sets the type of the object.
 		/// </summary>
 		/// <value>The type of the object.</value>
-		public string ObjectType{
+		public string ObjectType
+		{
 			get { return _type; }
 			set {_type = value; }
 		}
@@ -142,7 +153,8 @@ namespace DelayedJob
 		/// Gets or sets the job assembly.
 		/// </summary>
 		/// <value>The job assembly.</value>
-		public string JobAssembly{
+		public string JobAssembly
+		{
 			get { return _assembly; }
 			set {_assembly = value; }
 		}
@@ -157,10 +169,12 @@ namespace DelayedJob
 		/// <value><c>true</c> if destroy failed jobs; otherwise, <c>false</c>.</value>
 		public bool DestroyFailedJobs
 		{
-			get{
+			get
+			{
 				return _destroyFailedJobs;
 			}
-			set{
+			set
+			{
 				_destroyFailedJobs = value;
 			}
 		}
@@ -171,11 +185,14 @@ namespace DelayedJob
 		/// will be different each time the worker service is restarted. 
 		/// </summary>
 		/// <value>The name of the worker.</value>
-		public static string WorkerName{
-			get{
+		public static string WorkerName
+		{
+			get
+			{
 				return workerName;
 			}
-			set{
+			set
+			{
 				workerName = value;
 			}
 		}
@@ -193,7 +210,8 @@ namespace DelayedJob
 		private void Log(string message)
 		{
 			using (System.IO.StreamWriter file = 
-			       new System.IO.StreamWriter(workerName + ".log",true)) {
+			       new System.IO.StreamWriter(workerName + ".log",true)) 
+			{
 				file.WriteLine (message);
 			}
 		}
@@ -203,8 +221,10 @@ namespace DelayedJob
 		/// </summary>
 		/// <param name="message">Message.</param>
 		/// <param name="time">Time.</param>
-		public void Reschedule(string message, DateTime? time = null){
-			if(_attempts < MAX_ATTEMPTS){
+		public void Reschedule(string message, DateTime? time = null)
+		{
+			if(_attempts < MAX_ATTEMPTS)
+			{
 				time = (time == null ? DateTime.Now.AddSeconds(_attempts ^ 4 + 5) : time );
 				_attempts += 1;
 				_run_at = time;
@@ -212,7 +232,8 @@ namespace DelayedJob
 				this.unlock(); 
 				_repository.UpdateJob(this);
 			}
-			else{
+			else
+			{
 				Log (string.Format("* [Job] PERMANENTLY removing {0} because of {1} consecutive failures.",
 				                   _type, _attempts));
 				if(_destroyFailedJobs){
@@ -227,7 +248,8 @@ namespace DelayedJob
 		/// <summary>
 		/// Unlock this instance.
 		/// </summary>
-		private void unlock(){
+		private void unlock()
+		{
 			_locked_at = null;
 			_locked_by = null;
 		}
@@ -235,7 +257,8 @@ namespace DelayedJob
 		/// Locks the exclusively.
 		/// </summary>
 		/// <returns><c>true</c>, if exclusively was locked, <c>false</c> otherwise.</returns>
-		public bool LockExclusively(){
+		public bool LockExclusively()
+		{
 			_locked_by = workerName;
 			_locked_at = DateTime.Now;
 			try{
@@ -252,7 +275,8 @@ namespace DelayedJob
 		/// <summary>
 		/// Clears the locks.
 		/// </summary>
-		public static void ClearLocks(){
+		public static void ClearLocks()
+		{
 			_repository.ClearJobs(workerName);
 		}
 		/// <summary>
@@ -260,14 +284,16 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>The available.</returns>
 		/// <param name="limit">Limit.</param>
-		public static Job[] FindAvailable(int limit = 5){
+		public static Job[] FindAvailable(int limit = 5)
+		{
 			return _repository.GetNextReadyJobs(limit);
 		}
 		/// <summary>
 		/// Reserves the and run one job.
 		/// </summary>
 		/// <returns>The and run one job.</returns>
-		public static bool? ReserveAndRunOneJob(){
+		public static bool? ReserveAndRunOneJob()
+		{
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
 			foreach(Job job in jobs){
@@ -285,19 +311,24 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>The off.</returns>
 		/// <param name="num">Number.</param>
-		public static Report WorkOff(int num = 100){
+		public static Report WorkOff(int num = 100)
+		{
 			Report report = new Report();
 
-			for(int i = 0; i < num; i++){
+			for(int i = 0; i < num; i++)
+			{
 				bool? work = Job.ReserveAndRunOneJob ();
 
-				if(work == true){
+				if(work == true)
+				{
 					report.success++;
 				}
-				else if(work == false){
+				else if(work == false)
+				{
 					report.failure++;
 				}
-				else{
+				else
+				{
 					break;
 				}
 			}
@@ -308,10 +339,13 @@ namespace DelayedJob
 		/// Runs the with lock.
 		/// </summary>
 		/// <returns><c>true</c>, if with lock was run, <c>false</c> otherwise.</returns>
-		public bool RunWithLock(){
+		public bool RunWithLock()
+		{
 			Log (string.Format ("* [JOB] aquiring lock on {0}",_type));
-			if (this.LockExclusively()) {
-				try {
+			if (this.LockExclusively()) 
+			{
+				try 
+				{
 					Type types = Assembly.LoadFrom (_assembly).GetType (_type, true);
 					//ConstructorInfo ci = type.GetConstructor(Type.EmptyTypes);
 					XmlSerializer serializer = new XmlSerializer (types);
@@ -325,14 +359,18 @@ namespace DelayedJob
 					Log(string.Format("* [JOB] {0} completed after {1}",
 					                  _type, (ts.TotalMilliseconds / 1000).ToString()));
 
-				} catch (Exception e) {
+				} 
+				catch (Exception e) 
+				{
 					Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
 						"{3} failed attempts",_type,_assembly,e.Message,_attempts));
 					this.Reschedule (e.Message);
 					//throw e;
 					return false;
 				}
-			} else {
+			} 
+			else 
+			{
 				Log (string.Format ("* [JOB] failed to aquire exclusive lock for {0}",_type));
 				return false;
 			}
@@ -355,15 +393,20 @@ namespace DelayedJob
 		/// </param>
 		public static Job Enqueue(IJob job, int priority = 0, 
 		                           DateTime? run_at = null,
-		                           string dllPath = null){
+		                           string dllPath = null)
+		{
 			Job newJob = new Job();
 			newJob.Priority = priority;
 			newJob.ObjectType = ParseType(job.GetType());
-			if (dllPath == null) {
+			if (dllPath == null) 
+			{
 				newJob.JobAssembly = System.Reflection.Assembly.GetAssembly (job.GetType()).Location;
-			} else {
+			} 
+			else 
+			{
 				newJob.JobAssembly = dllPath;
 			}
+
 			newJob.LastError = null;
 			newJob.Handler = SerializeToXml(job);
 			newJob.RunAt = (run_at == null ? DateTime.Now : (DateTime)run_at);
@@ -377,7 +420,8 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>The to xml.</returns>
 		/// <param name="job">Job.</param>
-		private static string SerializeToXml(IJob job){
+		private static string SerializeToXml(IJob job)
+		{
 			StringWriter writer = new StringWriter(CultureInfo.InvariantCulture);
 			XmlSerializer serializer = new XmlSerializer(job.GetType());
 			serializer.Serialize(writer, job);
@@ -389,7 +433,8 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>The type.</returns>
 		/// <param name="type">Type.</param>
-		private static string ParseType(Type type){
+		private static string ParseType(Type type)
+		{
 			if (type.AssemblyQualifiedName == null)
 				throw new ArgumentException("Assembly Qualified Name is null");
 

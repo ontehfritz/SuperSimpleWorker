@@ -4,7 +4,8 @@ namespace DelayedJob
 	/// <summary>
 	/// This interface is used for creating repositories for a database.
 	/// </summary>
-	public interface IRepository{
+	public interface IRepository
+	{
 		/// <summary>
 		/// Pass a job object and that object will be created in the database. 
 		/// </summary>

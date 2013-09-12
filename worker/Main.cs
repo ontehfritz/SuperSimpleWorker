@@ -64,39 +64,45 @@ namespace DelayJob.Worker
 		/// <param name="args">The command-line arguments. 1 arg can be supplied. This arguement is the name of the
 		/// worker. 
 		/// </param>
-		public static void Main (string[] args){
-
+		public static void Main (string[] args)
+		{
 			int platformID = (int) Environment.OSVersion.Platform;
 			//platformIDs 4, 6, 128 *nix based systems
 			//Environment.UserInteractive always false when running under mono
 			if (Environment.UserInteractive ||
 			    ((platformID == 4) || 
 			 	 (platformID == 6) || 
-			 	 (platformID == 128))){
+			 	 (platformID == 128)))
+			{
 
-				try {
+				try 
+				{
 					Start (args);
 					//keep the program looping so the timer can run
 					//timer must be used when worker is installed as 
 					//a service.
-					while(work){
+					while(work){}
 
-					}
-				} catch (Exception e) {
+				}
+				catch (Exception e) 
+				{
 					throw e;
-				} finally {
+				} 
+				finally 
+				{
 					Stop ();
 				}
 
 				Console.WriteLine ("Exiting ...");
 
-			}else {
+			}
+			else 
+			{
 				//Console.WriteLine("Service");
 				// running as service
 				using (var service = new WorkerService())
 					ServiceBase.Run (service);
 			}
-
 		}
 
 		private static void Start(string[] args)
@@ -104,7 +110,8 @@ namespace DelayJob.Worker
 			string connectionString = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ConnectionString;
 			string providerName = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ProviderName;
 
-			if (args.Length > 0) {
+			if (args.Length > 0) 
+			{
 				Job.WorkerName = args [0];
 			}
 
@@ -119,7 +126,8 @@ namespace DelayJob.Worker
 			//Console.WriteLine (connectionString);
 			Console.WriteLine (providerName);
 
-			Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e) {
+			Console.CancelKeyPress += delegate(object sender, ConsoleCancelEventArgs e) 
+			{
 				e.Cancel = true;
 				work = false;
 			};
@@ -142,10 +150,13 @@ namespace DelayJob.Worker
 			TimeSpan ts = benchmark.Elapsed;
 
 			if (report.failure == 0 &&
-				report.success == 0) {
+				report.success == 0) 
+			{
 					//sleep if no jobs. 1000, is milliseconds * how many seconds 
 				System.Threading.Thread.Sleep (SLEEP * 1000); 
-			} else {
+			} 
+			else 
+			{
 				//if jobs have run then print out a report on success and failures
 				int count = report.success + report.failure;
 				double jobsPerSecond = (((double)ts.Milliseconds) / (count * 1.0)) / 1000;
