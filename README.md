@@ -3,11 +3,8 @@
 
 Cross platform Status:
 
-OSX: **PASS**
-
-Ubuntu: **PASS**
-
-Windows: **PASS** 
+Mono 3.2.1
+[![Build Status](https://travis-ci.org/fritzcoder/delayed_job.net.png?branch=master)](https://travis-ci.org/fritzcoder/delayed_job.net)
 
 This is ported and inspired from the original project:
 https://github.com/tobi/delayed_job
