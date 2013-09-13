@@ -12,3 +12,10 @@ test-results
 delayed_job/bin
 worker/bin/**/*
 worker/bin
+RepositoryMonoSQLite/obj/
+RepositoryMsSQL/obj/
+RepositoryMySQL/obj/
+RepositoryPostgreSQL/obj/
+delayed_job/obj/
+delayed_job_test/obj/
+worker/obj
