@@ -11,4 +11,4 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-3.2.1_1.macos10.xamarin.x86.pkg" -target /
 
 script:
- - xbuild xbuild.prog
+ -  xbuild xbuild.proj
