@@ -52,8 +52,14 @@ namespace DelayedJob
 		/// <value>The repository.</value>
 		public static IRepository  Repository
 		{
-			get {return _repository;}
-			set {_repository = value; }
+			get 
+			{
+				return _repository;
+			}
+			set 
+			{
+				_repository = value; 
+			}
 		}
 
 		/// <summary>
@@ -64,8 +70,14 @@ namespace DelayedJob
 		/// <value>The ID</value>
 		public int ID
 		{
-			get {return _id;}
-			set {_id = value;}
+			get 
+			{
+				return _id;
+			}
+			set 
+			{
+				_id = value;
+			}
 		}
 
 		/// <summary>
@@ -74,8 +86,14 @@ namespace DelayedJob
 		/// <value>The priority.</value>
 		public int Priority
 		{
-			get {return _priority;}
-			set {_priority = value;}
+			get 
+			{
+				return _priority;
+			}
+			set 
+			{
+				_priority = value;
+			}
 		}
 		/// <summary>
 		/// Gets or sets the attempts.
@@ -83,8 +101,14 @@ namespace DelayedJob
 		/// <value>The attempts.</value>
 		public int Attempts
 		{
-			get {return _attempts;}
-			set {_attempts = value;}
+			get 
+			{
+				return _attempts;
+			}
+			set 
+			{
+				_attempts = value;
+			}
 		}
 		/// <summary>
 		/// Gets or sets the handler.
@@ -92,8 +116,14 @@ namespace DelayedJob
 		/// <value>The handler.</value>
 		public string Handler
 		{
-			get {return _handler; }
-			set {_handler = value; }
+			get 
+			{
+				return _handler; 
+			}
+			set 
+			{
+				_handler = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the last error.
@@ -101,8 +131,14 @@ namespace DelayedJob
 		/// <value>The last error.</value>
 		public string LastError
 		{
-			get { return _last_error; }
-			set {_last_error = value; }
+			get 
+			{ 
+				return _last_error; 
+			}
+			set 
+			{
+				_last_error = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the run at.
@@ -110,8 +146,14 @@ namespace DelayedJob
 		/// <value>The run at.</value>
 		public DateTime? RunAt
 		{
-			get { return _run_at; }
-			set {_run_at = value; }
+			get 
+			{ 
+				return _run_at; 
+			}
+			set 
+			{
+				_run_at = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the locked at.
@@ -119,8 +161,14 @@ namespace DelayedJob
 		/// <value>The locked at.</value>
 		public DateTime? LockedAt
 		{
-			get { return _locked_at; }
-			set {_locked_at = value; }
+			get 
+			{ 
+				return _locked_at; 
+			}
+			set 
+			{
+				_locked_at = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the failed at.
@@ -128,8 +176,14 @@ namespace DelayedJob
 		/// <value>The failed at.</value>
 		public DateTime? FailedAt
 		{
-			get { return _failed_at; }
-			set {_failed_at = value; }
+			get 
+			{ 
+				return _failed_at; 
+			}
+			set 
+			{
+				_failed_at = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the locked by.
@@ -137,8 +191,14 @@ namespace DelayedJob
 		/// <value>The locked by.</value>
 		public string LockedBy
 		{
-			get { return _locked_by; }
-			set {_locked_by = value; }
+			get 
+			{ 
+				return _locked_by; 
+			}
+			set 
+			{
+				_locked_by = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the type of the object.
@@ -146,8 +206,14 @@ namespace DelayedJob
 		/// <value>The type of the object.</value>
 		public string ObjectType
 		{
-			get { return _type; }
-			set {_type = value; }
+			get 
+			{ 
+				return _type; 
+			}
+			set 
+			{
+				_type = value; 
+			}
 		}
 		/// <summary>
 		/// Gets or sets the job assembly.
@@ -155,8 +221,14 @@ namespace DelayedJob
 		/// <value>The job assembly.</value>
 		public string JobAssembly
 		{
-			get { return _assembly; }
-			set {_assembly = value; }
+			get 
+			{ 
+				return _assembly; 
+			}
+			set 
+			{
+				_assembly = value; 
+			}
 		}
 		/*Object attributes */ 
 		const int MAX_ATTEMPTS = 25;
@@ -261,10 +333,12 @@ namespace DelayedJob
 		{
 			_locked_by = workerName;
 			_locked_at = DateTime.Now;
-			try{
+			try
+			{
 				_repository.UpdateJob(this);
 			}
-			catch(Exception e) {
+			catch(Exception e) 
+			{
 				Log (string.Format("* [JOB] {0} failed with {1}: {2} -" + 
 				                   "{3} failed attempts",_type,_assembly,e.Message,_attempts));
 				return false;
@@ -296,9 +370,11 @@ namespace DelayedJob
 		{
 			Job [] jobs = Job.FindAvailable();
 			bool t = false;
-			foreach(Job job in jobs){
+			foreach(Job job in jobs)
+			{
 				t = job.RunWithLock();
-				if (t == true) {
+				if (t == true) 
+				{
 					_repository.Remove (job.ID);
 				}
 				return t;

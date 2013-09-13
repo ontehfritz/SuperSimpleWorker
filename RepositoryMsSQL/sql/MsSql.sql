@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[delayed_jobs](
 	[type] [varchar](255) NULL,
 	[priority] [int] NULL,
 	[attempts] [int] NULL,
-	[handler] [varchar](255) NULL,
+	[handler] [varchar](max) NULL,
 	[last_error] [varchar](255) NULL,
 	[run_at] [datetime] NULL,
 	[locked_at] [datetime] NULL,

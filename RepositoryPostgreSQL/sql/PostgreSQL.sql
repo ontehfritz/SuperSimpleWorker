@@ -4,7 +4,7 @@ CREATE TABLE delayed_jobs(
 	type varchar(255), 
 	priority integer default 0, 
 	attempts integer default 0,  
-	handler varchar(255), 
+	handler varchar(65535), 
 	last_error varchar(255), 
 	run_at timestamp default null, 
 	locked_at timestamp default null, 

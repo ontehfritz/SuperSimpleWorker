@@ -14,12 +14,15 @@ namespace DelayedJob
 		/// Gets or sets the connection string.
 		/// </summary>
 		/// <value>The connection string.</value>
-		public string ConnectionString{
-			get {
+		public string ConnectionString
+        {
+			get 
+            {
 				return _connectionString;
 			}
 
-			set{
+			set
+            {
 				_connectionString = value;
 			}
 		}
@@ -32,16 +35,18 @@ namespace DelayedJob
 		/// Initializes a new instance of the <see cref="DelayedJob.RepositoryMySQL"/> class.
 		/// </summary>
 		/// <param name="connectionString">Connection string.</param>
-		public RepositoryMySQL(string connectionString){
+		public RepositoryMySQL(string connectionString)
+        {
 			_connectionString = connectionString;
 		}
 		/// <summary>
 		/// Remove the specified job with ID.
 		/// </summary>
 		/// <param name="jobID">Job I.</param>
-		public void Remove(int jobID){
-
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+		public void Remove(int jobID)
+        {
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -63,10 +68,12 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>.</returns>
 		/// <param name="limit">Limit is how many jobs will be returned</param>
-		public Job[] GetNextReadyJobs(int limit = 1){
+		public Job[] GetNextReadyJobs(int limit = 1)
+        {
 			List<Job> jobs = new List<Job>();
 
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -82,12 +89,14 @@ namespace DelayedJob
 				Job job = new Job();
 				IDataReader reader = dbcmd.ExecuteReader();
 
-				while(reader.Read()) {
+				while(reader.Read()) 
+                {
 					job = new Job();
 					job.Attempts = int.Parse(reader["attempts"].ToString());
 					job.ID = int.Parse(reader["id"].ToString());
 
-					if(reader["failed_at"].ToString() != ""){
+					if(reader["failed_at"].ToString() != "")
+                    {
 						job.FailedAt = DateTime.Parse(reader["failed_at"].ToString());
 					}
 
@@ -96,7 +105,8 @@ namespace DelayedJob
 					job.Handler = reader["handler"].ToString();
 					job.LastError = reader["last_error"].ToString();
 
-					if(reader["locked_at"].ToString() != ""){
+					if(reader["locked_at"].ToString() != "")
+                    {
 						job.LockedAt = DateTime.Parse(reader["locked_at"].ToString());
 					}
 
@@ -117,8 +127,10 @@ namespace DelayedJob
 		/// Updates the job.
 		/// </summary>
 		/// <param name="job">Job.</param>
-		public void UpdateJob(Job job){
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+		public void UpdateJob(Job job)
+        {
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -154,8 +166,10 @@ namespace DelayedJob
 		/// Clears the jobs.
 		/// </summary>
 		/// <param name="workerName">Worker name.</param>
-		public void ClearJobs(string workerName){
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+		public void ClearJobs(string workerName)
+        {
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -179,8 +193,10 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>After creation of the object it will return the object with its ID</returns>
 		/// <param name="job">Job.</param>
-		public Job CreateJob(Job job){
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+		public Job CreateJob(Job job)
+        {
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -236,10 +252,12 @@ namespace DelayedJob
 		/// </summary>
 		/// <returns>A job object with that has the id provided.</returns>
 		/// <param name="pid">Pid.</param>
-		public Job GetJob(int pid){
+		public Job GetJob(int pid)
+        {
 			Job job = new Job();
 
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -250,19 +268,22 @@ namespace DelayedJob
 				dbcmd.Parameters.AddWithValue("@pid",pid);
 
 				IDataReader reader = dbcmd.ExecuteReader();
-				while(reader.Read()) {
+				while(reader.Read()) 
+                {
 					job.Attempts = int.Parse(reader["attempts"].ToString());
 					job.ID = int.Parse(reader["id"].ToString());
 					job.ObjectType = reader["type"].ToString();
 					job.JobAssembly = reader["assembly"].ToString();
 
-					if(reader["failed_at"].ToString() != ""){
+					if(reader["failed_at"].ToString() != "")
+                    {
 						job.FailedAt = DateTime.Parse(reader["failed_at"].ToString());
 					}
 					job.Handler = reader["handler"].ToString();
 					job.LastError = reader["last_error"].ToString();
 
-					if(reader["failed_at"].ToString() != ""){
+					if(reader["failed_at"].ToString() != "")
+                    {
 						job.LockedAt = DateTime.Parse(reader["locked_at"].ToString());
 					}
 
@@ -278,10 +299,12 @@ namespace DelayedJob
 		/// This will get all jobs.
 		/// </summary>
 		/// <returns>an array of job objects</returns>
-		public Job[] GetJobs(){
+		public Job[] GetJobs()
+        {
 			List<Job> jobs = new List<Job>();
 
-			using(MySqlConnection dbcon = new MySqlConnection(_connectionString)){
+			using(MySqlConnection dbcon = new MySqlConnection(_connectionString))
+            {
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
@@ -291,19 +314,22 @@ namespace DelayedJob
 
 				IDataReader reader = dbcmd.ExecuteReader();
 				Job job = new Job();
-				while(reader.Read()) {
+				while(reader.Read()) 
+                {
 					job = new Job();
 					job.ObjectType = reader["type"].ToString();
 					job.JobAssembly = reader["assembly"].ToString();
 					job.Attempts = int.Parse(reader["attempts"].ToString());
 					job.ID = int.Parse(reader["id"].ToString());
-					if (reader ["failed_at"].ToString () != "") {
+					if (reader ["failed_at"].ToString () != "") 
+                    {
 						job.FailedAt = DateTime.Parse (reader["failed_at"].ToString());
 					}
 					job.Handler = reader["handler"].ToString();
 					job.LastError = reader["last_error"].ToString();
 
-					if (reader ["locked_at"].ToString () != "") {
+					if (reader ["locked_at"].ToString () != "") 
+                    {
 						job.LockedAt = DateTime.Parse (reader["locked_at"].ToString());
 					}
 
