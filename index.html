@@ -14,8 +14,8 @@
   <body>
     <header>
       <div class="container">
-        <h1><img src="https://f.cloud.github.com/assets/875813/788006/e75df426-eaee-11e2-98a2-a3270d43960d.png" alt="delayed_job.net"/>
-        delayed_job.net</h1>
+        <h1><img src="https://f.cloud.github.com/assets/875813/788006/e75df426-eaee-11e2-98a2-a3270d43960d.png" alt="SuperSimpleWorker"/>
+        SuperSimpleWorker (delayed_job.net)</h1>
         <h2>A simple light weight background job worker</h2>
         <i>A port of delayed_job for Mono and Microsoft .NET</i>
 
@@ -48,7 +48,7 @@
 <p>There are three major components to SuperSimpleWorker(SSW):</p>
 
 <ol>
-<li><p>The DelayedJob assembly which gives your program access to creating jobs for scheduling</p></li>
+<li><p>The SuperSimpleWorker assembly which gives your program access to creating jobs for scheduling</p></li>
 <li>
 	<p>
 		Repository[databasename].dll assemblies, this gives SSW and worker.exe access to an array of databases.						
@@ -69,7 +69,7 @@
 <a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <ul>
-<li>Copy the DelayedJob.dll in your project bin folder.</li>
+<li>Copy the SuperSimpleWorker.dll in your project bin folder.</li>
 <li>Using MonoDevelop or Visual Studio reference the DelayedJob.dll</li>
 <li>
 	Copy a Repository[databasename].dll assembly in your bin folder and reference it with visual studio or MonoDevelop.
@@ -77,7 +77,7 @@
 <li>Create the delayed_job table in one of the supported databases. The sql table script can be found in the 
 sql folder.</li>
 <li>Start creating jobs use The IJob interface and create your class:</li>
-</ul><pre><code>public class EmailJob : DelayedJob.IJob
+</ul><pre><code>public class EmailJob : IJob
 {
     //Make sure information you want to persist in the database is public
     //There is no way to serialize and deserialize private data.
@@ -149,7 +149,7 @@ run worker process by:</li>
 <p>Please see the wiki for more detailed information. </p>
 
 <p>Please report questions, feature requests and bugs to: 
-<a href="https://github.com/fritzcoder/delayed_job.net/issues">https://github.com/fritzcoder/delayed_job.net/issues</a></p>
+<a href="https://github.com/fritzcoder/SuperSimpleWorker/issues">https://github.com/fritzcoder/delayed_job.net/issues</a></p>
       </section>
     </div>
   </body>
