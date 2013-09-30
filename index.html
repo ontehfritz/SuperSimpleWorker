@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>delayed_job.net by Fritz (Fredrick Seitz)</title>
+    <title>Suoer Simple Worker (delayed_job.net) by Fritz (Fredrick Seitz)</title>
   </head>
 
   <body>
@@ -20,9 +20,9 @@
         <i>A port of delayed_job for Mono and Microsoft .NET</i>
 
         <section id="downloads">
-          <a href="https://github.com/fritzcoder/delayed_job.net/releases/download/v0.1.9/delayed_job.net.zip" class="btn">
+          <a href="https://github.com/fritzcoder/SuperSimpleWorker/releases/download/v0.1.9/delayed_job.net.zip" class="btn">
           Download Pre-compiled</a>
-          <a href="https://github.com/fritzcoder/delayed_job.net" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+          <a href="https://github.com/fritzcoder/SuperSimpleWorker" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
           <a href="https://github.com/fritzcoder/delayed_job.net_examples/archive/master.zip" class="btn">
           Download Examples</a>
         </section>
@@ -34,27 +34,24 @@
         <h1>
 <a name="delayed-jobnet-v01b" class="anchor" href="#delayed-jobnet-v01b">
 <span class="octicon octicon-link"></span></a>v0.1.9 <a href="en/index.html" class="btn">API Docs</a></h1>
-<p>Cross platform Status:
-OSX: <strong>PASS</strong><br />
-Ubuntu: <strong>PASS</strong><br />
-Windows: <strong>PASS</strong><br /> </p>
 
-<p>Delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background.</p>
+
+<p>SuperSimpleWorker or SSW (formly delayed_job.net) encapsulates the common pattern of asynchronously executing longer tasks in the background.</p>
 
 <p>This is ported and inspired from the original project:
 <a href="https://github.com/tobi/delayed_job">https://github.com/tobi/delayed_job</a></p>
 
 <p>If you would like more in-depth information on use and FAQ please see the wiki: </p>
 
-<p><a href="https://github.com/fritzcoder/delayed_job.net/wiki">https://github.com/fritzcoder/delayed_job.net/wiki</a></p>
+<p><a href="https://github.com/fritzcoder/SuperSimpleWorker/wiki">https://github.com/fritzcoder/SuperSimpleWorker/wiki</a></p>
 
-<p>There are three major components to Delayed_job.net:</p>
+<p>There are three major components to SuperSimpleWorker(SSW):</p>
 
 <ol>
 <li><p>The DelayedJob assembly which gives your program access to creating jobs for scheduling</p></li>
 <li>
 	<p>
-		Repository[databasename].dll assemblies, this gives DJ.Net and worker.exe access to an array of databases.						
+		Repository[databasename].dll assemblies, this gives SSW and worker.exe access to an array of databases.						
 	</p>
 </li>
 <li><p>worker.exe, this runs the jobs scheduled by your program. It can be run in the background.</p></li>
