@@ -8,7 +8,7 @@
     <ProjectGuid>{683FC90B-874A-4B0A-93F1-E4334D65B27F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>SuperSimple.Worker</RootNamespace>
-    <AssemblyName>delay_job_test</AssemblyName>
+    <AssemblyName>ssw_test</AssemblyName>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

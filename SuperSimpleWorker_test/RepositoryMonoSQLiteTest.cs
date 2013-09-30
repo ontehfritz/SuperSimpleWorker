@@ -13,7 +13,7 @@ namespace SuperSimple.Worker
 	public class RepositoryMonoSQLiteTest
 	{
 		string connectionString = 
-				"URI=file:ssw.db";
+            "URI=file:ssw.db";
 
 		[Test()]
 		public void TestCreateJob()
@@ -38,8 +38,8 @@ namespace SuperSimple.Worker
 		{
 			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
 
-			Job job = db.GetJob(2);
-			Assert.AreEqual(2, job.ID);
+			Job job = db.GetJob(3);
+			Assert.AreEqual(3, job.ID);
 		}
 
 		[Test()]

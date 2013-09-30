@@ -1,33 +1,35 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job_test/JobTest.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SuperSimpleWorker_test/JobTest.cs">
     <Files>
-      <File FileName="delayed_job_test/JobTest.cs" Line="1" Column="1" />
-      <File FileName="worker/Main.cs" Line="8" Column="26" />
-      <File FileName="delayed_job/Job.cs" Line="6" Column="18" />
-      <File FileName="worker/app.config" Line="12" Column="21" />
-      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="9" Column="16" />
-      <File FileName="delayed_job_test/RepositoryMonoSQLiteTest.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryMsSQLTest.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="1" Column="1" />
-      <File FileName="delayed_job_test/RepositoryPostgreSQLTest.cs" Line="1" Column="1" />
+      <File FileName="worker/Main.cs" Line="11" Column="26" />
+      <File FileName="worker/app.config" Line="21" Column="98" />
+      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="309" Column="38" />
       <File FileName="worker/AssemblyInfo.cs" Line="10" Column="54" />
-      <File FileName="delayed_job/IJob.cs" Line="3" Column="15" />
-      <File FileName="delayed_job/IRepository.cs" Line="2" Column="2" />
-      <File FileName="RepositoryMonoSQLite/RepositoryMonoSQLite.cs" Line="2" Column="29" />
-      <File FileName="RepositoryMsSQL/RepositoryMsSQL.cs" Line="1" Column="29" />
-      <File FileName="RepositoryMySQL/RepositoryMySQL.cs" Line="1" Column="29" />
-      <File FileName="RepositoryMonoSQLite/sql/SQLite.sql" Line="1" Column="1" />
-      <File FileName="RepositoryMsSQL/sql/MsSql.sql" Line="1" Column="1" />
-      <File FileName="RepositoryMySQL/sql/MySql.sql" Line="1" Column="1" />
-      <File FileName="RepositoryPostgreSQL/sql/PostgreSQL.sql" Line="7" Column="23" />
-      <File FileName="delayed_job/AssemblyInfo.cs" Line="22" Column="40" />
+      <File FileName="RepositoryMonoSQLite/RepositoryMonoSQLite.cs" Line="318" Column="38" />
+      <File FileName="RepositoryMsSQL/RepositoryMsSQL.cs" Line="348" Column="38" />
+      <File FileName="RepositoryMySQL/RepositoryMySQL.cs" Line="311" Column="38" />
+      <File FileName="RepositoryMonoSQLite/sql/SQLite.sql" Line="4" Column="5" />
+      <File FileName="RepositoryMsSQL/sql/MsSql.sql" Line="6" Column="24" />
+      <File FileName="RepositoryMySQL/sql/MySql.sql" Line="1" Column="17" />
+      <File FileName="RepositoryPostgreSQL/sql/PostgreSQL.sql" Line="1" Column="17" />
+      <File FileName="SuperSimpleWorker_test/JobTest.cs" Line="11" Column="86" />
+      <File FileName="SuperSimpleWorker/IJob.cs" Line="1" Column="1" />
+      <File FileName="SuperSimpleWorker/IRepository.cs" Line="1" Column="1" />
+      <File FileName="SuperSimpleWorker/Job.cs" Line="1" Column="1" />
+      <File FileName="SuperSimpleWorker_test/RepositoryMonoSQLiteTest.cs" Line="16" Column="18" />
+      <File FileName="SuperSimpleWorker_test/RepositoryMsSQLTest.cs" Line="10" Column="38" />
+      <File FileName="SuperSimpleWorker_test/RepositoryMySQLTest.cs" Line="10" Column="43" />
+      <File FileName="SuperSimpleWorker_test/RepositoryPostgreSQLTest.cs" Line="10" Column="75" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="SuperSimpleWorker_tests" expanded="True" selected="True" />
-          <Node name="worker" expanded="True" />
+          <Node name="RepositoryMonoSQLite" expanded="True">
+            <Node name="sql" expanded="True" />
+          </Node>
+          <Node name="SuperSimpleWorker_tests" expanded="True" />
+          <Node name="worker" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -37,7 +39,15 @@
         <State />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="SuperSimpleWorker_tests" expanded="True">
+            <Node name="SuperSimple" expanded="True">
+              <Node name="Worker" expanded="True">
+                <Node name="JobTest" expanded="True" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ConnectionManagerPad">
         <State selected="True" />

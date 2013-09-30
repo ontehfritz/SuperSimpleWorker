@@ -8,7 +8,7 @@
     <ProjectGuid>{8A0D11EF-65E8-4876-A322-2BAC9E028DA3}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>worker</RootNamespace>
-    <AssemblyName>worker</AssemblyName>
+    <AssemblyName>ssworker</AssemblyName>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

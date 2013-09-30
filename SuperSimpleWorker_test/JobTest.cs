@@ -8,7 +8,7 @@ namespace SuperSimple.Worker
 	[TestFixture()]
 	public class JobTest
 	{
-		IRepository repo = new RepositoryMonoSQLite("URI=file:ssw.db");
+        IRepository repo = new RepositoryMonoSQLite("URI=file:ssw.db");
 		//IRepository repo = 
 			//new RepositoryMySQL("Data Source=172.16.24.160;Database=ssw;User ID=root;Password=");
 		//IRepository repo = 

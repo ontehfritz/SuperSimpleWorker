@@ -8,7 +8,7 @@
     <ProjectGuid>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>SuperSimple.Worker</RootNamespace>
-    <AssemblyName>DelayedJob</AssemblyName>
+    <AssemblyName>SuperSimpleWorker</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
