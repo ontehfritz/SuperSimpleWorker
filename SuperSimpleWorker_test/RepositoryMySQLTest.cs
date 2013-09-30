@@ -1,24 +1,18 @@
 using System;
 using NUnit.Framework;
 
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
-#if WINDOWS
-	public class RepositorySQLiteTest
-	{
-		public RepositorySQLiteTest(){}
-	}
-#else
 	[TestFixture()]
-	public class RepositoryMonoSQLiteTest
+	public class RepositoryMySQLTest
 	{
 		string connectionString = 
-				"URI=file:delay_job.db";
+			"Data Source=172.16.24.160;Database=ssw;User ID=root;Password=";
 
 		[Test()]
 		public void TestCreateJob()
 		{
-			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
+			RepositoryMySQL db = new RepositoryMySQL(connectionString);
 			Job job = new Job();
 			job.Attempts = 0; 
 			job.FailedAt = DateTime.Now;
@@ -36,7 +30,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJob()
 		{
-			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
+			RepositoryMySQL db = new RepositoryMySQL(connectionString);
 
 			Job job = db.GetJob(2);
 			Assert.AreEqual(2, job.ID);
@@ -45,8 +39,8 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJobs()
 		{
-			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
-			
+			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+
 			Job [] jobs = db.GetJobs();
 			Assert.Greater(jobs.Length, 0);
 		}
@@ -54,7 +48,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestClearJobs()
 		{
-			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
+			RepositoryMySQL db = new RepositoryMySQL(connectionString);
 
 			db.ClearJobs("test");
 		}
@@ -62,7 +56,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestUpdateJob()
 		{
-			RepositoryMonoSQLite db = new RepositoryMonoSQLite(connectionString);
+			RepositoryMySQL db = new RepositoryMySQL(connectionString);
 
 			Job job = new Job();
 			job.Attempts = 0; 
@@ -81,6 +75,8 @@ namespace DelayedJob
 			Assert.AreEqual (db.GetJob(job.ID).LockedBy, "TestUpdateJob");
 		}
 	}
-#endif
 }
+
+
+
 

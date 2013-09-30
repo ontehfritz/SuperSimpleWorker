@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{683FC90B-874A-4B0A-93F1-E4334D65B27F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>delay_job_test</RootNamespace>
+    <RootNamespace>SuperSimple.Worker</RootNamespace>
     <AssemblyName>delay_job_test</AssemblyName>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
@@ -42,10 +42,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\delayed_job\delayed_job.csproj">
-      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
-      <Name>delayed_job</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RepositoryMonoSQLite\RepositoryMonoSQLite.csproj">
       <Project>{9D9335F0-126C-45D4-B346-309A60384C98}</Project>
       <Name>RepositoryMonoSQLite</Name>
@@ -61,6 +57,10 @@
     <ProjectReference Include="..\RepositoryPostgreSQL\RepositoryPostgreSQL.csproj">
       <Project>{B5919307-CCC8-4D99-A5CE-D3E1CA06EEED}</Project>
       <Name>RepositoryPostgreSQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperSimpleWorker\SuperSimpleWorker.csproj">
+      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
+      <Name>SuperSimpleWorker</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

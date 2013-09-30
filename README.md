@@ -1,17 +1,16 @@
-# Delayed Job.net v0.1.9
+# SuperSimpleWorker (delayed_job.net) v0.1.9
 ### Simple light weight background job runner
 
-Cross platform Status:
-
 Mono 3.2.1
-[![Build Status](https://travis-ci.org/fritzcoder/delayed_job.net.png?branch=master)](https://travis-ci.org/fritzcoder/delayed_job.net)
+
+[![Build Status](https://travis-ci.org/fritzcoder/SuperSimpleWorker.png?branch=master)](https://travis-ci.org/fritzcoder/SuperSimpleWorker)
 
 This is ported and inspired from the original project:
 https://github.com/tobi/delayed_job
 
 Currently being developed using mono and OSX. The goal of the project is to have it work equally across platforms.
 
-delayed_job.net (or DJ.NET) encapsulates the common pattern of asynchronously executing longer tasks in the background. This is useful for off loading tasks from ASP.NET/MVC or Nancy (http://nancyfx.org) projects. It can also be used with any .Net technologies. 
+SuperSimpleWorker (SSW) encapsulates the common pattern of asynchronously executing longer tasks in the background. This is useful for off loading tasks from ASP.NET/MVC or Nancy (http://nancyfx.org) projects. It can also be used with any .Net technologies. 
 
 It is ready to be used with Mono or Microsoft .Net framework; As well as cross platform Windows, OSX, and Linux. 
 
@@ -24,13 +23,13 @@ Like the ruby version of delayed_job some examples of use are:
 * spam checks
 
 If you would like more in-depth information on use and FAQ please see the wiki: 
-https://github.com/fritzcoder/delayed_job.net/wiki
+https://github.com/fritzcoder/SuperSimpleWorker/wiki
 
-There are three major components to Delayed_job.net:
+There are three major components to SSW:
 
-1. The DelayedJob.dll assembly which gives your program access to creating jobs for scheduling
+1. The SuperSimpleWorker.dll assembly which gives your program access to creating jobs for scheduling
 
-2. Repository[databasename].dll assemblies, this gives DJ.Net and worker.exe access to an array of databases.
+2. Repository[databasename].dll assemblies, this gives SSW and worker.exe access to an array of databases.
 
 3. worker.exe, this runs the jobs scheduled by your program. It can be run in the background. 
 
@@ -41,25 +40,25 @@ Some important notes:
 
 ## Setup
 
-1. Copy the DelayedJob.dll in your project bin folder.
+1. Copy the SuperSimpleWorker.dll in your project bin folder.
 
-2. Using MonoDevelop or Visual Studio reference the DelayedJob.dll
+2. Using MonoDevelop or Visual Studio reference the SuperSimpleWorker.dll
 
 3. Copy a Repository[databasename].dll assembly in your bin folder and reference it with visual studio or MonoDevelop.
 
-4. Create the delayed_job table in one of the supported databases. The sql table script can be found in the sql folder.
+4. Create the SSW table in one of the supported databases. The sql table script can be found in the sql folder.
 
 5. Start creating jobs use The IJob interface and create your class:
 
 ```
-public class EmailJob : DelayedJob.IJob
+public class EmailJob : IJob
 {
 	//Make sure information you want to persist in the database is public
-	//There is no way to serialize and deserialize private data.
+	//There is no way to serialise and deserialize private data.
 	public string fromAddress = "email@gmail.com";
 	public string toAddress = "toemail@gmail.com";
 	public const string fromPassword = "";
-	public const string subject = "DelayJob.net test";
+	public const string subject = "SSW test";
 	public const string body = "A automated test";
 	
 	public void perform(){
@@ -94,7 +93,7 @@ public class EmailJob : DelayedJob.IJob
 ```
 //Set the Repository with the database you would like to use with a
 //connection string. 
-Job.Repository = new RepositoryMonoSQLite("URI=file:delayed_job.db");
+Job.Repository = new RepositoryMonoSQLite("URI=file:ssw.db");
 //Enqueue the Job now. When the worker process runs it will execute the 
 //perform method. In this case it will send an email.
 Job.Enqueue(new EmailJob());
@@ -125,7 +124,7 @@ Please see the wiki for more detailed information.
 The library evolves around a delayed_jobs table
 
 ```
-  In the sql directory there is {db server type}.sql script. Run the script in         the database you wish to use. 
+  In the sql directory there is {db server type}.sql script. Run the script in the database you wish to use. 
   Currently supporting: 
 	sqlite3 - Linux and OSX only (no windows support)
 	MySql
@@ -137,7 +136,7 @@ The create table script looks as follows:
 * May differ slightly between database types *
 
 ```
-  CREATE TABLE delayed_jobs(
+  CREATE TABLE ssw(
   	id integer not null primary key,  
     assembly varchar(8000), 
 	type varchar(255), 
@@ -159,4 +158,4 @@ On failure, the job is scheduled again in 5 seconds + N ** 4, where N is the num
 By default, it will delete failed jobs
 
 Please report questions, feature requests and bugs to: 
-https://github.com/fritzcoder/delayed_job.net/issues
+https://github.com/fritzcoder/SuperSimpleWorker/issues

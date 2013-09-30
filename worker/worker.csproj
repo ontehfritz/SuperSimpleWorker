@@ -44,12 +44,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\delayed_job\delayed_job.csproj">
-      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
-      <Name>delayed_job</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <ProjectReference Include="..\SuperSimpleWorker\SuperSimpleWorker.csproj">
+      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
+      <Name>SuperSimpleWorker</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

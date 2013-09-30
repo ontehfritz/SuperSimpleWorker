@@ -1,13 +1,13 @@
 using System;
 using NUnit.Framework;
 
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
 	[TestFixture()]
 	public class RepositoryMsSQLTest
 	{
 		string connectionString = 
-			"Server=172.16.24.136;Database=delayed_job_test;User ID=sa;Password=";
+			"Server=172.16.24.136;Database=ssw;User ID=sa;Password=";
 
 		[Test()]
 		public void TestCreateJob()

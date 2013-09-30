@@ -1,4 +1,4 @@
-CREATE TABLE delayed_jobs(
+CREATE TABLE ssw(
 	id serial not null primary key, 
 	assembly varchar(8000), 
 	type varchar(255), 

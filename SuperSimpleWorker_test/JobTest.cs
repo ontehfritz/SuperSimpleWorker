@@ -1,20 +1,20 @@
 using System;
 using System.IO;
 using NUnit.Framework;
-using DelayedJob;
+using SuperSimple.Worker;
 
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
 	[TestFixture()]
 	public class JobTest
 	{
-		//IRepository repo = new RepositoryMonoSQLite("URI=file:delay_job.db");
-		IRepository repo = 
-			new RepositoryMySQL("Data Source=172.16.24.160;Database=delayed_job_test;User ID=root;Password=");
+		IRepository repo = new RepositoryMonoSQLite("URI=file:ssw.db");
 		//IRepository repo = 
-		//	new RepositoryMsSQL("Server=172.16.24.136;Database=delayed_job_test;User ID=sa;Password=");
+			//new RepositoryMySQL("Data Source=172.16.24.160;Database=ssw;User ID=root;Password=");
 		//IRepository repo = 
-		//	new RepositoryPostgreSQL("Server=172.16.24.160;Port=5432;User Id=postgres;Password=;Database=delayed_job_test");
+		//	new RepositoryMsSQL("Server=172.16.24.136;Database=ssw;User ID=sa;Password=");
+		//IRepository repo = 
+		//	new RepositoryPostgreSQL("Server=172.16.24.160;Port=5432;User Id=postgres;Password=;Database=ssw");
 
 		[Test()]
 		public void TestEnqueue ()
@@ -29,7 +29,7 @@ namespace DelayedJob
 		{
 			Job.Repository = repo;
 			Job.Enqueue (new Ajob());
-			DelayedJob.Job.Report report = Job.WorkOff();
+			Job.Report report = Job.WorkOff();
 			Assert.Greater (report.success, 0);
 		}
 

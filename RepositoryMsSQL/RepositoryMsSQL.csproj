@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C162A269-9CDE-4457-BA6E-0FB44057256A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RepositoryMsSQL</RootNamespace>
+    <RootNamespace>SuperSimple.Worker</RootNamespace>
     <AssemblyName>RepositoryMsSQL</AssemblyName>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
@@ -39,15 +39,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\delayed_job\delayed_job.csproj">
-      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
-      <Name>delayed_job</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="sql\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sql\MsSql.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperSimpleWorker\SuperSimpleWorker.csproj">
+      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
+      <Name>SuperSimpleWorker</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

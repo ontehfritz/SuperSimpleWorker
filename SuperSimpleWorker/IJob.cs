@@ -1,4 +1,4 @@
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
 	using System;
 	/// <summary>

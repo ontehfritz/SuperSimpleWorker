@@ -1,6 +1,6 @@
 using System;
 using System.Configuration;
-using DelayedJob;
+using SuperSimple.Worker;
 using System.Reflection;
 using System.Linq;
 using System.ServiceProcess;
@@ -8,8 +8,9 @@ using System.Configuration.Install;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Threading;
+using SuperSimple.Worker;
 
-namespace DelayJob.Worker
+namespace SuperSimple.Worker
 {
 	[RunInstaller(true)]
 	public class WorkerServiceInstaller : Installer
@@ -24,9 +25,9 @@ namespace DelayJob.Worker
 
 			serviceAdmin.StartType = ServiceStartMode.Manual;
 
-			serviceAdmin.ServiceName = "DelayedJobWorker";
-			serviceAdmin.DisplayName = "Delayed Job Worker";
-			serviceAdmin.Description = "Delayed job worker service. Runs jobs for delayed job.net";
+			serviceAdmin.ServiceName = "SuperSimpleWorker";
+			serviceAdmin.DisplayName = "SuperSimpleWorker";
+			serviceAdmin.Description = "SuperSimple worker service.";
 
 			Installers.Add(process);
 			Installers.Add(serviceAdmin);
@@ -43,7 +44,7 @@ namespace DelayJob.Worker
 		{
 			public WorkerService()
 			{
-				ServiceName = "DelayedJobWorker";
+				ServiceName = "SuperSimpleWorker";
 			}
 
 			protected override void OnStart(string[] args)
@@ -107,8 +108,8 @@ namespace DelayJob.Worker
 
 		private static void Start(string[] args)
 		{
-			string connectionString = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ConnectionString;
-			string providerName = ConfigurationManager.ConnectionStrings ["delayed_job_db"].ProviderName;
+			string connectionString = ConfigurationManager.ConnectionStrings ["ssw_db"].ConnectionString;
+			string providerName = ConfigurationManager.ConnectionStrings ["ssw_db"].ProviderName;
 
 			if (args.Length > 0) 
 			{
@@ -116,7 +117,7 @@ namespace DelayJob.Worker
 			}
 
 			Assembly assembly = Assembly.Load(providerName);
-			Type type = assembly.GetType ("DelayedJob." + providerName);
+			Type type = assembly.GetType ("SuperSimple.Worker." + providerName);
 
 			//Assembly assembly = Assembly.Load("DelayedJob");
 			//Type type = assembly.GetType ("DelayedJob." + providerName);

@@ -1,4 +1,4 @@
-CREATE TABLE delayed_jobs(
+CREATE TABLE ssw(
 	id integer not null primary key AUTO_INCREMENT, 
 	assembly varchar(8000), 
 	type varchar(255), 

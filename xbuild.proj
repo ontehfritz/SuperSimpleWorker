@@ -4,7 +4,7 @@
   <Target Name="CI" DependsOnTargets="Build" />
  
   <Target Name="Build">
-    <MSBuild Projects="delayed_job.net.sln" Properties="Configuration=Debug;Platform=x86" />
+    <MSBuild Projects="SuperSimpleWorker.sln" Properties="Configuration=Debug;Platform=x86" />
   </Target>
  
 </Project>

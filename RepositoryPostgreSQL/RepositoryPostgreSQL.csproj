@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B5919307-CCC8-4D99-A5CE-D3E1CA06EEED}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>RepositoryPostgreSQL</RootNamespace>
+    <RootNamespace>SuperSimple.Worker</RootNamespace>
     <AssemblyName>RepositoryPostgreSQL</AssemblyName>
     <ReleaseVersion>0.1.9</ReleaseVersion>
   </PropertyGroup>
@@ -42,15 +42,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\delayed_job\delayed_job.csproj">
-      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
-      <Name>delayed_job</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="sql\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sql\PostgreSQL.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperSimpleWorker\SuperSimpleWorker.csproj">
+      <Project>{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}</Project>
+      <Name>SuperSimpleWorker</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

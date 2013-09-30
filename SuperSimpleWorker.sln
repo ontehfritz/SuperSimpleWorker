@@ -3,14 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "worker", "worker\worker.csproj", "{8A0D11EF-65E8-4876-A322-2BAC9E028DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delayed_job", "delayed_job\delayed_job.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77E09997-006A-44D4-920A-1D3C33D579A0}"
 	ProjectSection(SolutionItems) = preProject
 		delayed_job.net.sln = delayed_job.net.sln
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delayed_job_tests", "delayed_job_test\delayed_job_tests.csproj", "{683FC90B-874A-4B0A-93F1-E4334D65B27F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryMonoSQLite", "RepositoryMonoSQLite\RepositoryMonoSQLite.csproj", "{9D9335F0-126C-45D4-B346-309A60384C98}"
 EndProject
@@ -19,6 +15,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryMySQL", "RepositoryMySQL\RepositoryMySQL.csproj", "{40EDD363-E2A0-4731-95EB-B6BC9E386E7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPostgreSQL", "RepositoryPostgreSQL\RepositoryPostgreSQL.csproj", "{B5919307-CCC8-4D99-A5CE-D3E1CA06EEED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSimpleWorker", "SuperSimpleWorker\SuperSimpleWorker.csproj", "{4E02ED67-1AEF-4AE4-892B-5DAE6A5E03B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperSimpleWorker_tests", "SuperSimpleWorker_test\SuperSimpleWorker_tests.csproj", "{683FC90B-874A-4B0A-93F1-E4334D65B27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,7 +69,6 @@ Global
 		$2.inheritsScope = text/plain
 		$2.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $3
-		$3.ElseIfNewLinePlacement = SameLine
 		$3.AfterDelegateDeclarationParameterComma = True
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp

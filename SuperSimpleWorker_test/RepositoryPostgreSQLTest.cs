@@ -1,18 +1,18 @@
 using System;
 using NUnit.Framework;
 
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
 	[TestFixture()]
-	public class RepositoryMySQLTest
+	public class RepositoryPostgreSQLTest
 	{
 		string connectionString = 
-			"Data Source=172.16.24.160;Database=delayed_job_test;User ID=root;Password=";
+			"Server=172.16.24.160;Port=5432;User Id=postgres;Password=;Database=ssw";
 
 		[Test()]
 		public void TestCreateJob()
 		{
-			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+			RepositoryPostgreSQL db = new RepositoryPostgreSQL(connectionString);
 			Job job = new Job();
 			job.Attempts = 0; 
 			job.FailedAt = DateTime.Now;
@@ -30,7 +30,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJob()
 		{
-			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+			RepositoryPostgreSQL db = new RepositoryPostgreSQL(connectionString);
 
 			Job job = db.GetJob(2);
 			Assert.AreEqual(2, job.ID);
@@ -39,7 +39,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestGetJobs()
 		{
-			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+			RepositoryPostgreSQL db = new RepositoryPostgreSQL(connectionString);
 
 			Job [] jobs = db.GetJobs();
 			Assert.Greater(jobs.Length, 0);
@@ -48,7 +48,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestClearJobs()
 		{
-			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+			RepositoryPostgreSQL db = new RepositoryPostgreSQL(connectionString);
 
 			db.ClearJobs("test");
 		}
@@ -56,7 +56,7 @@ namespace DelayedJob
 		[Test()]
 		public void TestUpdateJob()
 		{
-			RepositoryMySQL db = new RepositoryMySQL(connectionString);
+			RepositoryPostgreSQL db = new RepositoryPostgreSQL(connectionString);
 
 			Job job = new Job();
 			job.Attempts = 0; 
@@ -76,6 +76,8 @@ namespace DelayedJob
 		}
 	}
 }
+
+
 
 
 

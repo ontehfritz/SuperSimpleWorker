@@ -1,0 +1,52 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="delayed_job_test/JobTest.cs">
+    <Files>
+      <File FileName="delayed_job_test/JobTest.cs" Line="1" Column="1" />
+      <File FileName="worker/Main.cs" Line="8" Column="26" />
+      <File FileName="delayed_job/Job.cs" Line="6" Column="18" />
+      <File FileName="worker/app.config" Line="12" Column="21" />
+      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="9" Column="16" />
+      <File FileName="delayed_job_test/RepositoryMonoSQLiteTest.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryMsSQLTest.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryMySQLTest.cs" Line="1" Column="1" />
+      <File FileName="delayed_job_test/RepositoryPostgreSQLTest.cs" Line="1" Column="1" />
+      <File FileName="worker/AssemblyInfo.cs" Line="10" Column="54" />
+      <File FileName="delayed_job/IJob.cs" Line="3" Column="15" />
+      <File FileName="delayed_job/IRepository.cs" Line="2" Column="2" />
+      <File FileName="RepositoryMonoSQLite/RepositoryMonoSQLite.cs" Line="2" Column="29" />
+      <File FileName="RepositoryMsSQL/RepositoryMsSQL.cs" Line="1" Column="29" />
+      <File FileName="RepositoryMySQL/RepositoryMySQL.cs" Line="1" Column="29" />
+      <File FileName="RepositoryMonoSQLite/sql/SQLite.sql" Line="1" Column="1" />
+      <File FileName="RepositoryMsSQL/sql/MsSql.sql" Line="1" Column="1" />
+      <File FileName="RepositoryMySQL/sql/MySql.sql" Line="1" Column="1" />
+      <File FileName="RepositoryPostgreSQL/sql/PostgreSQL.sql" Line="7" Column="23" />
+      <File FileName="delayed_job/AssemblyInfo.cs" Line="22" Column="40" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="SuperSimpleWorker_tests" expanded="True" selected="True" />
+          <Node name="worker" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="Fritz (Fredrick Seitz)" Email="fredrick.seitz@gmail.com" Copyright="Fritz (Fredrick Seitz)" Company="" Trademark="" />
+</Properties>

@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("delay_job.net Worker")]
-[assembly: AssemblyDescription("This is a worker process for delay_job.net")]
+[assembly: AssemblyTitle("SuperSimpleWorker (delay_job.net) Worker")]
+[assembly: AssemblyDescription("This is a worker process and service for SSW")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fredrick Seitz (Fritz)")]
 [assembly: AssemblyProduct("")]

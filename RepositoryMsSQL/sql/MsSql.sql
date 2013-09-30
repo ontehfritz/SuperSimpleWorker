@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[delayed_jobs](
+CREATE TABLE [dbo].[ssw](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[assembly] [varchar](8000) NULL,
 	[type] [varchar](255) NULL,

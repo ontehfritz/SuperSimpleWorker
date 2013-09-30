@@ -1,4 +1,4 @@
-namespace DelayedJob
+namespace SuperSimple.Worker
 {
 	using System;
 	using System.Data;
@@ -50,7 +50,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string delete = "DELETE FROM delayed_jobs WHERE id = @JobID";
+				string delete = "DELETE FROM ssw WHERE id = @JobID";
 
 				dbcmd.CommandText = delete;
 				dbcmd.Parameters.AddWithValue("@JobID", jobID);
@@ -77,7 +77,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string next = "select * from delayed_jobs where " +
+				string next = "select * from ssw where " +
 					"locked_by is null and " +
 						"run_at <= @time " +
 						"order by priority desc, run_at asc limit @limit";
@@ -134,7 +134,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string update = "update delayed_jobs " +
+				string update = "update ssw " +
 					"set " +
 						"priority = @priority," + 
 						"attempts = @attempts," + 
@@ -173,7 +173,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string update = "update delayed_jobs " +
+				string update = "update ssw " +
 					"set locked_by = null, " +
 						"locked_at = null " + 
 						"where locked_by = @WorkerName";
@@ -200,7 +200,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string insertRecord = "insert into delayed_jobs (" +
+				string insertRecord = "insert into ssw (" +
 					"type," + 
 						"assembly," + 
 						"priority," + 
@@ -261,7 +261,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string query = "select * from delayed_jobs where id = @pid";
+				string query = "select * from ssw where id = @pid";
 
 				dbcmd.CommandText = query;
 
@@ -308,7 +308,7 @@ namespace DelayedJob
 				dbcon.Open();
 				MySqlCommand dbcmd = dbcon.CreateCommand();
 
-				string query = "select * from delayed_jobs";
+				string query = "select * from ssw";
 
 				dbcmd.CommandText = query;
 
