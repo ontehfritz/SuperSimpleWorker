@@ -4,7 +4,7 @@ CREATE TABLE ssw(
 	type varchar(255), 
 	priority integer default 0, 
 	attempts integer default 0,  
-	handler varchar(65535), 
+	handler varchar(8000), 
 	last_error varchar(255), 
 	run_at datetime default null, 
 	locked_at datetime default null, 

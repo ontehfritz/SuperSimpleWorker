@@ -1,36 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SuperSimpleWorker_test/JobTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="worker/app.config">
     <Files>
-      <File FileName="worker/Main.cs" Line="11" Column="26" />
-      <File FileName="worker/app.config" Line="21" Column="98" />
-      <File FileName="RepositoryPostgreSQL/RepositoryPostgreSQL.cs" Line="309" Column="38" />
+      <File FileName="worker/Main.cs" Line="11" Column="1" />
       <File FileName="worker/AssemblyInfo.cs" Line="10" Column="54" />
-      <File FileName="RepositoryMonoSQLite/RepositoryMonoSQLite.cs" Line="318" Column="38" />
-      <File FileName="RepositoryMsSQL/RepositoryMsSQL.cs" Line="348" Column="38" />
-      <File FileName="RepositoryMySQL/RepositoryMySQL.cs" Line="311" Column="38" />
-      <File FileName="RepositoryMonoSQLite/sql/SQLite.sql" Line="4" Column="5" />
-      <File FileName="RepositoryMsSQL/sql/MsSql.sql" Line="6" Column="24" />
-      <File FileName="RepositoryMySQL/sql/MySql.sql" Line="1" Column="17" />
-      <File FileName="RepositoryPostgreSQL/sql/PostgreSQL.sql" Line="1" Column="17" />
-      <File FileName="SuperSimpleWorker_test/JobTest.cs" Line="11" Column="86" />
-      <File FileName="SuperSimpleWorker/IJob.cs" Line="1" Column="1" />
-      <File FileName="SuperSimpleWorker/IRepository.cs" Line="1" Column="1" />
-      <File FileName="SuperSimpleWorker/Job.cs" Line="1" Column="1" />
-      <File FileName="SuperSimpleWorker_test/RepositoryMonoSQLiteTest.cs" Line="16" Column="18" />
-      <File FileName="SuperSimpleWorker_test/RepositoryMsSQLTest.cs" Line="10" Column="38" />
-      <File FileName="SuperSimpleWorker_test/RepositoryMySQLTest.cs" Line="10" Column="43" />
-      <File FileName="SuperSimpleWorker_test/RepositoryPostgreSQLTest.cs" Line="10" Column="75" />
+      <File FileName="worker/app.config" Line="7" Column="25" />
+      <File FileName="SuperSimpleWorker_test/JobTest.cs" Line="11" Column="9" />
+      <File FileName="SuperSimpleWorker_test/RepositoryMonoSQLiteTest.cs" Line="16" Column="23" />
+      <File FileName="../../../../../Library/Frameworks/Mono.framework/Versions/3.2.3/lib/mono/4.0/Microsoft.Common.targets" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="RepositoryMonoSQLite" expanded="True">
-            <Node name="sql" expanded="True" />
-          </Node>
-          <Node name="SuperSimpleWorker_tests" expanded="True" />
-          <Node name="worker" expanded="True" selected="True" />
-        </State>
+        <State expanded="True" />
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -43,7 +24,10 @@
           <Node name="SuperSimpleWorker_tests" expanded="True">
             <Node name="SuperSimple" expanded="True">
               <Node name="Worker" expanded="True">
-                <Node name="JobTest" expanded="True" selected="True" />
+                <Node name="JobTest" expanded="True">
+                  <Node name="TestEnqueue" selected="True" />
+                </Node>
+                <Node name="RepositoryMonoSQLiteTest" expanded="True" />
               </Node>
             </Node>
           </Node>

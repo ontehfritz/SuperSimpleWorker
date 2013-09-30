@@ -8,7 +8,6 @@ using System.Configuration.Install;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Threading;
-using SuperSimple.Worker;
 
 namespace SuperSimple.Worker
 {

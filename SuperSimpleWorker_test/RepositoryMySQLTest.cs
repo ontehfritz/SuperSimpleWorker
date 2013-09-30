@@ -7,7 +7,7 @@ namespace SuperSimple.Worker
 	public class RepositoryMySQLTest
 	{
 		string connectionString = 
-			"Data Source=172.16.24.160;Database=ssw;User ID=root;Password=";
+            "Data Source=172.16.24.168;Database=test;User ID=root;Password=password";
 
 		[Test()]
 		public void TestCreateJob()

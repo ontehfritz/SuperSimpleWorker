@@ -10,7 +10,7 @@ namespace SuperSimple.Worker
 	{
         IRepository repo = new RepositoryMonoSQLite("URI=file:ssw.db");
 		//IRepository repo = 
-			//new RepositoryMySQL("Data Source=172.16.24.160;Database=ssw;User ID=root;Password=");
+            //new RepositoryMySQL("Data Source=172.16.24.168;Database=test;User ID=root;Password=password");
 		//IRepository repo = 
 		//	new RepositoryMsSQL("Server=172.16.24.136;Database=ssw;User ID=sa;Password=");
 		//IRepository repo = 
